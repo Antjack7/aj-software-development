@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AJ Software Development</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0a0f1e;
+      --dark: #111827;
+      --card: #1a2035;
+      --accent: #4f8ef7;
+      --accent2: #7c5cfc;
+      --gold: #f5a623;
+      --text: #e8eaf0;
+      --muted: #8892a4;
+      --border: rgba(255,255,255,0.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(10,15,30,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1.3rem; font-weight: 700; letter-spacing: -0.5px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.ext-link { color: var(--accent); }
+    .nav-links a.ext-link:hover { color: #7cb9ff; }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff; border: none; padding: 0.5rem 1.3rem;
+      border-radius: 6px; font-size: 0.9rem; cursor: pointer;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(79,142,247,0.12) 0%, transparent 70%),
+                  radial-gradient(ellipse 60% 50% at 80% 70%, rgba(124,92,252,0.08) 0%, transparent 60%);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(79,142,247,0.12);
+      border: 1px solid rgba(79,142,247,0.3);
+      color: var(--accent);
+      padding: 0.3rem 1rem; border-radius: 100px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.2rem; color: var(--muted);
+      max-width: 640px; margin: 0 auto 2.5rem;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff; padding: 0.85rem 2rem; border-radius: 8px;
+      text-decoration: none; font-weight: 600; font-size: 1rem;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text); padding: 0.85rem 2rem; border-radius: 8px;
+      text-decoration: none; font-weight: 600; font-size: 1rem;
+      background: rgba(255,255,255,0.04);
+      transition: background 0.2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.08); }
+
+    .hero-stats {
+      display: flex; gap: 3rem; justify-content: center;
+      margin-top: 4rem; flex-wrap: wrap;
+    }
+
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: 2.2rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800; line-height: 1.2; letter-spacing: -0.5px;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 580px; }
+
+    /* ABOUT */
+    .about { background: var(--dark); }
+
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: center; margin-top: 3rem;
+    }
+
+    .about-story p {
+      color: var(--muted); margin-bottom: 1rem; font-size: 1rem;
+    }
+
+    .timeline { margin-top: 2rem; }
+    .timeline-item {
+      display: flex; gap: 1.2rem; margin-bottom: 1.5rem;
+    }
+    .timeline-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      margin-top: 6px; flex-shrink: 0;
+    }
+    .timeline-year { font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 0.2rem; }
+    .timeline-text { font-size: 0.95rem; color: var(--muted); }
+    .timeline-text strong { color: var(--text); }
+
+    .about-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 2.5rem;
+    }
+
+    .about-card h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .about-card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      background: rgba(79,142,247,0.1);
+      border: 1px solid rgba(79,142,247,0.2);
+      color: var(--accent); padding: 0.3rem 0.8rem;
+      border-radius: 100px; font-size: 0.8rem; font-weight: 600;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(79,142,247,0.3);
+    }
+
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.2rem;
+    }
+
+    .service-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .service-card p { color: var(--muted); font-size: 0.9rem; }
+
+    /* APPS */
+    .apps { background: var(--dark); }
+
+    .apps-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+
+    .app-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px; overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .app-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(79,142,247,0.3);
+    }
+
+    .app-header {
+      padding: 1.8rem 1.8rem 1.2rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+
+    .app-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; flex-shrink: 0;
+    }
+
+    .app-name { font-size: 1.1rem; font-weight: 700; }
+    .app-category {
+      font-size: 0.75rem; color: var(--muted);
+      margin-top: 0.15rem;
+    }
+
+    .app-body { padding: 0 1.8rem 1.8rem; }
+    .app-body p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+
+    .app-status {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 1rem;
+      font-size: 0.78rem; font-weight: 600;
+      padding: 0.25rem 0.75rem; border-radius: 100px;
+    }
+    .status-live { background: rgba(34,197,94,0.12); color: #22c55e; }
+    .status-testing { background: rgba(245,166,35,0.12); color: var(--gold); }
+    .status-dev { background: rgba(79,142,247,0.12); color: var(--accent); }
+
+    .status-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* SCREENSHOT MOCKUP */
+    .app-mockup {
+      margin: 0 1.8rem 1.8rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      height: 140px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 0.8rem;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem;
+      margin-top: 3rem; align-items: start;
+    }
+
+    .contact-info h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .contact-info p { color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; }
+
+    .contact-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      margin-bottom: 1.2rem;
+    }
+    .contact-item-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: rgba(79,142,247,0.1);
+      border: 1px solid rgba(79,142,247,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .contact-item-text { font-size: 0.85rem; }
+    .contact-item-text strong { display: block; margin-bottom: 0.1rem; }
+    .contact-item-text span { color: var(--muted); }
+
+    .contact-form {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 2.5rem;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label {
+      display: block; font-size: 0.8rem; font-weight: 600;
+      color: var(--muted); margin-bottom: 0.4rem;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.75rem 1rem;
+      color: var(--text); font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group select option { background: var(--dark); }
+
+    .form-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff; border: none; padding: 0.9rem;
+      border-radius: 8px; font-size: 1rem; font-weight: 600;
+      cursor: pointer; transition: opacity 0.2s, transform 0.2s;
+    }
+    .form-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    footer .footer-logo {
+      font-size: 1.2rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    footer p { color: var(--muted); font-size: 0.85rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">AJ Software Development</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#apps">Our Apps</a></li>
+      <li><a href="#websites">Our Sites</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div style="position:relative; z-index:1;">
+      <div class="hero-badge">AJ Software Development</div>
+      <h1>
+        Turning 25 Years of<br/>
+        Expertise into <span>Exceptional Software</span>
+      </h1>
+      <p>
+        From enterprise Sage X3 implementations to cutting-edge AI-powered mobile apps —
+        we build software that makes a real difference.
+      </p>
+      <div class="hero-btns">
+        <a href="#apps" class="btn-primary">See Our Apps</a>
+        <a href="#contact" class="btn-outline">Contact Us</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">25+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Apps in Development</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Platforms</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Ambition</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-label">Our Story</div>
+      <div class="section-title">From Banking to<br/>Building the Future</div>
+
+      <div class="about-grid">
+        <div class="about-story">
+          <p>
+            AJ Software Development was founded by Anthony Jackson — a software professional with over
+            25 years of experience spanning banking technology, enterprise document management,
+            Sage X3 ERP, and now AI-powered consumer applications.
+          </p>
+          <p>
+            Anthony began his career at Alliance Leicester and Santander, spending 10 years in
+            financial technology before moving into contracting. He then spent 7 years in V1 business
+            support — delivering V1 document management, EDM systems, and Sage X3 integrations —
+            before transitioning fully into Sage X3 as a specialist covering support, installs,
+            managed services, and the technical side of full implementations.
+          </p>
+          <p>
+            Today, that depth of enterprise experience is being channelled into building
+            the next generation of AI-powered mobile and bespoke software applications.
+          </p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div>
+                <div class="timeline-year">BANKING CAREER</div>
+                <div class="timeline-text">
+                  <strong>Alliance Leicester → Santander</strong> — 10 years in financial technology,
+                  working at the intersection of banking and enterprise software.
+                </div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div>
+                <div class="timeline-year">V1 &amp; EDM — 7 YEARS</div>
+                <div class="timeline-text">
+                  <strong>V1 Business Support</strong> — document management, EDM system delivery,
+                  and Sage X3 integration. Contracting across multiple businesses and sectors.
+                </div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div>
+                <div class="timeline-year">SAGE X3 SPECIALIST — 9 YEARS</div>
+                <div class="timeline-text">
+                  <strong>Datel</strong> — 9 years of full Sage X3 specialisation covering support,
+                  installs, managed services, bespoke software creation and full ERP implementations
+                  across multiple sectors.
+                </div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div>
+                <div class="timeline-year">TODAY</div>
+                <div class="timeline-text">
+                  <strong>AJ Software Development</strong> — building AI-powered Apple &amp; Android apps
+                  and bespoke software solutions, launching globally.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-card">
+          <h3>Anthony Jackson</h3>
+          <p>Founder & Lead Developer — bringing enterprise-grade thinking to consumer software.</p>
+          <div class="skill-tags">
+            <span class="tag">Sage X3</span>
+            <span class="tag">Sage X3 4GL</span>
+            <span class="tag">iOS / Apple</span>
+            <span class="tag">Android</span>
+            <span class="tag">React Native</span>
+            <span class="tag">React.js</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">AI Integration</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">EDM Systems</span>
+            <span class="tag">Banking Tech</span>
+            <span class="tag">ERP</span>
+            <span class="tag">Bespoke Software</span>
+            <span class="tag">SQL Server</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">API Design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-label">What We Do</div>
+      <div class="section-title">Our Services</div>
+      <div class="section-sub">
+        Enterprise ERP, bespoke software, and AI-powered mobile apps — end to end.
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon" style="background: rgba(79,142,247,0.12);">📊</div>
+          <h3>Sage X3 Implementation</h3>
+          <p>
+            Full Sage X3 ERP delivery — from requirements through go-live. Configuration,
+            customisation, data migration, and user training backed by real-world enterprise experience.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon" style="background: rgba(124,92,252,0.12);">📱</div>
+          <h3>Apple & Android App Development</h3>
+          <p>
+            Native and cross-platform iOS and Android applications built with React Native and Expo.
+            Consumer apps to enterprise tools — with AI features built in from day one.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon" style="background: rgba(245,166,35,0.12);">⚙️</div>
+          <h3>Bespoke Software</h3>
+          <p>
+            Custom software built around your exact business needs. No off-the-shelf compromises —
+            solutions designed, built, and supported specifically for you.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon" style="background: rgba(34,197,94,0.12);">🤖</div>
+          <h3>AI Integration</h3>
+          <p>
+            Integrate large language models and AI capabilities into your existing systems or
+            new applications. From chatbots to intelligent automation — we make AI practical.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon" style="background: rgba(239,68,68,0.12);">🗄️</div>
+          <h3>Document Management (EDM)</h3>
+          <p>
+            Enterprise document management system design and implementation. Built on 25 years
+            of real-world EDM experience in high-compliance banking environments.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon" style="background: rgba(79,142,247,0.12);">🔧</div>
+          <h3>Technical Consulting</h3>
+          <p>
+            Architecture reviews, technology strategy, and hands-on consulting for businesses
+            navigating digital transformation or scaling their software capabilities.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon" style="background: rgba(245,166,35,0.12);">🧩</div>
+          <h3>Sage X3 4GL Scripting</h3>
+          <p>
+            Working knowledge of Sage X3's native 4GL scripting — supporting customisations,
+            minor modifications, and understanding bespoke development requirements within the platform.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon" style="background: rgba(34,197,94,0.12);">⚡</div>
+          <h3>React & JavaScript Development</h3>
+          <p>
+            Full-stack JavaScript development using React, React Native, and Node.js — from
+            responsive web apps to cross-platform mobile applications and backend APIs.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- APPS -->
+  <section class="apps" id="apps">
+    <div class="container">
+      <div class="section-label">Our Products</div>
+      <div class="section-title">Apps We're Building</div>
+      <div class="section-sub">
+        AI-powered consumer and professional apps — from faith to fitness to finance.
+      </div>
+
+      <div class="apps-grid">
+
+        <div class="app-card">
+          <div class="app-header">
+            <div class="app-icon" style="background: linear-gradient(135deg,#1a3a6e,#2d6be4);">✝️</div>
+            <div>
+              <div class="app-name">North Star Bible</div>
+              <div class="app-category">Faith & Spirituality</div>
+            </div>
+          </div>
+          <div class="app-mockup">📖 App Preview Coming Soon</div>
+          <div class="app-body">
+            <p>An AI-powered Bible companion app featuring reading plans, daily devotionals, and intelligent scripture insights — helping users deepen their faith journey.</p>
+            <div class="app-status status-testing">
+              <div class="status-dot"></div> External Testing · Build 9
+            </div>
+          </div>
+        </div>
+
+        <div class="app-card">
+          <div class="app-header">
+            <div class="app-icon" style="background: linear-gradient(135deg,#1a3520,#22c55e);">💪</div>
+            <div>
+              <div class="app-name">Forge</div>
+              <div class="app-category">Fitness & Coaching SaaS</div>
+            </div>
+          </div>
+          <div class="app-mockup">🏋️ App Preview Coming Soon</div>
+          <div class="app-body">
+            <p>A multi-tenant fitness coaching platform connecting personal trainers with their clients. Workout programming, progress tracking, and AI coaching — all in one.</p>
+            <div class="app-status status-testing">
+              <div class="status-dot"></div> Phase 1 Shipped
+            </div>
+          </div>
+        </div>
+
+        <div class="app-card">
+          <div class="app-header">
+            <div class="app-icon" style="background: linear-gradient(135deg,#1a1a3e,#7c5cfc);">🌙</div>
+            <div>
+              <div class="app-name">Lunara</div>
+              <div class="app-category">AI Sleep Companion</div>
+            </div>
+          </div>
+          <div class="app-mockup">😴 App Preview Coming Soon</div>
+          <div class="app-body">
+            <p>An AI-powered sleep companion with voice interaction and wearable integration. Personalised sleep coaching to help users build better rest habits.</p>
+            <div class="app-status status-dev">
+              <div class="status-dot"></div> In Development
+            </div>
+          </div>
+        </div>
+
+        <div class="app-card">
+          <div class="app-header">
+            <div class="app-icon" style="background: linear-gradient(135deg,#2a1500,#f5a623);">🏇</div>
+            <div>
+              <div class="app-name">Race Predictor</div>
+              <div class="app-category">Horse Racing · ML</div>
+            </div>
+          </div>
+          <div class="app-mockup">📈 App Preview Coming Soon</div>
+          <div class="app-body">
+            <p>Machine learning-powered horse racing prediction system. Shadow testing V3.3 against live production — continuously improving prediction accuracy.</p>
+            <div class="app-status status-live">
+              <div class="status-dot"></div> Live in Production · V3.2
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WEBSITES -->
+  <section id="websites">
+    <div class="container">
+      <div class="section-label">Our Websites</div>
+      <div class="section-title">Live Projects & Platforms</div>
+      <div class="section-sub">Visit our apps and platforms directly.</div>
+
+      <div class="services-grid" style="margin-top:3rem;">
+
+        <div class="service-card" style="position:relative;">
+          <div class="service-icon" style="background: linear-gradient(135deg,#1a3a6e,#2d6be4); font-size:1.5rem;">✝️</div>
+          <h3>North Star Bible</h3>
+          <p>AI-powered Bible companion app — reading plans, daily devotionals, and intelligent scripture insights.</p>
+          <br/>
+          <a href="https://northstarbible.com/" target="_blank" rel="noopener" style="
+            display:inline-flex; align-items:center; gap:0.4rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color:#fff; padding:0.5rem 1.2rem; border-radius:6px;
+            text-decoration:none; font-size:0.85rem; font-weight:600;
+            transition: opacity 0.2s;">
+            🌐 Visit northstarbible.com
+          </a>
+        </div>
+
+        <div class="service-card" style="position:relative; opacity:0.75;">
+          <div class="service-icon" style="background: linear-gradient(135deg,#1a2035,#7c5cfc); font-size:1.5rem;">☀️</div>
+          <h3>Solis <span style="font-size:0.7rem; background:rgba(245,166,35,0.15); color:var(--gold); padding:0.2rem 0.6rem; border-radius:100px; font-weight:600; margin-left:0.5rem;">Coming Soon</span></h3>
+          <p>Currently in development — another exciting product from AJ Software Development. Stay tuned.</p>
+          <br/>
+          <span style="
+            display:inline-flex; align-items:center; gap:0.4rem;
+            background: rgba(255,255,255,0.06); border:1px solid var(--border);
+            color:var(--muted); padding:0.5rem 1.2rem; border-radius:6px;
+            font-size:0.85rem; font-weight:600;">
+            🔒 In Development
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-label">Get In Touch</div>
+      <div class="section-title">Let's Build Something<br/>Together</div>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Ready to talk?</h3>
+          <p>
+            Whether you need a Sage X3 implementation, a bespoke software solution,
+            or want to explore what AI can do for your business — we'd love to hear from you.
+          </p>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div class="contact-item-text">
+              <strong>Email</strong>
+              <span>aj-softwaredevelopment@outlook.com</span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-text">
+              <strong>Based In</strong>
+              <span>United Kingdom</span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">🕐</div>
+            <div class="contact-item-text">
+              <strong>Response Time</strong>
+              <span>Within 24 hours</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="John" />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Smith" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="john@company.com" />
+          </div>
+
+          <div class="form-group">
+            <label>Service Interested In</label>
+            <select>
+              <option value="">Please select...</option>
+              <option>Sage X3 Implementation</option>
+              <option>Apple App Development</option>
+              <option>Bespoke Software</option>
+              <option>AI Integration</option>
+              <option>Document Management (EDM)</option>
+              <option>Technical Consulting</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell us about your project or requirements..."></textarea>
+          </div>
+
+          <button class="form-submit" onclick="alert('Thank you! We\'ll be in touch within 24 hours.')">
+            Send Message
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">AJ Software Development</div>
+    <p>© 2026 AJ Software Development. Built with expertise, delivered with care.</p>
+  </footer>
+
+</body>
+</html>
