@@ -281,12 +281,36 @@
     /* SCREENSHOT MOCKUP */
     .app-mockup {
       margin: 0 1.8rem 1.8rem;
-      background: rgba(255,255,255,0.04);
       border: 1px solid var(--border);
       border-radius: 12px;
-      height: 140px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted); font-size: 0.8rem;
+      height: 160px;
+      overflow: hidden;
+      position: relative;
+    }
+    .app-mockup-inner {
+      width: 100%; height: 100%;
+      padding: 0.8rem;
+      box-sizing: border-box;
+      display: flex; flex-direction: column; gap: 0.4rem;
+      overflow: hidden;
+    }
+    .mock-row {
+      display: flex; gap: 0.4rem; align-items: center;
+    }
+    .mock-bar {
+      height: 8px; border-radius: 4px; background: rgba(255,255,255,0.12);
+    }
+    .mock-label {
+      font-size: 0.55rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .mock-value {
+      font-size: 1rem; font-weight: 800; line-height: 1;
+    }
+    .mock-tag {
+      font-size: 0.5rem; font-weight: 600; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .mock-card {
+      background: rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem;
     }
 
     /* CONTACT */
@@ -631,7 +655,29 @@
               <div class="app-category">Faith & Spirituality</div>
             </div>
           </div>
-          <div class="app-mockup">📖 App Preview Coming Soon</div>
+          <div class="app-mockup" style="background: linear-gradient(160deg,#0a0f1e 0%,#0d1b3e 100%);">
+            <div class="app-mockup-inner">
+              <div class="mock-row" style="justify-content:space-between; margin-bottom:0.2rem;">
+                <span class="mock-label" style="color:#f5a623;">✦ Daily Verse</span>
+                <span class="mock-tag" style="background:rgba(245,166,35,0.15);color:#f5a623;">Build 9</span>
+              </div>
+              <div class="mock-card" style="border-left:2px solid #f5a623; background:rgba(245,166,35,0.07);">
+                <div style="font-size:0.6rem;color:#e2c97e;line-height:1.5;font-style:italic;">"For I know the plans I have for you, declares the Lord, plans to prosper you…"</div>
+                <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);margin-top:3px;">Jeremiah 29:11</div>
+              </div>
+              <div class="mock-row" style="gap:0.5rem; margin-top:0.2rem;">
+                <div style="flex:1; background:rgba(255,255,255,0.05); border-radius:6px; padding:0.35rem 0.5rem;">
+                  <div class="mock-label" style="color:rgba(255,255,255,0.4);">Reading Plan</div>
+                  <div style="font-size:0.6rem;color:#fff;margin-top:2px;">Day 12 of 30</div>
+                  <div style="height:4px;background:rgba(255,255,255,0.1);border-radius:2px;margin-top:4px;"><div style="width:40%;height:100%;background:#f5a623;border-radius:2px;"></div></div>
+                </div>
+                <div style="flex:1; background:rgba(255,255,255,0.05); border-radius:6px; padding:0.35rem 0.5rem;">
+                  <div class="mock-label" style="color:rgba(255,255,255,0.4);">Streak</div>
+                  <div class="mock-value" style="color:#f5a623; font-size:1.1rem;">🔥 12</div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="app-body">
             <p>An AI-powered Bible companion app featuring reading plans, daily devotionals, and intelligent scripture insights — helping users deepen their faith journey.</p>
             <div class="app-status status-testing">
@@ -642,13 +688,48 @@
 
         <div class="app-card">
           <div class="app-header">
-            <div class="app-icon" style="background: linear-gradient(135deg,#1a3520,#22c55e);">💪</div>
+            <div class="app-icon" style="background:#0C0C0E; border:1px solid #2a2a32;">
+              <svg width="28" height="28" viewBox="0 0 100 100">
+                <rect x="9" y="26" width="9" height="48" rx="1.2" fill="#D4A055"/>
+                <rect x="9" y="26" width="30" height="9" rx="1.2" fill="#D4A055"/>
+                <rect x="9" y="44" width="22" height="9" rx="1.2" fill="#D4A055"/>
+                <line x1="31" y1="50" x2="69" y2="50" stroke="#D4A055" stroke-width="2.6" stroke-linecap="square"/>
+                <path d="M 60 42 A 16 16 0 1 1 60 58" stroke="#D4A055" stroke-width="4.2" fill="none" stroke-linecap="square"/>
+              </svg>
+            </div>
             <div>
               <div class="app-name">Forge</div>
               <div class="app-category">Fitness & Coaching SaaS</div>
             </div>
           </div>
-          <div class="app-mockup">🏋️ App Preview Coming Soon</div>
+          <div class="app-mockup" style="background:#0C0C0E; border-color:#2a2a32;">
+            <div class="app-mockup-inner">
+              <div class="mock-row" style="justify-content:space-between; margin-bottom:0.2rem;">
+                <span class="mock-label" style="color:#D4A055;">Today's Session</span>
+                <span class="mock-tag" style="background:rgba(212,160,85,0.15);color:#D4A055;">Phase 1</span>
+              </div>
+              <div class="mock-row" style="gap:0.5rem;">
+                <div style="flex:1; background:rgba(255,255,255,0.04); border:1px solid #2a2a32; border-radius:6px; padding:0.35rem 0.5rem;">
+                  <div class="mock-label" style="color:#6E6E7B;">Workout</div>
+                  <div style="font-size:0.62rem;color:#D0D5DD;margin-top:2px;font-weight:600;">Upper Body A</div>
+                </div>
+                <div style="flex:1; background:rgba(255,255,255,0.04); border:1px solid #2a2a32; border-radius:6px; padding:0.35rem 0.5rem;">
+                  <div class="mock-label" style="color:#6E6E7B;">Clients</div>
+                  <div style="font-size:0.62rem;color:#D4A055;margin-top:2px;font-weight:700;">8 Active</div>
+                </div>
+              </div>
+              <div style="background:rgba(212,160,85,0.07); border:1px solid rgba(212,160,85,0.2); border-radius:6px; padding:0.35rem 0.6rem; margin-top:0.1rem;">
+                <div class="mock-row" style="justify-content:space-between;">
+                  <span style="font-size:0.58rem;color:#D0D5DD;">Bench Press</span>
+                  <span style="font-size:0.58rem;color:#D4A055;font-weight:700;">4×8 · 80kg</span>
+                </div>
+                <div class="mock-row" style="justify-content:space-between;margin-top:3px;">
+                  <span style="font-size:0.58rem;color:#D0D5DD;">Pull Ups</span>
+                  <span style="font-size:0.58rem;color:#D4A055;font-weight:700;">3×10 · BW</span>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="app-body">
             <p>A multi-tenant fitness coaching platform connecting personal trainers with their clients. Workout programming, progress tracking, and AI coaching — all in one.</p>
             <div class="app-status status-testing">
@@ -665,7 +746,29 @@
               <div class="app-category">AI Sleep Companion</div>
             </div>
           </div>
-          <div class="app-mockup">😴 App Preview Coming Soon</div>
+          <div class="app-mockup" style="background: linear-gradient(160deg,#0a0a1e 0%,#1a0a3e 100%);">
+            <div class="app-mockup-inner">
+              <div class="mock-row" style="justify-content:space-between; margin-bottom:0.2rem;">
+                <span class="mock-label" style="color:#7c5cfc;">🌙 Sleep Report</span>
+                <span class="mock-tag" style="background:rgba(124,92,252,0.15);color:#7c5cfc;">AI Coach</span>
+              </div>
+              <div class="mock-row" style="gap:0.5rem;">
+                <div style="flex:1.2; background:rgba(255,255,255,0.05); border-radius:6px; padding:0.35rem 0.5rem;">
+                  <div class="mock-label" style="color:rgba(255,255,255,0.4);">Last Night</div>
+                  <div class="mock-value" style="color:#7c5cfc;">7h 42m</div>
+                  <div style="font-size:0.5rem;color:#22c55e;margin-top:2px;">↑ 24 min vs avg</div>
+                </div>
+                <div style="flex:1; background:rgba(255,255,255,0.05); border-radius:6px; padding:0.35rem 0.5rem;">
+                  <div class="mock-label" style="color:rgba(255,255,255,0.4);">Score</div>
+                  <div class="mock-value" style="color:#f5a623;">84</div>
+                  <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);margin-top:2px;">Great</div>
+                </div>
+              </div>
+              <div class="mock-card" style="margin-top:0.1rem;">
+                <div style="font-size:0.55rem;color:#a78bfa;font-style:italic;">"Your deep sleep improved. Try keeping the same bedtime tomorrow."</div>
+              </div>
+            </div>
+          </div>
           <div class="app-body">
             <p>An AI-powered sleep companion with voice interaction and wearable integration. Personalised sleep coaching to help users build better rest habits.</p>
             <div class="app-status status-dev">
@@ -682,7 +785,38 @@
               <div class="app-category">Horse Racing · ML</div>
             </div>
           </div>
-          <div class="app-mockup">📈 App Preview Coming Soon</div>
+          <div class="app-mockup" style="background: linear-gradient(160deg,#0d0900 0%,#1a1000 100%);">
+            <div class="app-mockup-inner">
+              <div class="mock-row" style="justify-content:space-between; margin-bottom:0.2rem;">
+                <span class="mock-label" style="color:#f5a623;">🏇 Today's Picks</span>
+                <span class="mock-tag" style="background:rgba(245,166,35,0.15);color:#f5a623;">V3.3 Live</span>
+              </div>
+              <div class="mock-card" style="background:rgba(245,166,35,0.07); border-left:2px solid #f5a623;">
+                <div class="mock-row" style="justify-content:space-between;">
+                  <div>
+                    <div class="mock-label" style="color:#f5a623;">⭐ Best Pick</div>
+                    <div style="font-size:0.7rem;color:#fff;font-weight:700;margin-top:2px;">WAREETH</div>
+                    <div style="font-size:0.5rem;color:rgba(255,255,255,0.5);">Salisbury · 14:00</div>
+                  </div>
+                  <div style="text-align:right;">
+                    <div style="font-size:0.85rem;color:#22c55e;font-weight:800;">5/8</div>
+                    <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);">ML Confidence</div>
+                    <div style="font-size:0.65rem;color:#22c55e;font-weight:700;">HIGH</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mock-row" style="gap:0.4rem; margin-top:0.1rem;">
+                <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:5px;padding:0.3rem 0.4rem;">
+                  <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);">Best 3 #1</div>
+                  <div style="font-size:0.58rem;color:#fff;font-weight:600;">SEE THE FIRE</div>
+                </div>
+                <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:5px;padding:0.3rem 0.4rem;">
+                  <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);">Value Bet</div>
+                  <div style="font-size:0.58rem;color:#f5a623;font-weight:600;">DOUBLE OBAN</div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="app-body">
             <p>Machine learning-powered horse racing prediction system. Version 3.3 live — statistics currently being verified. Free to use during this period.</p>
             <div class="app-status status-live">
