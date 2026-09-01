@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TextProof — turn a conversation into a record you can hand over</title>
+<meta name="description" content="Film a chat on your iPhone. TextProof turns it into a timestamped, print-ready document. Every message, or it tells you. Nothing ever leaves your phone." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --paper:#fbfbfd; --raised:#fff; --ink:#131a24; --ink-soft:#3f4a58; --muted:#727d8b;
+  --rule:#dfe3ea; --rule-soft:#edeff4;
+  --blue:#1a5fb4; --blue-deep:#0e3f7e; --blue-wash:#eef3fb;
+  --green:#1e7a46; --green-wash:#edf6f1;
+  --amber:#8a6410; --amber-wash:#fbf5e6;
+  --night:#0d1420; --night-2:#141d2c; --night-ink:#e6ebf2; --night-muted:#8a98ab;
+  --shadow:0 1px 2px rgba(19,26,36,.05),0 10px 30px rgba(19,26,36,.07);
+}
+
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:60rem;margin:0 auto;padding:0 1.5rem}
+.narrow{max-width:42rem}
+a{color:var(--blue)}
+
+/* ---------- nav ---------- */
+nav{
+  position:sticky;top:0;z-index:50;background:rgba(251,251,253,.9);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);
+}
+.nav-in{max-width:60rem;margin:0 auto;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink)}
+.logo-mark{width:30px;height:30px;border-radius:7px;background:linear-gradient(160deg,#2b74d0,#134a92);display:grid;place-items:center;flex:none}
+.logo-mark svg{width:17px;height:17px}
+.logo-word{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:1.2rem;letter-spacing:-.01em}
+.nav-links{display:flex;gap:1.4rem;align-items:center;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem}
+.nav-links a:hover{color:var(--ink)}
+@media(max-width:36rem){.nav-links li:not(:last-child){display:none}}
+
+/* ---------- hero ---------- */
+.hero{background:var(--night);color:var(--night-ink);padding:5rem 0 5.5rem;position:relative;overflow:hidden}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60rem 30rem at 78% -10%,rgba(43,116,208,.24),transparent 60%);
+}
+.hero .wrap{position:relative}
+.kicker{
+  font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.16em;
+  text-transform:uppercase;color:#7fa8e0;margin-bottom:1.4rem;
+}
+h1{
+  font-family:Newsreader,Georgia,serif;font-weight:500;
+  font-size:clamp(2.5rem,7vw,4.1rem);line-height:1.04;letter-spacing:-.02em;
+  text-wrap:balance;max-width:18ch;
+}
+h1 em{font-style:italic;color:#93bdf3}
+.hero p.sell{
+  font-size:1.2rem;line-height:1.55;color:#b9c6d8;margin:1.5rem 0 2.2rem;max-width:34rem;text-wrap:pretty;
+}
+.cta-row{display:flex;flex-wrap:wrap;gap:.9rem;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;
+  padding:.85rem 1.5rem;border-radius:9px;font-weight:600;font-size:1rem;
+}
+.btn-p{background:#fff;color:var(--night)}
+.btn-p:hover{background:#e8eef7}
+.btn-s{border:1px solid rgba(255,255,255,.28);color:var(--night-ink)}
+.btn-s:hover{border-color:rgba(255,255,255,.55)}
+.hero-note{margin-top:1.5rem;font-size:.88rem;color:var(--night-muted);font-family:"IBM Plex Mono",monospace}
+
+/* ---------- the record card, the site's signature ---------- */
+.record{
+  margin-top:3.5rem;background:var(--raised);border-radius:12px;
+  box-shadow:0 24px 60px rgba(0,0,0,.45);overflow:hidden;color:var(--ink);
+  border:1px solid rgba(255,255,255,.14);
+}
+.record-head{padding:1.4rem 1.6rem 1.1rem;border-bottom:1px solid var(--rule)}
+.record-title{font-family:Newsreader,Georgia,serif;font-size:1.35rem;font-weight:600;letter-spacing:-.01em}
+.record-sub{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
+.record-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-bottom:1px solid var(--rule)}
+@media(min-width:44rem){.record-meta{grid-template-columns:repeat(4,1fr)}}
+.meta{padding:.95rem 1.6rem;border-right:1px solid var(--rule-soft)}
+.meta:last-child{border-right:0}
+.meta dt{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem}
+.meta dd{font-family:"IBM Plex Mono",monospace;font-size:.9rem;font-weight:500;font-variant-numeric:tabular-nums}
+.meta dd.ok{color:var(--green)}
+.record-body{padding:1.5rem 1.6rem}
+.bubble{max-width:82%;padding:.6rem .9rem;border-radius:14px;font-size:.93rem;margin-bottom:.6rem;line-height:1.45}
+.b-them{background:var(--rule-soft);border-bottom-left-radius:5px}
+.b-you{background:var(--blue);color:#fff;margin-left:auto;border-bottom-right-radius:5px}
+.daymark{text-align:center;font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:1rem 0 .8rem}
+.gapmark{
+  display:flex;gap:.6rem;align-items:flex-start;background:var(--amber-wash);
+  border-left:3px solid var(--amber);padding:.7rem .9rem;border-radius:0 7px 7px 0;
+  font-size:.83rem;color:#6b4f0c;margin:.9rem 0;
+}
+.gapmark b{font-weight:600}
+
+/* ---------- sections ---------- */
+section{padding:5.5rem 0}
+.sec-alt{background:var(--raised);border-block:1px solid var(--rule)}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--blue);margin-bottom:.9rem}
+h2{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:clamp(1.9rem,4.2vw,2.6rem);line-height:1.14;letter-spacing:-.015em;text-wrap:balance}
+h3{font-size:1.06rem;font-weight:600;margin-bottom:.4rem}
+.lede{font-size:1.12rem;color:var(--ink-soft);margin-top:1rem;max-width:38rem;text-wrap:pretty}
+p+p{margin-top:1rem}
+
+.steps{display:grid;gap:1.1rem;margin-top:2.5rem;grid-template-columns:1fr}
+@media(min-width:48rem){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{background:var(--paper);border:1px solid var(--rule);border-radius:11px;padding:1.5rem}
+.sec-alt .step{background:var(--paper)}
+.step-n{
+  font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:.8rem;
+  width:2rem;height:2rem;border-radius:50%;background:var(--blue-wash);color:var(--blue);
+  display:grid;place-items:center;margin-bottom:.9rem;
+}
+.step p{font-size:.95rem;color:var(--ink-soft)}
+
+.claims{display:grid;gap:0;margin-top:2.5rem;border-top:1px solid var(--rule)}
+.claim{padding:1.6rem 0;border-bottom:1px solid var(--rule);display:grid;gap:.4rem}
+@media(min-width:48rem){.claim{grid-template-columns:15rem 1fr;gap:2.5rem;align-items:start}}
+.claim h3{font-family:Newsreader,Georgia,serif;font-size:1.3rem;font-weight:600;letter-spacing:-.01em;margin:0}
+.claim p{color:var(--ink-soft);font-size:1rem}
+
+.posts{display:grid;gap:1.1rem;margin-top:2.5rem;grid-template-columns:1fr}
+@media(min-width:48rem){.posts{grid-template-columns:repeat(3,1fr)}}
+.post{
+  display:block;text-decoration:none;color:inherit;background:var(--raised);
+  border:1px solid var(--rule);border-radius:11px;padding:1.5rem;transition:border-color .15s,transform .15s;
+}
+.post:hover{border-color:var(--blue);transform:translateY(-2px)}
+.post .tag{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.post h3{font-family:Newsreader,Georgia,serif;font-size:1.22rem;font-weight:600;margin:.55rem 0 .45rem;letter-spacing:-.01em;line-height:1.25}
+.post p{font-size:.93rem;color:var(--ink-soft)}
+.post .more{color:var(--blue);font-size:.88rem;font-weight:600;margin-top:.8rem;display:inline-block}
+
+.faq{margin-top:2.5rem;border-top:1px solid var(--rule)}
+details{border-bottom:1px solid var(--rule)}
+summary{
+  cursor:pointer;padding:1.15rem 2rem 1.15rem 0;font-weight:600;font-size:1.02rem;
+  list-style:none;position:relative;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:.3rem;top:1rem;font-size:1.4rem;color:var(--blue);font-weight:400;line-height:1}
+details[open] summary::after{content:"–"}
+details p{padding:0 0 1.2rem;color:var(--ink-soft);font-size:.98rem;max-width:42rem}
+
+.price{
+  background:var(--night);color:var(--night-ink);border-radius:14px;
+  padding:2.5rem;margin-top:2.5rem;text-align:center;
+}
+.price .amt{font-family:Newsreader,Georgia,serif;font-size:3.4rem;font-weight:600;letter-spacing:-.02em;line-height:1}
+.price .once{color:#93bdf3;font-weight:600;margin-top:.4rem}
+.price ul{list-style:none;margin:1.6rem auto 1.8rem;max-width:22rem;text-align:left}
+.price li{padding:.42rem 0 .42rem 1.7rem;position:relative;color:#c3cfdf;font-size:.97rem}
+.price li::before{content:"✓";position:absolute;left:0;color:#6cc494;font-weight:700}
+
+footer{background:var(--raised);border-top:1px solid var(--rule);padding:3rem 0;color:var(--muted);font-size:.9rem}
+.foot-in{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:space-between;align-items:center}
+.foot-links{display:flex;flex-wrap:wrap;gap:1.4rem;list-style:none}
+.foot-links a{color:var(--muted);text-decoration:none}
+.foot-links a:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="/textproof/">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.2 3.6A.5.5 0 0 1 5 19.2V16h-.5A.5.5 0 0 1 4 15.5z" fill="#fff"/>
+          <path d="m10.6 10.2 1.7 1.7 3.4-3.6" stroke="#1a5fb4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="logo-word">TextProof</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#different">Why it's different</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="support.html">Support</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">iPhone · one payment · nothing uploaded</div>
+    <h1>Proof of what was <em>actually</em> said.</h1>
+    <p class="sell">Film a conversation on your own phone. TextProof turns the recording into a
+    timestamped, print-ready document you can hand to a landlord, an insurer or a solicitor —
+    without a single message leaving your device.</p>
+    <div class="cta-row">
+      <a class="btn btn-p" href="#price">See the price</a>
+      <a class="btn btn-s" href="#how">How it works</a>
+    </div>
+    <p class="hero-note">Coming to the App Store · £9.99 one-off, no subscription</p>
+
+    <div class="record">
+      <div class="record-head">
+        <div class="record-title">Landlord deposit dispute</div>
+        <div class="record-sub">Conversation record · photographic + typed</div>
+      </div>
+      <dl class="record-meta">
+        <div class="meta"><dt>Exported</dt><dd>1 Sep 2026</dd></div>
+        <div class="meta"><dt>Source</dt><dd>screen recording</dd></div>
+        <div class="meta"><dt>Messages</dt><dd>31</dd></div>
+        <div class="meta"><dt>Possible gaps</dt><dd class="ok">None detected</dd></div>
+      </dl>
+      <div class="record-body">
+        <div class="daymark">Tuesday 26 August</div>
+        <div class="bubble b-them">That carpet was already marked when I moved in. I sent photos on the first day, remember</div>
+        <div class="bubble b-you">I do remember, yes. You sent them on the day you got the keys</div>
+        <div class="bubble b-them">So can that come off then</div>
+        <div class="gapmark">
+          <span>!</span>
+          <span><b>Possible gap in the recording.</b> Content may have scrolled past here without
+          being captured. If this section matters, re-record it scrolling slowly.</span>
+        </div>
+        <div class="bubble b-you">They've dropped the deduction entirely. Full deposit back</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="how">
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h2>Three steps, and the phone does the hard one</h2>
+    <p class="lede">No cable, no computer, no backup file to wrestle with. If you can record your
+    screen, you can use this.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <h3>Film the chat</h3>
+        <p>Open the conversation, start your iPhone's screen recording, and scroll slowly to the
+        bottom. The app walks you through it the first time.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <h3>Import it</h3>
+        <p>Pick the video. TextProof reads every screen, stitches the conversation back together
+        and works out who said what.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <h3>Check and export</h3>
+        <p>Tap any line to correct it, then export as a PDF, a spreadsheet, or plain text —
+        or as photographs of the original screens.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="different" class="sec-alt">
+  <div class="wrap">
+    <div class="eyebrow">Why it's different</div>
+    <h2>Most apps guess. This one tells you when it isn't sure.</h2>
+    <p class="lede">A record with a quiet hole in it is worse than no record at all, because
+    nobody reading it knows. Every judgement this app makes is visible in the document.</p>
+
+    <div class="claims">
+      <div class="claim">
+        <h3>It marks what it might have missed</h3>
+        <p>Scroll too fast and it cannot promise it saw everything between one screen and the
+        next. So it says so, in place, at the exact spot — rather than closing the gap and hoping.</p>
+      </div>
+      <div class="claim">
+        <h3>Nothing is thrown away</h3>
+        <p>Everything it read off your screen and decided was not a message is listed at the back
+        of the document. If it judged something wrongly, that thing is in the wrong section. It is
+        never gone.</p>
+      </div>
+      <div class="claim">
+        <h3>It shows its working</h3>
+        <p>The front page accounts for every reading taken off the screen: how many were printed
+        as messages, how many were set aside. The numbers add up, and you can check them.</p>
+      </div>
+      <div class="claim">
+        <h3>It never invents a time</h3>
+        <p>Times and dates appear only where they were actually visible on screen. Where iOS did
+        not show one, the document says so instead of guessing.</p>
+      </div>
+      <div class="claim">
+        <h3>Nothing leaves your phone</h3>
+        <p>No account, no upload, no servers, no analytics. The reading happens on the device
+        using Apple's own text recognition. There is nowhere for your conversation to go.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="writing">
+  <div class="wrap">
+    <div class="eyebrow">Writing</div>
+    <h2>Why it is built the way it is</h2>
+    <p class="lede">Notes on the decisions behind the app — including the ones that cost us
+    features, and the problem we have failed to solve nine times.</p>
+
+    <div class="posts">
+      <a class="post" href="blog/nothing-leaves-your-phone.html">
+        <span class="tag">Privacy</span>
+        <h3>Why there is no cloud, and never will be</h3>
+        <p>Every competitor that syncs has a server holding your messages. We looked at what that
+        would buy us and decided against it permanently.</p>
+        <span class="more">Read →</span>
+      </a>
+      <a class="post" href="blog/admitting-what-it-missed.html">
+        <span class="tag">Design</span>
+        <h3>The document that admits what it missed</h3>
+        <p>The hardest decision in the app was to make it say "I might have missed something
+        here" instead of quietly closing the gap.</p>
+        <span class="more">Read →</span>
+      </a>
+      <a class="post" href="blog/one-payment.html">
+        <span class="tag">Pricing</span>
+        <h3>One payment, not a subscription</h3>
+        <p>You need this app during a bad month, not forever. Charging monthly for that would be
+        charging people for a problem they are trying to end.</p>
+        <span class="more">Read →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="price" class="sec-alt">
+  <div class="wrap narrow">
+    <div class="eyebrow">Price</div>
+    <h2>Try it first. Pay once, if it works for you.</h2>
+    <p class="lede">One conversation exports free, in full quality, with no watermark — so you can
+    see the actual document before deciding.</p>
+
+    <div class="price">
+      <div class="amt">£9.99</div>
+      <div class="once">One payment. No subscription. Yours forever.</div>
+      <ul>
+        <li>Every message, every conversation, any length</li>
+        <li>PDF, CSV and plain text</li>
+        <li>Photographic record of the original screens</li>
+        <li>Gap markers, so the document admits what it missed</li>
+        <li>Works entirely offline</li>
+      </ul>
+      <a class="btn btn-p" href="support.html">Questions? Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <div class="eyebrow">Common questions</div>
+    <h2>Before you ask</h2>
+    <div class="faq">
+      <details>
+        <summary>Does it work with WhatsApp as well as iMessage?</summary>
+        <p>Yes. It reads what is on your screen, so it works with any messaging app — WhatsApp,
+        iMessage, SMS, anything you can film. That is the advantage of doing it this way rather
+        than reading a backup file.</p>
+      </details>
+      <details>
+        <summary>Will it print things nobody actually said?</summary>
+        <p>Sometimes, and we would rather tell you now. If somebody shared a picture with writing
+        on it — a poster, a screenshot, a photo of a letter — the app reads that writing too and
+        cannot always tell it from a message. Tap any line you did not send to delete it before
+        exporting. Ordinary conversations rarely need this; chats full of shared images need it
+        most.</p>
+      </details>
+      <details>
+        <summary>Can I use the export in court?</summary>
+        <p>That is not ours to promise, and we will not pretend otherwise. Whether any document
+        is accepted in any process is a decision for the people running that process. What we can
+        say is that the export is complete, timestamped, print-ready, and honest about anything it
+        was unsure of. Keep the original recording alongside it — that is the primary record.</p>
+      </details>
+      <details>
+        <summary>Do you see my messages?</summary>
+        <p>No, and we could not if we wanted to. There is no server. The app has no network code
+        in it at all. Your recording is read on your own phone by Apple's built-in text
+        recognition, and the result stays there until you choose to share it.</p>
+      </details>
+      <details>
+        <summary>What happens when I delete a conversation?</summary>
+        <p>The transcript goes, and so do the captured pictures of the conversation. Both, from
+        the phone, permanently. There is nothing held anywhere else to delete.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div>© 2026 AJ Software Development · Wigan, UK</div>
+    <ul class="foot-links">
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="mailto:anthony@ajsoftwaredev.org">anthony@ajsoftwaredev.org</a></li>
+      <li><a href="/">AJ Software Development</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>

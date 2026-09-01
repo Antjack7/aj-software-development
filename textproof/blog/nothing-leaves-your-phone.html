@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<title>Why there is no cloud, and never will be — TextProof</title>
+<meta name="description" content="Every competitor that syncs has a server holding your messages. We looked at what that would buy us and decided against it permanently." />
+<link rel="stylesheet" href="post.css">
+</head>
+<body>
+<nav><div class="nav-in">
+  <a class="logo" href="../index.html">
+    <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.2 3.6A.5.5 0 0 1 5 19.2V16h-.5A.5.5 0 0 1 4 15.5z" fill="#fff"/><path d="m10.6 10.2 1.7 1.7 3.4-3.6" stroke="#1a5fb4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span class="logo-word">TextProof</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html#how">How it works</a></li>
+    <li><a href="../index.html#writing">Writing</a></li>
+    <li><a href="../support.html">Support</a></li>
+  </ul>
+</div></nav>
+
+<article>
+  <div class="tag">Privacy</div>
+  <h1>Why there is no cloud, and never will be</h1>
+  <div class="byline">1 September 2026 · Anthony Jackson</div>
+
+  <p class="standfirst">People reach for this app during the worst month of their year. Whatever
+  else we get wrong, we are not going to be one more organisation holding a copy of it.</p>
+
+  <p>The conversations that end up in TextProof are not small talk. They are the row with the
+  landlord about the deposit. The messages from the ex. The thing the builder promised and then
+  denied promising. The chain that proves you did tell them, on the ninth, in writing.</p>
+
+  <p>People do not export a conversation because they are curious. They do it because something
+  has gone wrong and they need to show somebody what was actually said.</p>
+
+  <h2>The obvious way to build this</h2>
+
+  <p>The straightforward version of this app uploads your recording to a server, does the reading
+  there, and sends back a document. It would be easier to build. The processing would be faster.
+  We could fix problems without shipping an update, see exactly what went wrong when somebody
+  complains, and add web access, sync between devices, and a dashboard.</p>
+
+  <p>And it would mean a machine somewhere in a data centre holding the worst month of a
+  stranger's year.</p>
+
+  <div class="pull">
+    <p><b>The question that settled it</b></p>
+    <p>Not "would we look after it properly?" — we would try. The question is what happens on the
+    day we are careless, or acquired, or subpoenaed, or simply wrong about a permission setting.
+    A promise is only as good as the worst day it has to survive.</p>
+  </div>
+
+  <h2>So there is no server</h2>
+
+  <p>Not a small one. Not an encrypted one. Not one that "only holds it briefly".
+  <strong>There is no network code in the app at all.</strong></p>
+
+  <p>Your recording is read on your own phone, by the text recognition Apple already builds into
+  iOS. The transcript is written to your phone. The PDF is made on your phone. Nothing is
+  transmitted, because there is nothing to transmit it to.</p>
+
+  <p>That is a stronger promise than a privacy policy, and a different kind of promise. A policy
+  says we choose not to look. This says we <em>cannot</em>. If somebody demanded every message
+  TextProof has ever processed, the honest answer would be that we do not have one, and never
+  did.</p>
+
+  <h2>What it costs us</h2>
+
+  <p>We would rather be straight about this than pretend the decision was free.</p>
+
+  <ul>
+    <li><strong>No sync.</strong> Your exports live on the phone that made them. Move phones and
+    they do not follow.</li>
+    <li><strong>No web version.</strong> There is nowhere for one to run.</li>
+    <li><strong>Slower on older phones.</strong> A server rack would be quicker than an iPhone.</li>
+    <li><strong>Debugging in the dark.</strong> When somebody reports a bad export we cannot look
+    at it.</li>
+  </ul>
+
+  <p>That last one has genuinely slowed development down. Almost every fault worth fixing in this
+  app was found by replaying what it read off somebody's screen — and every time, we had to ask
+  permission first, explain exactly what was in the file, and wait.</p>
+
+  <p>We think that is the right trade. The alternative is convenience for us, paid for with a copy
+  of your conversation sitting on a machine you have never seen.</p>
+
+  <h2>How to check we are telling the truth</h2>
+
+  <p>Put your phone in aeroplane mode and use the app. All of it works: importing, reading,
+  editing, exporting, sharing. Nothing degrades, nothing waits, nothing complains about a
+  connection.</p>
+
+  <p>An app that needs the internet cannot hide it. This one does not need it.</p>
+<div class="end"><p>TextProof turns a screen recording of a conversation into a timestamped, print-ready document — entirely on your iPhone. <a href="../index.html">See how it works →</a></p></div></article><footer><div class="foot-in">
+  <div>© 2026 AJ Software Development · Wigan, UK</div>
+  <ul class="foot-links">
+    <li><a href="../index.html">TextProof</a></li>
+    <li><a href="../privacy.html">Privacy</a></li>
+    <li><a href="../support.html">Support</a></li>
+  </ul>
+</div></footer>
+</body>
+</html>

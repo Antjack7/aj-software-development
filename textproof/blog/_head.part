@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="post.css">
+</head>
+<body>
+<nav><div class="nav-in">
+  <a class="logo" href="../index.html">
+    <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.2 3.6A.5.5 0 0 1 5 19.2V16h-.5A.5.5 0 0 1 4 15.5z" fill="#fff"/><path d="m10.6 10.2 1.7 1.7 3.4-3.6" stroke="#1a5fb4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span class="logo-word">TextProof</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html#how">How it works</a></li>
+    <li><a href="../index.html#writing">Writing</a></li>
+    <li><a href="../support.html">Support</a></li>
+  </ul>
+</div></nav>
