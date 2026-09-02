@@ -25,14 +25,35 @@
   --night:#0a1119;--night-2:#111b27;--night-ink:#e6ebf2;--night-muted:#8a98ab;
 }
 html{scroll-behavior:smooth}
+/*
+  THE PAGE IS PAPER, NOT A BLANK CANVAS. Flat white read as unfinished, and on a product about
+  documents there is an obvious material to reach for instead. Three layers, all cheap:
+  a fine grain so the light sections have a surface, and two very soft blue washes so the
+  colour of the product bleeds into the page rather than only appearing in the dark bands.
+*/
 body{background:var(--paper);color:var(--ink);
   font-family:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
-  font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  position:relative}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background:
+    radial-gradient(46rem 30rem at 88% 12%,rgba(26,95,180,.055),transparent 60%),
+    radial-gradient(40rem 28rem at 4% 62%,rgba(26,95,180,.045),transparent 62%);
+}
+/* Fine paper grain. SVG noise, so it costs one data URI and no image request. */
+body::after{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.34;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+}
+nav,header,section,footer{position:relative;z-index:1}
 .wrap{max-width:64rem;margin:0 auto;padding:0 1.5rem}
 .narrow{max-width:42rem}
 a{color:var(--blue)}
 
 /* ---------------- nav ---------------- */
+#progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:70;
+  background:linear-gradient(90deg,#2b74d0,#7fa8e0);transition:width .1s linear}
 nav{position:sticky;top:0;z-index:60;background:rgba(10,17,25,.82);backdrop-filter:blur(14px);
   border-bottom:1px solid rgba(255,255,255,.07);transition:background .3s}
 body.scrolled nav{background:rgba(251,251,253,.92);border-bottom-color:var(--rule)}
@@ -140,6 +161,21 @@ h1 em{font-style:italic;color:#8fbcf5}
 /* ---------------- sections ---------------- */
 section{padding:6rem 0}
 .sec-alt{background:var(--raised);border-block:1px solid var(--rule)}
+/*
+  A DARK BAND IN THE MIDDLE, so the page has a rhythm instead of one long white scroll:
+  dark hero → paper → dark → paper → dark price. It also puts the strongest argument on the
+  strongest surface.
+*/
+.sec-dark{background:var(--night);color:var(--night-ink);border-block:1px solid rgba(255,255,255,.07);
+  position:relative;overflow:hidden}
+.sec-dark::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(44rem 24rem at 78% -12%,rgba(43,116,208,.22),transparent 62%)}
+.sec-dark .wrap{position:relative;z-index:1}
+.sec-dark .eyebrow{color:#7fa8e0}
+.sec-dark .lede{color:#b3c1d4}
+.sec-dark .claims{border-top-color:rgba(255,255,255,.12)}
+.sec-dark .claim{border-bottom-color:rgba(255,255,255,.09)}
+.sec-dark .claim p{color:#aebbcd}
 .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.17em;
   text-transform:uppercase;color:var(--blue);margin-bottom:.9rem}
 h2{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:clamp(1.95rem,4.4vw,2.7rem);
@@ -232,6 +268,7 @@ footer{background:var(--raised);border-top:1px solid var(--rule);padding:3rem 0;
 </head>
 <body>
 
+<div id="progress" aria-hidden="true"></div>
 <nav>
   <div class="nav-in">
     <a class="logo" href="index.html">
@@ -390,7 +427,7 @@ Page 1 of 4</pre></div>
   </div>
 </section>
 
-<section id="different" class="sec-alt">
+<section id="different" class="sec-dark">
   <div class="wrap">
     <div class="reveal">
       <div class="eyebrow">Why it's different</div>
@@ -541,7 +578,12 @@ Page 1 of 4</pre></div>
 
 <script>
 // Nav goes from dark to paper once the hero is behind you.
-const onScroll = () => document.body.classList.toggle('scrolled', window.scrollY > 420);
+const bar = document.getElementById('progress');
+const onScroll = () => {
+  document.body.classList.toggle('scrolled', window.scrollY > 420);
+  const max = document.documentElement.scrollHeight - innerHeight;
+  bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+};
 onScroll(); addEventListener('scroll', onScroll, { passive: true });
 
 // Sections rise into place as they arrive. Anything already on screen shows immediately.
