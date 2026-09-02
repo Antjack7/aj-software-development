@@ -213,7 +213,11 @@ h1 em{font-style:italic;background:linear-gradient(180deg,#dbe8fb 8%,#5b93de 92%
 
 /* ---------------- sections ---------------- */
 section{padding:6rem 0}
-.sec-alt{background:var(--raised);border-block:1px solid var(--rule)}
+.sec-alt{background:linear-gradient(180deg,#f3f6fc 0%,#fdfdff 45%,#f5f8fd 100%);
+  border-block:1px solid var(--rule)}
+/* Even the plain sections carry a faint wash, so nothing on the page is bare white. */
+section:not(.sec-alt):not(.sec-dark){
+  background:linear-gradient(180deg,rgba(26,95,180,.032),rgba(26,95,180,.006) 45%,rgba(26,95,180,.034))}
 /*
   A DARK BAND IN THE MIDDLE, so the page has a rhythm instead of one long white scroll:
   dark hero → paper → dark → paper → dark price. It also puts the strongest argument on the
@@ -269,11 +273,61 @@ html.js-reveal .reveal.in{opacity:1;transform:none}
   cursor:pointer;font-weight:600;transition:all .18s}
 .tab:hover{border-color:var(--blue);color:var(--blue)}
 .tab[aria-selected="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
-.pane{display:none;background:var(--night-2);border-radius:11px;padding:1.3rem 1.5rem;overflow-x:auto}
-.pane.on{display:block;animation:paneIn .3s ease}
-@keyframes paneIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.pane pre{font-family:"IBM Plex Mono",monospace;font-size:.78rem;line-height:1.75;color:#c9d6e6;white-space:pre}
-.pane .c{color:#7f8fa3}.pane .k{color:#8fbcf5}.pane .g{color:#6cc494}
+/*
+  THE PANES SHOW THE ARTEFACT, NOT ITS SOURCE. They used to print raw text: a spreadsheet as
+  commas, and the photographic record as a paragraph describing itself, which showed nothing at
+  all. Somebody choosing between four export formats wants to see the four things, so each pane
+  now renders what actually comes out of the app.
+*/
+.pane{display:none}
+.pane.on{display:block;animation:paneIn .35s ease}
+@keyframes paneIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.pane-note{margin-top:.9rem;font-size:.92rem;color:var(--muted)}
+.scroller-x{overflow-x:auto}
+.sheet{background:#fff;border:1px solid var(--rule);border-radius:12px;overflow:hidden;
+  box-shadow:0 14px 40px rgba(19,26,36,.10)}
+.sheet-hd{padding:1.1rem 1.4rem .9rem;border-bottom:1px solid var(--rule);
+  display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.sheet-ttl{font-family:Newsreader,Georgia,serif;font-size:1.18rem;font-weight:600}
+.sheet-sub{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);margin-top:.2rem}
+.sheet-badge{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--green);border:1px solid var(--green);
+  padding:.22rem .5rem;border-radius:4px;white-space:nowrap}
+.sheet-meta{display:grid;grid-template-columns:repeat(2,1fr);border-bottom:1px solid var(--rule)}
+@media(min-width:40rem){.sheet-meta{grid-template-columns:repeat(4,1fr)}}
+.sheet-meta>div{padding:.7rem 1.4rem;border-right:1px solid var(--rule-soft)}
+.sheet-meta>div:last-child{border-right:0}
+.sheet-meta dt{font-family:"IBM Plex Mono",monospace;font-size:.56rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:.15rem}
+.sheet-meta dd{font-family:"IBM Plex Mono",monospace;font-size:.8rem;font-weight:500;font-variant-numeric:tabular-nums}
+.sheet-meta dd.ok{color:var(--green)}
+.sheet-body{padding:1.1rem 1.4rem 1.4rem}
+.sheet-day{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin:.5rem 0 .6rem}
+.sheet-body p{display:grid;grid-template-columns:3.2rem 3rem 1fr;gap:.7rem;font-size:.92rem;
+  padding:.32rem 0;margin:0;align-items:baseline}
+.sheet-body time{font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--muted)}
+.sheet-body b{font-weight:600;font-size:.86rem}
+.sheet-body p.me b{color:var(--blue)}
+.sheet-grid{padding:.2rem}
+.sheet-grid table{border-collapse:collapse;width:100%;min-width:33rem}
+.sheet-grid th,.sheet-grid td{text-align:left;padding:.58rem .85rem;
+  border-bottom:1px solid var(--rule-soft);border-right:1px solid var(--rule-soft);
+  font-family:"IBM Plex Mono",monospace;font-size:.78rem;white-space:nowrap}
+.sheet-grid th{background:var(--rule-soft);font-size:.64rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted)}
+.sheet-grid tr td:last-child,.sheet-grid tr th:last-child{border-right:0;
+  font-family:"IBM Plex Sans",sans-serif;font-size:.88rem;white-space:normal}
+.sheet-grid tbody tr:last-child td{border-bottom:0}
+.sheet-mono{padding:1.3rem 1.5rem;background:#0f1620;border-color:#0f1620}
+.sheet-mono pre{font-family:"IBM Plex Mono",monospace;font-size:.82rem;line-height:1.7;
+  color:#c9d6e6;white-space:pre;margin:0}
+.photo-body{display:grid;gap:1.5rem;padding:1.3rem 1.4rem 1.4rem;grid-template-columns:1fr;align-items:start}
+@media(min-width:44rem){.photo-body{grid-template-columns:14rem 1fr}}
+.photo-body img{width:100%;max-width:100%;border-radius:8px;border:1px solid var(--rule);display:block}
+.photo-side h4{font-family:Newsreader,Georgia,serif;font-size:1.12rem;font-weight:600;margin-bottom:.5rem}
+.photo-side p{font-size:.93rem;color:var(--ink-soft);margin-bottom:.7rem}
 
 .claims{margin-top:2.5rem;border-top:1px solid var(--rule)}
 .claim{padding:1.7rem 0;border-bottom:1px solid var(--rule);display:grid;gap:.4rem}
@@ -312,7 +366,7 @@ details p{padding:0 0 1.3rem;color:var(--ink-soft);font-size:.98rem;max-width:42
 .price li{padding:.45rem 0 .45rem 1.8rem;position:relative;color:#c3cfdf;font-size:.97rem}
 .price li::before{content:"✓";position:absolute;left:0;color:#6cc494;font-weight:700}
 
-footer{background:var(--raised);border-top:1px solid var(--rule);padding:3rem 0;color:var(--muted);font-size:.9rem}
+footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid var(--rule);padding:3rem 0;color:var(--muted);font-size:.9rem}
 .foot-in{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:space-between;align-items:center}
 .foot-links{display:flex;flex-wrap:wrap;gap:1.4rem;list-style:none}
 .foot-links a{color:var(--muted);text-decoration:none}
@@ -438,48 +492,91 @@ footer{background:var(--raised);border-top:1px solid var(--rule);padding:3rem 0;
     <div class="formats reveal">
       <div class="tabs" role="tablist" aria-label="Export formats">
         <button class="tab" role="tab" aria-selected="true" data-pane="p-pdf">PDF</button>
-        <button class="tab" role="tab" aria-selected="false" data-pane="p-csv">CSV</button>
-        <button class="tab" role="tab" aria-selected="false" data-pane="p-txt">TXT</button>
+        <button class="tab" role="tab" aria-selected="false" data-pane="p-csv">Spreadsheet</button>
+        <button class="tab" role="tab" aria-selected="false" data-pane="p-txt">Plain text</button>
         <button class="tab" role="tab" aria-selected="false" data-pane="p-photo">Photo record</button>
       </div>
-      <div class="pane on" id="p-pdf" role="tabpanel"><pre><span class="c">TEXTPROOF — CONVERSATION RECORD</span>
-Landlord deposit dispute
 
-EXPORTED     1 September 2026 at 17:08
-SOURCE       screen recording
-MESSAGES     31
-GAPS         <span class="g">None detected</span>
-FINGERPRINT  F202-7C9A-EA31-98B8 (SHA-256)
+      <div class="pane on" id="p-pdf" role="tabpanel">
+        <div class="sheet">
+          <div class="sheet-hd">
+            <div>
+              <div class="sheet-ttl">Landlord deposit dispute</div>
+              <div class="sheet-sub">Conversation record</div>
+            </div>
+            <div class="sheet-badge">Complete</div>
+          </div>
+          <dl class="sheet-meta">
+            <div><dt>Exported</dt><dd>1 Sep 2026</dd></div>
+            <div><dt>Messages</dt><dd>31</dd></div>
+            <div><dt>Gaps</dt><dd class="ok">None</dd></div>
+            <div><dt>Fingerprint</dt><dd>F202-7C9A</dd></div>
+          </dl>
+          <div class="sheet-body">
+            <div class="sheet-day">Tuesday 26 August</div>
+            <p><time>09:14</time><b>Dave</b><span>That carpet was already marked when I moved in</span></p>
+            <p><time>09:15</time><b>Dave</b><span>I sent photos on the first day, remember</span></p>
+            <p class="me"><time>09:21</time><b>You</b><span>I do remember. You sent them the day you got the keys</span></p>
+            <div class="sheet-day">Thursday 28 August</div>
+            <p class="me"><time>16:40</time><b>You</b><span>They have dropped the deduction entirely</span></p>
+          </div>
+        </div>
+        <p class="pane-note">A printable document with a cover sheet, the dates that were on screen, and a fingerprint.</p>
+      </div>
 
-<span class="c">Tuesday 26 August</span>
-<span class="k">09:14  Them</span>  That carpet was already marked
-<span class="k">09:21  You </span>  I do remember. You sent them the
-              day you got the keys</pre></div>
-      <div class="pane" id="p-csv" role="tabpanel"><pre><span class="c">date,time,sender,message</span>
-2026-08-26,09:14,Them,"That carpet was already marked"
-2026-08-26,09:15,Them,"I sent photos on the first day"
-2026-08-26,09:21,You,"I do remember. You sent them the day…"
-2026-08-27,11:02,Them,"Still doesn't feel right"
-2026-08-28,16:40,You,"They've dropped the deduction entirely"</pre></div>
-      <div class="pane" id="p-txt" role="tabpanel"><pre><span class="c">--- Tuesday 26 August ---</span>
-[09:14] Them: That carpet was already marked
-[09:15] Them: I sent photos on the first day
-[09:21] You:  I do remember. You sent them the day
-              you got the keys
+      <div class="pane" id="p-csv" role="tabpanel">
+        <div class="sheet sheet-grid scroller-x">
+          <table>
+            <thead><tr><th>date</th><th>time</th><th>sender</th><th>message</th></tr></thead>
+            <tbody>
+              <tr><td>2026-08-26</td><td>09:14</td><td>Dave</td><td>That carpet was already marked</td></tr>
+              <tr><td>2026-08-26</td><td>09:15</td><td>Dave</td><td>I sent photos on the first day</td></tr>
+              <tr><td>2026-08-26</td><td>09:21</td><td>You</td><td>I do remember. You sent them the day&hellip;</td></tr>
+              <tr><td>2026-08-27</td><td>11:02</td><td>Dave</td><td>Still does not feel right</td></tr>
+              <tr><td>2026-08-28</td><td>16:40</td><td>You</td><td>They have dropped the deduction entirely</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="pane-note">Opens in Excel or Numbers. One row per message, for sorting and searching.</p>
+      </div>
 
-<span class="c">--- Thursday 28 August ---</span>
-[16:40] You:  They've dropped the deduction entirely</pre></div>
-      <div class="pane" id="p-photo" role="tabpanel"><pre><span class="c">TEXTPROOF — CONVERSATION RECORD · PHOTOGRAPHS</span>
+      <div class="pane" id="p-txt" role="tabpanel">
+        <div class="sheet sheet-mono scroller-x">
+<pre>--- Tuesday 26 August ---
+[09:14] Dave: That carpet was already marked
+[09:15] Dave: I sent photos on the first day
+[09:21] You : I do remember. You sent them the
+              day you got the keys
 
-The pages that follow are the captured images
-themselves, trimmed only where consecutive
-captures overlapped so nothing is shown twice.
+--- Thursday 28 August ---
+[16:40] You : They have dropped the deduction
+              entirely</pre>
+        </div>
+        <p class="pane-note">Plain text, for pasting into an email or a statement.</p>
+      </div>
 
-<span class="g">No text has been recognised, re-typed or
-interpreted, and nothing within any image has
-been altered.</span>
-
-Page 1 of 4</pre></div>
+      <div class="pane" id="p-photo" role="tabpanel">
+        <div class="sheet">
+          <div class="sheet-hd">
+            <div>
+              <div class="sheet-ttl">Landlord deposit dispute</div>
+              <div class="sheet-sub">Conversation record &middot; photographs</div>
+            </div>
+            <div class="sheet-badge">Page 2 of 4</div>
+          </div>
+          <div class="photo-body">
+            <img src="assets/demo-screen.jpg" alt="A page of the photographic record, showing the original conversation exactly as it appeared on screen." loading="lazy" />
+            <div class="photo-side">
+              <h4>The screens themselves</h4>
+              <p>Not typed up. These are the captured images, trimmed only where they overlapped
+              so that nothing is shown twice.</p>
+              <p><b>No text has been recognised, re-typed or interpreted</b>, and nothing within
+              any image has been altered.</p>
+            </div>
+          </div>
+        </div>
+        <p class="pane-note">For when you would rather show the original than a transcription of it.</p>
+      </div>
     </div>
   </div>
 </section>
