@@ -27,8 +27,9 @@
   <p class="updated">Last updated: 21 August 2026</p>
 
   <p class="box">The short version: TextProof runs entirely on your device. Your recordings, messages and
-  transcripts are never uploaded anywhere, and we could not read them if we wanted to — the app has no
-  servers, no accounts and no analytics.</p>
+  transcripts are never uploaded anywhere, and we could not read them if we wanted to — there are no accounts
+  and no analytics. The only thing the app ever sends is a request asking whether a newer version of itself
+  exists, and that carries nothing about you or your conversations.</p>
 
   <h2>What the app does with your content</h2>
   <p>TextProof reads screen recordings or screenshots that you choose from your photo library, recognises the
@@ -37,9 +38,17 @@
   you yourself choose to share or save them — for example via the iOS share sheet.</p>
 
   <h2>What we collect</h2>
-  <p>Nothing. TextProof has no server component. It does not collect, transmit, or store any personal data,
+  <p>Nothing. TextProof does not collect, transmit, or store any personal data,
   usage analytics, crash reports, identifiers or message content. The App Store privacy label for TextProof is
   “Data Not Collected”.</p>
+
+  <h2>Software updates</h2>
+  <p>The app can correct itself without waiting for a full App Store release, so that a fault found in how it
+  reads messages can be put right quickly. To do that it asks a hosting service run by Expo whether a newer
+  version of the app’s own code is available, and downloads it if there is one. That request contains the
+  app’s version and the kind of device it is running on. It contains no personal data, no identifier that
+  follows you, and nothing whatsoever from your recordings, messages or transcripts — those never leave your
+  device under any circumstances. See Expo’s <a href="https://expo.dev/privacy">privacy policy</a>.</p>
 
   <h2>Purchases</h2>
   <p>The one-time unlock is processed by Apple through your Apple ID. Purchase state is verified through
