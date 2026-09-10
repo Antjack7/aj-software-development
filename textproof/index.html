@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>TextProof — turn a conversation into a record you can hand over</title>
-<meta name="description" content="Film a chat on your iPhone. TextProof turns it into a timestamped, print-ready document. One payment, and nothing ever leaves your phone." />
+<title>Extract &amp; Export iPhone Text Messages | TextProof</title>
+<meta name="description" content="Extract text from iPhone screen recordings and screenshots. Export iMessage and WhatsApp conversations to PDF, CSV or text. Review on-device before sharing.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
@@ -193,7 +193,15 @@ h1 em{font-style:italic;background:linear-gradient(180deg,#dbe8fb 8%,#5b93de 92%
 .doc-meta dt{font-family:"IBM Plex Mono",monospace;font-size:.53rem;letter-spacing:.12em;
   text-transform:uppercase;color:var(--muted);margin-bottom:.15rem}
 .doc-meta dd{font-family:"IBM Plex Mono",monospace;font-size:.76rem;font-weight:500;font-variant-numeric:tabular-nums}
-.doc-lines{padding:1rem 1.3rem 1.3rem;min-height:11.5rem}
+.doc-cover{padding:.9rem 1.3rem 1.15rem;min-height:11.5rem}
+.doc-cover-title{font-family:Newsreader,Georgia,serif;font-size:1.45rem;font-weight:600;margin:.15rem 0 .7rem}
+.doc-cover-kicker{font-family:"IBM Plex Mono",monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.doc-fact{display:grid;grid-template-columns:5.7rem 1fr;gap:.65rem;padding:.32rem 0;font-size:.67rem;line-height:1.35;opacity:0;transform:translateY(5px);animation:lineIn .45s forwards}
+.doc-fact b{font-family:"IBM Plex Mono",monospace;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.doc-fact strong{font-weight:600}
+.doc-fact:nth-child(3){animation-delay:.9s}.doc-fact:nth-child(4){animation-delay:1.5s}
+.doc-fact:nth-child(5){animation-delay:2.1s}.doc-fact:nth-child(6){animation-delay:2.7s}
+.doc-fact:nth-child(7){animation-delay:3.3s}.doc-fact:nth-child(8){animation-delay:3.9s}
 .line{display:grid;grid-template-columns:3.1rem 1fr;gap:.7rem;padding:.32rem 0;font-size:.78rem;
   opacity:0;transform:translateY(5px);animation:lineIn .45s forwards}
 .line time{font-family:"IBM Plex Mono",monospace;font-size:.65rem;color:var(--muted);padding-top:.14rem}
@@ -310,6 +318,19 @@ html.js-reveal .reveal.in{opacity:1;transform:none}
 .sheet-body time{font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--muted)}
 .sheet-body b{font-weight:600;font-size:.86rem}
 .sheet-body p.me b{color:var(--blue)}
+.transcript-head{padding:.9rem 1.4rem;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;gap:1rem;font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.transcript-head strong{color:var(--blue);letter-spacing:.14em}
+.transcript-page{padding:1.1rem 1.4rem .75rem;background:#fff}
+.export-day{width:max-content;margin:.15rem auto 1rem;padding:.25rem 1.2rem;border-block:1px solid var(--rule);font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.export-row{max-width:55%;margin:.65rem 0}
+.export-row.me{margin-left:auto}
+.export-label{font-family:"IBM Plex Mono",monospace;font-size:.56rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 .45rem .25rem}
+.export-row.me .export-label{text-align:right}
+.export-bubble{background:#f0f1f4;border:1px solid #dde0e6;border-radius:11px;padding:.7rem .9rem;font-family:Newsreader,Georgia,serif;font-size:1rem;line-height:1.3}
+.export-row.me .export-bubble{background:#dceaff;border-color:#9dc7fb}
+.image-marker{margin:.8rem auto;padding:.55rem 1rem;max-width:78%;text-align:center;border:1px solid #dfe3e9;border-radius:9px;color:#687383;font:italic .75rem/1.45 Newsreader,Georgia,serif;background:repeating-linear-gradient(45deg,#f5f6f8,#f5f6f8 8px,#fafafa 8px,#fafafa 16px)}
+.image-marker small{display:block;font-family:"IBM Plex Mono",monospace;font-style:normal;font-size:.5rem;letter-spacing:.09em;text-transform:uppercase}
+.export-foot{display:flex;justify-content:space-between;padding:.6rem 1.4rem;border-top:1px solid var(--rule);font-family:"IBM Plex Mono",monospace;font-size:.58rem;color:var(--muted);letter-spacing:.06em}
 .sheet-grid{padding:.2rem}
 .sheet-grid table{border-collapse:collapse;width:100%;min-width:33rem}
 .sheet-grid th,.sheet-grid td{text-align:left;padding:.58rem .85rem;
@@ -372,8 +393,21 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
 .foot-links a{color:var(--muted);text-decoration:none}
 .foot-links a:hover{color:var(--ink)}
 </style>
+<link rel="stylesheet" href="design.css?v=20260910-2">
+<link rel="canonical" href="https://textproof.net/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TextProof">
+<meta property="og:url" content="https://textproof.net/">
+<meta property="og:title" content="Extract &amp; Export iPhone Text Messages | TextProof">
+<meta property="og:description" content="Extract text from iPhone screen recordings and screenshots. Export iMessage and WhatsApp conversations to PDF, CSV or text. Review on-device before sharing.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Extract &amp; Export iPhone Text Messages | TextProof">
+<meta name="twitter:description" content="Extract text from iPhone screen recordings and screenshots. Export iMessage and WhatsApp conversations to PDF, CSV or text. Review on-device before sharing.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Extract & Export iPhone Text Messages | TextProof", "description": "Extract text from iPhone screen recordings and screenshots. Export iMessage and WhatsApp conversations to PDF, CSV or text. Review on-device before sharing.", "url": "https://textproof.net/", "inLanguage": "en-GB", "publisher": {"@type": "Organization", "name": "AJ Software Development", "url": "https://ajsoftwaredev.org/"}}</script>
 </head>
 <body>
+<a class="skip-link" href="#how">Skip to how it works</a>
 
 <div id="progress" aria-hidden="true"></div>
 <nav>
@@ -386,7 +420,7 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
       <li><a href="#how">How it works</a></li>
       <li><a href="#different">Why it's different</a></li>
       <li><a href="#writing">Writing</a></li>
-      <li><a href="support.html">Support</a></li>
+      <li><a href="#contact">Contact us</a></li>
     </ul>
   </div>
 </nav>
@@ -395,19 +429,17 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
   <div class="wrap">
     <div class="hero-grid">
       <div>
-      <div class="kicker">iPhone &middot; one payment &middot; nothing uploaded</div>
-    <h1>Proof of what was <em>actually</em> said.</h1>
-    <p class="sell">Film a conversation on your own phone. TextProof turns the recording into a
-    timestamped, print-ready document you can hand to a landlord, an insurer or a solicitor —
-    without a single message leaving your device.</p>
+      <div class="kicker">Extract iPhone messages &middot; on-device</div>
+    <h1>Your conversations.<br><em>Made tangible.</em></h1>
+    <p class="sell">Extract text messages from iPhone screen recordings or screenshots. Turn your iMessage and WhatsApp conversations into a PDF, spreadsheet or text file. Review on your device, then choose what to share.</p>
     <div class="cta-row">
-      <a class="btn btn-p" href="#price">See the price</a>
-      <a class="btn btn-s" href="#how">How it works</a>
+      <a class="btn btn-p" href="#price">Explore TextProof <span aria-hidden="true">↗</span></a>
+      <a class="btn btn-s" href="#how">See the output <span aria-hidden="true">↓</span></a>
     </div>
     <p class="hero-note">Coming to the App Store &middot; £9.99 one-off, no subscription</p>
       </div>
 
-    <div class="stage">
+    <div class="stage" data-nosnippet>
       <div class="phone">
         <div class="screen">
           <div class="notch"></div>
@@ -437,27 +469,27 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
       <div class="doc">
         <div class="doc-top">
           <div>
-            <div class="doc-name">Landlord deposit dispute</div>
-            <div class="doc-kind">Conversation record</div>
+            <div class="doc-name">Text<span style="color:var(--blue)">Proof</span></div>
+            <div class="doc-kind">Conversation transcript</div>
           </div>
-          <div class="stamp">Complete</div>
+          <div class="stamp">On-device export</div>
         </div>
-        <dl class="doc-meta">
-          <div><dt>Exported</dt><dd>1 Sep 2026</dd></div>
-          <div><dt>Messages</dt><dd>31</dd></div>
-          <div><dt>Source</dt><dd>recording</dd></div>
-        </dl>
-        <div class="doc-lines">
-          <div class="line"><time>09:14</time><span><b>Them:</b> That carpet was already marked when I moved in</span></div>
-          <div class="line"><time>09:15</time><span><b>Them:</b> I sent photos on the first day, remember</span></div>
-          <div class="line you"><time>09:21</time><span><b>You:</b> I do remember. You sent them the day you got the keys</span></div>
-          <div class="line"><time>11:02</time><span><b>Them:</b> Still doesn't feel right when it was already damaged</span></div>
-          <div class="line you"><time>11:08</time><span><b>You:</b> I've asked them to send the check-in report</span></div>
-          <div class="line you"><time>16:40</time><span><b>You:</b> They've dropped the deduction entirely</span></div>
+        <div class="doc-cover">
+          <div class="doc-cover-kicker">Conversation transcript</div>
+          <div class="doc-cover-title">Deposit conversation</div>
+          <div class="doc-fact"><b>Exported</b><span>1 September 2026 at 16:42</span></div>
+          <div class="doc-fact"><b>Source material</b><span>screen recording</span></div>
+          <div class="doc-fact"><b>Appears to be</b><span>WhatsApp, dark mode — an observation from the recording</span></div>
+          <div class="doc-fact"><b>Messages</b><span><strong>31</strong></span></div>
+          <div class="doc-fact"><b>Possible gaps</b><span>None detected</span></div>
+          <div class="doc-fact"><b>Images &amp; GIFs</b><span>2 marked in place; pictures are not reproduced</span></div>
+          <div class="doc-fact"><b>Fingerprint</b><span>F202-7C9A-31DE-82B4</span></div>
         </div>
       </div>
+      <p class="demo-label">Illustrative conversation · exported on your device</p>
       </div>
     </div>
+    <div class="demo-controls"><span><span>iMessage &amp; WhatsApp</span><span>4 export formats</span><span>No subscription</span></span><button class="motion-toggle" type="button" aria-pressed="false">Pause animation</button></div>
   </div>
 </header>
 
@@ -465,7 +497,7 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
   <div class="wrap">
     <div class="reveal">
       <div class="eyebrow">How it works</div>
-      <h2>Three steps, and the phone does the hard one</h2>
+      <h2>Export iPhone messages.<br>In three steps.</h2>
       <p class="lede">No cable, no computer, no backup file to wrestle with. If you can record your
       screen, you can use this.</p>
     </div>
@@ -489,7 +521,7 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
       </div>
     </div>
 
-    <div class="formats reveal">
+    <div class="formats reveal" data-nosnippet>
       <div class="tabs" role="tablist" aria-label="Export formats">
         <button class="tab" role="tab" aria-selected="true" data-pane="p-pdf">PDF</button>
         <button class="tab" role="tab" aria-selected="false" data-pane="p-csv">Spreadsheet</button>
@@ -499,29 +531,18 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
 
       <div class="pane on" id="p-pdf" role="tabpanel">
         <div class="sheet">
-          <div class="sheet-hd">
-            <div>
-              <div class="sheet-ttl">Landlord deposit dispute</div>
-              <div class="sheet-sub">Conversation record</div>
-            </div>
-            <div class="sheet-badge">Complete</div>
+          <div class="transcript-head"><strong>TextProof</strong><span>Deposit conversation</span></div>
+          <div class="transcript-page">
+            <div class="export-day">Tuesday 26 August</div>
+            <div class="export-row"><div class="export-label">Other party&nbsp; | &nbsp;09:14</div><div class="export-bubble">That carpet was already marked when I moved in.</div></div>
+            <div class="export-row me"><div class="export-label">Device owner&nbsp; | &nbsp;09:21</div><div class="export-bubble">I do remember. You sent the photos on the day you got the keys.</div></div>
+            <div class="image-marker">[Words printed on a picture, not typed into the conversation]<br>CHECK-IN REPORT<small>Sender not determined</small></div>
+            <div class="export-row"><div class="export-label">Other party&nbsp; | &nbsp;11:02</div><div class="export-bubble">It still doesn't feel right when the damage was already there.</div></div>
+            <div class="export-row me"><div class="export-label">Device owner&nbsp; | &nbsp;16:40</div><div class="export-bubble">They've dropped the deduction entirely. Full deposit back.</div></div>
           </div>
-          <dl class="sheet-meta">
-            <div><dt>Exported</dt><dd>1 Sep 2026</dd></div>
-            <div><dt>Messages</dt><dd>31</dd></div>
-            <div><dt>Gaps</dt><dd class="ok">None</dd></div>
-            <div><dt>Fingerprint</dt><dd>F202-7C9A</dd></div>
-          </dl>
-          <div class="sheet-body">
-            <div class="sheet-day">Tuesday 26 August</div>
-            <p><time>09:14</time><b>Dave</b><span>That carpet was already marked when I moved in</span></p>
-            <p><time>09:15</time><b>Dave</b><span>I sent photos on the first day, remember</span></p>
-            <p class="me"><time>09:21</time><b>You</b><span>I do remember. You sent them the day you got the keys</span></p>
-            <div class="sheet-day">Thursday 28 August</div>
-            <p class="me"><time>16:40</time><b>You</b><span>They have dropped the deduction entirely</span></p>
-          </div>
+          <div class="export-foot"><span>F202-7C9A-31DE-82B4</span><span>Page 2 of 4</span></div>
         </div>
-        <p class="pane-note">A printable document with a cover sheet, the dates that were on screen, and a fingerprint.</p>
+        <p class="pane-note">The real PDF uses labelled message bubbles, marks pictures and their readable text in place, records only visible dates and times, and includes a cover sheet, fingerprint and audit appendix.</p>
       </div>
 
       <div class="pane" id="p-csv" role="tabpanel">
@@ -585,7 +606,7 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
   <div class="wrap">
     <div class="reveal">
       <div class="eyebrow">Why it's different</div>
-      <h2>Most apps guess. This one shows its working.</h2>
+      <h2>A clearer record.<br>A little more peace of mind.</h2>
       <p class="lede">A record you might hand to a solicitor should be able to account for itself.
       Every judgement this app makes ends up visible in the document.</p>
     </div>
@@ -624,7 +645,7 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
   <div class="wrap">
     <div class="reveal">
       <div class="eyebrow">Writing</div>
-      <h2>Why it is built the way it is</h2>
+      <h2>Considered in every detail.</h2>
       <p class="lede">Notes on the decisions behind the app — including the ones that cost us
       features.</p>
     </div>
@@ -681,19 +702,18 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
   <div class="wrap narrow">
     <div class="reveal">
       <div class="eyebrow">Common questions</div>
-      <h2>Before you ask</h2>
+      <h2>Good questions.<br>Straight answers.</h2>
       <div class="faq">
         <details>
           <summary>Does it work with WhatsApp as well as iMessage?</summary>
-          <p>Yes. It reads what is on your screen, so it works with any messaging app — WhatsApp,
-          iMessage, SMS, anything you can film. That is the advantage of doing it this way rather
-          than reading a backup file.</p>
+          <p>TextProof reads screen recordings and screenshots of iMessage, SMS and WhatsApp conversations. It extracts visible text rather than accessing your Apple Messages database or an iCloud backup. Always review the transcript against your original capture, especially around pictures and group-chat names.</p>
         </details>
         <details>
           <summary>What if somebody shared a picture in the chat?</summary>
-          <p>If the picture has writing on it — a poster, a screenshot, a photo of a letter — the
-          app reads that writing too, and cannot always tell it from a message. Tap any line you
-          did not send to remove it before exporting. Ordinary conversations rarely need this.</p>
+          <p>The PDF marks the picture in its place in the conversation. If readable words appear
+          inside it, TextProof prints those words in a striped marker and says they came from a
+          picture rather than a typed message. The picture itself is not reproduced in the transcript,
+          and uncertain sender attribution is stated plainly. You can review and correct the result before exporting.</p>
         </details>
         <details>
           <summary>Can I use the export in court?</summary>
@@ -704,9 +724,7 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
         </details>
         <details>
           <summary>Do you see my messages?</summary>
-          <p>No, and we could not if we wanted to. There is no server. The app has no network code
-          in it at all. Your recording is read on your own phone by Apple's built-in text
-          recognition, and the result stays there until you choose to share it.</p>
+          <p>No, and we could not if we wanted to. There is no server. Your recording is read on your own phone by Apple's built-in text recognition, and the result stays there until you choose to share it. Software updates and purchase checks use network services; your conversation content is not uploaded for recognition.</p>
         </details>
         <details>
           <summary>What happens when I delete a conversation?</summary>
@@ -718,14 +736,27 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
   </div>
 </section>
 
+<section id="contact" class="sec-alt">
+  <div class="wrap narrow">
+    <div class="eyebrow">Contact &amp; feedback</div>
+    <h2>A question?<br>An idea? We’re listening.</h2>
+    <p class="lede">Need help with an export, spotted a problem or have a suggestion? Get in touch with the person building TextProof.</p>
+    <div class="cta-row" style="margin-top:1.6rem">
+      <a class="btn btn-p" href="mailto:hello@textproof.net?subject=TextProof%20support">Contact support ↗</a>
+      <a class="btn btn-s" href="mailto:feedback@textproof.net?subject=TextProof%20feedback">Send feedback ↗</a>
+    </div>
+    <p class="pane-note">Email <a href="mailto:hello@textproof.net">hello@textproof.net</a>. Replies within two working days.</p>
+  </div>
+</section>
+
 <footer>
   <div class="wrap foot-in">
     <div>© 2026 AJ Software Development · Wigan, UK</div>
     <ul class="foot-links">
       <li><a href="privacy.html">Privacy</a></li>
       <li><a href="support.html">Support</a></li>
-      <li><a href="mailto:anthony@ajsoftwaredev.org">anthony@ajsoftwaredev.org</a></li>
-      <li><a href="/">AJ Software Development</a></li>
+      <li><a href="mailto:hello@textproof.net">hello@textproof.net</a></li>
+      <li><a href="https://ajsoftwaredev.org/">AJ Software Development</a></li>
     </ul>
   </div>
 </footer>
@@ -754,12 +785,41 @@ if (document.documentElement.classList.contains('js-reveal')) {
   showAll();
 }
 
-// Export format switcher.
-document.querySelectorAll('.tab').forEach((tab) => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach((t) => t.setAttribute('aria-selected', String(t === tab)));
-    document.querySelectorAll('.pane').forEach((p) => p.classList.toggle('on', p.id === tab.dataset.pane));
+// Tabs support pointer, keyboard and assistive technology.
+const tabs = [...document.querySelectorAll('.tab')];
+function selectTab(tab, focus = false) {
+  tabs.forEach((item) => {
+    const selected = item === tab;
+    item.setAttribute('aria-selected', String(selected));
+    item.tabIndex = selected ? 0 : -1;
+    const pane = document.getElementById(item.dataset.pane);
+    pane.classList.toggle('on', selected);
+    pane.hidden = !selected;
   });
+  if (focus) tab.focus();
+}
+tabs.forEach((tab, index) => {
+  tab.id = 'tab-' + tab.dataset.pane;
+  tab.setAttribute('aria-controls', tab.dataset.pane);
+  const pane = document.getElementById(tab.dataset.pane);
+  pane.setAttribute('aria-labelledby', tab.id);
+  pane.tabIndex = 0;
+  tab.addEventListener('click', () => selectTab(tab));
+  tab.addEventListener('keydown', (event) => {
+    let next;
+    if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+    if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+    if (event.key === 'Home') next = 0;
+    if (event.key === 'End') next = tabs.length - 1;
+    if (next !== undefined) { event.preventDefault(); selectTab(tabs[next], true); }
+  });
+});
+selectTab(tabs[0]);
+const motionToggle = document.querySelector('.motion-toggle');
+motionToggle.addEventListener('click', () => {
+  const paused = document.body.classList.toggle('motion-paused');
+  motionToggle.setAttribute('aria-pressed', String(paused));
+  motionToggle.textContent = paused ? 'Play animation' : 'Pause animation';
 });
 </script>
 </body>
