@@ -240,10 +240,11 @@ page(
     nothing to remember.</p>
   </div>
 
-  <h2>And one free export, in full</h2>
+  <h2>And the first 20 messages are free</h2>
 
-  <p>One conversation exports free. Full quality, no watermark, up to the first 25 messages — a
-  real document you can open and read, not a sample with the useful part removed.</p>
+  <p>Every conversation exports its first 20 messages free. Full quality, no watermark, every
+  chat and as often as you like — a real document you can open and read, not a sample with the
+  useful part removed.</p>
 
   <p>That is deliberate too. This app does something difficult and does not do it perfectly every
   time. If somebody shared a poster into the chat, the app reads the writing on the poster and
