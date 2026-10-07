@@ -1,41 +1,87 @@
 """
 Builds the TextProof writing pages from _head.part, _foot.part and the bodies below.
 
-Kept as a script rather than three hand-maintained files so the nav, the footer and the
-stylesheet link cannot drift apart between posts. Run it from this folder:
+Kept as a script rather than hand-maintained files so the nav, the footer, the stylesheet
+links and the SEO head (canonical, Open Graph, Twitter, JSON-LD) cannot drift apart
+between posts. Run it from this folder:
 
     python build.py
+
+It also writes index.html, the list of posts.
 """
 
 import io
+import json
 
 HEAD = io.open("_head.part", encoding="utf-8").read()
 FOOT = io.open("_foot.part", encoding="utf-8").read()
 
+SITE = "https://textproof.net"
+DATE = "2026-09-01"
+DATE_TEXT = "1 September 2026"
+AUTHOR = "Anthony Jackson"
+PUBLISHER = {"@type": "Organization", "name": "AJ Software Development", "url": "https://ajsoftwaredev.org/"}
+
+POSTS = []  # (fname, desc, h1), in the order they appear on the index page
+
+
+def meta(title: str, desc: str, url: str, og_type: str, ld: dict) -> str:
+    return (
+        f"<title>{title}</title>\n"
+        f'<meta name="description" content="{desc}">\n'
+        '<link rel="stylesheet" href="post.css">\n'
+        '<link rel="stylesheet" href="../design.css">\n'
+        f'<link rel="canonical" href="{url}">\n'
+        '<meta name="robots" content="index,follow">\n'
+        f'<meta property="og:type" content="{og_type}">\n'
+        '<meta property="og:site_name" content="TextProof">\n'
+        f'<meta property="og:url" content="{url}">\n'
+        f'<meta property="og:title" content="{title}">\n'
+        f'<meta property="og:description" content="{desc}">\n'
+        '<meta name="twitter:card" content="summary">\n'
+        f'<meta name="twitter:title" content="{title}">\n'
+        f'<meta name="twitter:description" content="{desc}">\n'
+        f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>'
+    )
+
+
+def write(fname: str, head_meta: str, body: str) -> None:
+    io.open(fname, "w", encoding="utf-8", newline="").write(
+        HEAD.replace("{{META}}", head_meta) + body + FOOT
+    )
+    print("wrote", fname)
+
 
 def page(fname: str, title: str, desc: str, body: str) -> None:
-    head = HEAD.replace(
-        '<link rel="stylesheet" href="post.css">',
-        f'<title>{title}</title>\n'
-        f'<meta name="description" content="{desc}" />\n'
-        '<link rel="stylesheet" href="post.css">',
-    )
-    io.open(fname, "w", encoding="utf-8", newline="").write(head + body + FOOT)
-    print("wrote", fname)
+    url = f"{SITE}/blog/{fname}"
+    ld = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "name": title,
+        "description": desc,
+        "url": url,
+        "inLanguage": "en-GB",
+        "publisher": PUBLISHER,
+        "headline": title,
+        "author": {"@type": "Person", "name": AUTHOR},
+        "datePublished": DATE,
+    }
+    write(fname, meta(title, desc, url, "article", ld), body)
+    POSTS.append((fname, desc, body.split("<h1>", 1)[1].split("</h1>", 1)[0]))
 
 
 END = (
     '<div class="end"><p>TextProof turns a screen recording of a conversation into a '
     "timestamped, print-ready document — entirely on your iPhone. "
-    '<a href="../index.html">See how it works →</a></p></div>'
+    '<a href="/">See how it works →</a></p></div>'
 )
 
 # ---------------------------------------------------------------- post one
 page(
     "nothing-leaves-your-phone.html",
-    "Why there is no cloud, and never will be — TextProof",
-    "Every competitor that syncs has a server holding your messages. We looked at what that "
-    "would buy us and decided against it permanently.",
+    "Private iPhone Message Extraction, On-Device | TextProof",
+    "Why TextProof reads iPhone conversation recordings on-device instead of uploading your "
+    "messages for cloud text recognition.",
     """
 <article>
   <div class="tag">Privacy</div>
@@ -118,9 +164,9 @@ page(
 # ---------------------------------------------------------------- post two
 page(
     "admitting-what-it-missed.html",
-    "The document that admits what it missed — TextProof",
-    'The hardest decision in the app was making it say "I might have missed something here" '
-    "instead of quietly closing the gap.",
+    "Review OCR Gaps in Your Message Export | TextProof",
+    "Why a conversation transcript should flag possible gaps and uncertain readings. Learn how "
+    "to check an iPhone message export against the original recording.",
     """
 <article>
   <div class="tag">Design</div>
@@ -202,9 +248,9 @@ page(
 # -------------------------------------------------------------- post three
 page(
     "one-payment.html",
-    "One payment, not a subscription — TextProof",
-    "You need this app during a bad month, not forever. Charging monthly for that would be "
-    "charging people for a problem they are trying to end.",
+    "Export Text Messages Without a Subscription | TextProof",
+    "Why TextProof uses a one-time payment for iPhone conversation exports instead of a "
+    "monthly subscription. Try an export before deciding.",
     """
 <article>
   <div class="tag">Pricing</div>
@@ -269,6 +315,53 @@ page(
 
   <p>If it does rise, <strong>it will not rise for anybody who has already bought it.</strong>
   That is the whole point of a one-time purchase — you bought the app, not a month of it.</p>
+"""
+    + END
+    + "</article>",
+)
+
+# ---------------------------------------------------------------- index page
+INDEX_TITLE = "TextProof Blog — Exporting and Keeping iPhone Messages"
+INDEX_DESC = (
+    "Short pieces from the people who make TextProof on exporting iPhone conversations, "
+    "keeping them private, and why the app is a one-off purchase."
+)
+INDEX_URL = f"{SITE}/blog/"
+
+items = "\n".join(
+    f"""    <li>
+      <h2><a href="{fname}">{h1}</a></h2>
+      <div class="byline">{DATE_TEXT} · {AUTHOR}</div>
+      <p>{desc}</p>
+    </li>"""
+    for fname, desc, h1 in POSTS
+)
+
+write(
+    "index.html",
+    meta(
+        INDEX_TITLE,
+        INDEX_DESC,
+        INDEX_URL,
+        "website",
+        {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": INDEX_TITLE,
+            "description": INDEX_DESC,
+            "url": INDEX_URL,
+            "inLanguage": "en-GB",
+            "publisher": PUBLISHER,
+        },
+    ),
+    f"""
+<article>
+  <div class="tag">Writing</div>
+  <h1>Writing from TextProof</h1>
+  <p class="standfirst">Why the app works the way it does: no cloud, honest documents, one payment.</p>
+  <ul class="posts">
+{items}
+  </ul>
 """
     + END
     + "</article>",

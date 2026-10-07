@@ -43,3 +43,11 @@ footer{background:var(--raised);border-top:1px solid var(--rule);padding:2.5rem 
 .foot-links{display:flex;flex-wrap:wrap;gap:1.3rem;list-style:none}
 .foot-links a{color:var(--muted);text-decoration:none}
 .foot-links a:hover{color:var(--ink)}
+/* blog index */
+.posts{list-style:none;margin:0}
+.posts li{padding:1.6rem 0;border-bottom:1px solid var(--rule);margin:0}
+.posts h2,.reading-page article .posts h2{margin:0 0 .4rem;font-size:1.5rem}
+.posts h2 a{text-decoration:none;color:inherit}
+.posts h2 a:hover{color:var(--blue)}
+.posts .byline{margin-bottom:.5rem}
+.posts p{margin:0}
