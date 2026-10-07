@@ -22,6 +22,8 @@
 <meta name="twitter:description" content="The Messages app has no Print button. Here are the free ways to print a text conversation from your iPhone, with or without a wireless printer.">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "name": "How to Print Text Messages From Your iPhone | TextProof", "description": "The Messages app has no Print button. Here are the free ways to print a text conversation from your iPhone, with or without a wireless printer.", "url": "https://textproof.net/blog/print-text-messages-iphone.html", "inLanguage": "en-GB", "publisher": {"@type": "Organization", "name": "AJ Software Development", "url": "https://ajsoftwaredev.org/"}, "headline": "How to Print Text Messages From Your iPhone | TextProof", "author": {"@type": "Person", "name": "Anthony Jackson"}, "datePublished": "2026-10-07"}</script>
 <meta name="apple-itunes-app" content="app-id=6804264075">
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body class="reading-page">
 <nav><div class="nav-in">
@@ -135,7 +137,19 @@
   <h3>Why is there no Print option in Messages?</h3>
 
   <p>The iPhone version of Messages does not include one. The Mac version of Messages does have Print in its File menu. For help with TextProof exports, see our <a href="../support.html">support page</a>.</p>
-<div class="end"><p>TextProof turns a screen recording of a conversation into a timestamped, print-ready document — entirely on your iPhone. <a href="/">See how it works →</a></p></div></article><footer><div class="foot-in">
+<div class="end"><p>TextProof turns a screen recording of a conversation into a timestamped, print-ready document — entirely on your iPhone. <a href="/">See how it works →</a></p></div></article><aside class="signup-box">
+  <h2>Get new guides by email</h2>
+  <p>Practical guides on keeping, exporting and printing your messages. A few emails a year.</p>
+  <form class="signup" novalidate>
+      <label class="sr" for="su-email">Email address</label>
+      <input id="su-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+      <input name="website" type="text" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+      <button type="submit">Sign up</button>
+      <p class="signup-msg" role="status" aria-live="polite"></p>
+    </form>
+    <p class="signup-note">New guides and app updates, a few times a year. Unsubscribe any time. See our <a href="../privacy.html">privacy policy</a>.</p>
+</aside>
+<footer><div class="foot-in">
   <div>© 2026 AJ Software Development</div>
   <ul class="foot-links">
     <li><a href="/">TextProof</a></li>
@@ -143,5 +157,23 @@
     <li><a href="../support.html">Support</a></li>
   </ul>
 </div></footer>
+<script>
+document.querySelectorAll('form.signup').forEach(function (f) {
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var msg = f.querySelector('.signup-msg'), btn = f.querySelector('button');
+    var data = { email: f.email.value, website: f.website.value };
+    btn.disabled = true; msg.textContent = 'Signing you up\u2026';
+    fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (x) {
+        if (x.ok) { f.reset(); msg.textContent = 'Thanks, you\u2019re signed up.'; }
+        else { msg.textContent = (x.j && x.j.error) || 'Something went wrong. Please try again.'; }
+      })
+      .catch(function () { msg.textContent = 'Something went wrong. Please try again.'; })
+      .then(function () { btn.disabled = false; });
+  });
+});
+</script>
 </body>
 </html>

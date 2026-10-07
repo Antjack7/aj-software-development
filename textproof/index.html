@@ -407,6 +407,8 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Extract & Export iPhone Text Messages | TextProof", "description": "Extract text from iPhone screen recordings and screenshots. Export iMessage and WhatsApp conversations to PDF, CSV or text. Review on-device before sharing.", "url": "https://textproof.net/", "inLanguage": "en-GB", "publisher": {"@type": "Organization", "name": "AJ Software Development", "url": "https://ajsoftwaredev.org/"}}</script>
 <meta name="apple-itunes-app" content="app-id=6804264075">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "TextProof: Text Message Export", "operatingSystem": "iOS", "applicationCategory": "UtilitiesApplication", "url": "https://textproof.net/", "downloadUrl": "https://apps.apple.com/app/textproof-text-message-export/id6804264075", "sameAs": ["https://apps.apple.com/app/textproof-text-message-export/id6804264075"], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP", "description": "Free to download. Full unlock £9.99, one payment."}, "publisher": {"@type": "Organization", "name": "AJ Software Development", "url": "https://ajsoftwaredev.org/"}}</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#how">Skip to how it works</a>
@@ -675,6 +677,32 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
         <span class="more">Read →</span>
       </a>
     </div>
+    <p class="reveal" style="margin-top:1.6rem"><a href="blog/">All guides, including how to export, print and save your messages &rarr;</a></p>
+  </div>
+</section>
+
+<section id="updates" class="sec-alt">
+  <style>
+    #updates .signup{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.4rem;max-width:30rem}
+    #updates .signup input[type=email]{flex:1 1 14rem;min-width:0;padding:.85rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:inherit;font:inherit}
+    #updates .signup button{padding:.85rem 1.5rem;border-radius:999px;border:0;background:#fff;color:#0a1119;font:inherit;font-weight:600;cursor:pointer}
+    #updates .signup button:disabled{opacity:.6;cursor:default}
+    #updates .signup-msg{flex-basis:100%;min-height:1.4em;margin:.2rem 0 0;font-size:.9rem;color:#a6b5ca}
+    #updates .signup-note{font-size:.85rem;color:#8a98ab;margin-top:.4rem}
+    .sr,.hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+  </style>
+  <div class="wrap narrow">
+    <div class="eyebrow">Stay in touch</div>
+    <h2>New guides, straight to your inbox.</h2>
+    <p class="lede">Practical guides on keeping, exporting and printing your messages, plus the occasional note when the app gets better.</p>
+    <form class="signup" novalidate>
+      <label class="sr" for="su-email-d">Email address</label>
+      <input id="su-email-d" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+      <input name="website" type="text" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+      <button type="submit">Sign up</button>
+      <p class="signup-msg" role="status" aria-live="polite"></p>
+    </form>
+    <p class="signup-note">New guides and app updates, a few times a year. Unsubscribe any time. See our <a href="privacy.html">privacy policy</a>.</p>
   </div>
 </section>
 
@@ -824,6 +852,24 @@ motionToggle.addEventListener('click', () => {
   const paused = document.body.classList.toggle('motion-paused');
   motionToggle.setAttribute('aria-pressed', String(paused));
   motionToggle.textContent = paused ? 'Play animation' : 'Pause animation';
+});
+</script>
+<script>
+document.querySelectorAll('form.signup').forEach(function (f) {
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var msg = f.querySelector('.signup-msg'), btn = f.querySelector('button');
+    var data = { email: f.email.value, website: f.website.value };
+    btn.disabled = true; msg.textContent = 'Signing you up\u2026';
+    fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (x) {
+        if (x.ok) { f.reset(); msg.textContent = 'Thanks, you\u2019re signed up.'; }
+        else { msg.textContent = (x.j && x.j.error) || 'Something went wrong. Please try again.'; }
+      })
+      .catch(function () { msg.textContent = 'Something went wrong. Please try again.'; })
+      .then(function () { btn.disabled = false; });
+  });
 });
 </script>
 </body>
