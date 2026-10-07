@@ -2,6 +2,17 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.ajsoftwaredev.org"
+        }
+      ],
+      "destination": "https://ajsoftwaredev.org/:path*",
+      "permanent": true
+    },
+    {
       "source": "/textproof",
       "destination": "https://textproof.net",
       "permanent": true
