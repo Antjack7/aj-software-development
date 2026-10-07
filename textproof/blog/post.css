@@ -32,6 +32,8 @@ strong{font-weight:600}
 blockquote{font-family:Newsreader,Georgia,serif;font-style:italic;font-size:1.12rem;color:var(--ink-soft);border-left:2px solid var(--rule);padding-left:1.2rem;margin:1.6rem 0}
 ul{margin:0 0 1.15rem 1.2rem}
 li{margin-bottom:.5rem}
+ol{margin:0 0 1.15rem 1.4rem}
+h3{font-weight:600;font-size:1.12rem;line-height:1.4;margin:1.8rem 0 .4rem}
 .pull{background:var(--blue-wash);border-left:3px solid var(--blue);padding:1.1rem 1.3rem;border-radius:0 8px 8px 0;margin:1.8rem 0}
 .pull p:last-child{margin-bottom:0}
 .pull b{display:block;margin-bottom:.3rem}
