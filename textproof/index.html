@@ -393,7 +393,7 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
 .foot-links a{color:var(--muted);text-decoration:none}
 .foot-links a:hover{color:var(--ink)}
 </style>
-<link rel="stylesheet" href="design.css?v=20260910-2">
+<link rel="stylesheet" href="design.css?v=20260911-message-focus">
 <link rel="canonical" href="https://textproof.net/">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
@@ -444,57 +444,14 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
     <p class="hero-note">Free to try on the App Store &middot; £9.99 one-off to unlock, no subscription</p>
       </div>
 
-    <div class="stage" data-nosnippet>
-      <div class="phone">
-        <div class="screen">
-          <div class="notch"></div>
-          <div class="reel">
-            <div class="day">Tue 26 August</div>
-            <div class="msg m-l">Hi mate, just wanted to check about the deposit for Flat 4</div>
-            <div class="msg m-r">It should be back within 10 days of the tenancy ending</div>
-            <div class="msg m-l">That's what I thought. It's been three weeks now</div>
-            <div class="msg m-r">Let me check with the agent and come back to you</div>
-            <div class="msg m-l">What deduction? That carpet was already marked when I moved in</div>
-            <div class="msg m-l">I sent photos on the first day, remember</div>
-            <div class="msg m-r">I do remember. You sent them the day you got the keys</div>
-            <div class="day">Wed 27 August</div>
-            <div class="msg m-l">Morning. Any news on the carpet?</div>
-            <div class="msg m-r">Spoke to them first thing. They've dropped it to £120</div>
-            <div class="msg m-l">Still doesn't feel right when it was already damaged</div>
-            <div class="msg m-r">I agree. I've asked them to send the check-in report</div>
-            <div class="day">Thu 28 August</div>
-            <div class="msg m-r">They've dropped the deduction entirely. Full deposit back</div>
-            <div class="msg m-l">Seriously? That's brilliant, thank you</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flow" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-
-      <div class="doc">
-        <div class="doc-top">
-          <div>
-            <div class="doc-name">Text<span style="color:var(--blue)">Proof</span></div>
-            <div class="doc-kind">Conversation transcript</div>
-          </div>
-          <div class="stamp">On-device export</div>
-        </div>
-        <div class="doc-cover">
-          <div class="doc-cover-kicker">Conversation transcript</div>
-          <div class="doc-cover-title">Deposit conversation</div>
-          <div class="doc-fact"><b>Exported</b><span>1 September 2026 at 16:42</span></div>
-          <div class="doc-fact"><b>Source material</b><span>screen recording</span></div>
-          <div class="doc-fact"><b>Appears to be</b><span>WhatsApp, dark mode — an observation from the recording</span></div>
-          <div class="doc-fact"><b>Messages</b><span><strong>31</strong></span></div>
-          <div class="doc-fact"><b>Possible gaps</b><span>None detected</span></div>
-          <div class="doc-fact"><b>Images &amp; GIFs</b><span>2 marked in place; pictures are not reproduced</span></div>
-          <div class="doc-fact"><b>Fingerprint</b><span>F202-7C9A-31DE-82B4</span></div>
-        </div>
-      </div>
-      <p class="demo-label">Illustrative conversation · exported on your device</p>
-      </div>
+    <figure class="hero-video">
+      <video controls autoplay muted loop playsinline preload="auto" width="1080" height="1920" aria-label="TextProof product demonstration">
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3DoW61wmgLqNT5aguvQfh7aVNPq/hf_20260911_141214_5721e001-9b3e-4416-b4c1-d6c23a5b56aa.mp4" type="video/mp4">
+        Your browser does not support embedded video.
+      </video>
+    </figure>
     </div>
-    <div class="demo-controls"><span><span>iMessage &amp; WhatsApp</span><span>4 export formats</span><span>No subscription</span></span><button class="motion-toggle" type="button" aria-pressed="false">Pause animation</button></div>
+    <div class="demo-controls"><span><span>iMessage &amp; WhatsApp</span><span>4 export formats</span><span>No subscription</span></span></div>
   </div>
 </header>
 
@@ -689,6 +646,19 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
     #updates .signup button:disabled{opacity:.6;cursor:default}
     #updates .signup-msg{flex-basis:100%;min-height:1.4em;margin:.2rem 0 0;font-size:.9rem;color:#a6b5ca}
     #updates .signup-note{font-size:.85rem;color:#8a98ab;margin-top:.4rem}
+    #contact .cform{display:grid;gap:.7rem;margin-top:1.6rem;max-width:34rem;text-align:left}
+    #contact .cform .row{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+    #contact .cform input,#contact .cform select,#contact .cform textarea{width:100%;min-height:48px;padding:.85rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:inherit;font:inherit}
+    #contact .cform textarea{min-height:130px;resize:vertical;border-radius:14px}
+    #contact .cform select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a98ab' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+    #contact .cform select option{color:#0a1119}
+    #contact .cform :focus{outline:none;border-color:#80b4ff;box-shadow:0 0 0 3px #387cf633}
+    #contact .cform button{justify-self:start;padding:.85rem 1.5rem;border-radius:999px;border:0;background:#fff;color:#0a1119;font:inherit;font-weight:600;cursor:pointer;min-height:48px}
+    #contact .cform button:disabled{opacity:.6;cursor:default}
+    #contact .cform .hp{position:absolute;left:-5000px;width:1px;height:1px;opacity:0}
+    #contact .cform-msg{min-height:1.4em;margin:0;font-size:.9rem;color:#a6b5ca}
+    #contact .cform-msg.ok{color:#74e0bd}
+    @media (max-width:600px){#contact .cform .row{grid-template-columns:1fr}}
     .sr,.hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
   </style>
   <div class="wrap narrow">
@@ -773,11 +743,24 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
     <div class="eyebrow">Contact &amp; feedback</div>
     <h2>A question?<br>An idea? We’re listening.</h2>
     <p class="lede">Need help with an export, spotted a problem or have a suggestion? Get in touch with the person building TextProof.</p>
-    <div class="cta-row" style="margin-top:1.6rem">
-      <a class="btn btn-p" href="mailto:hello@textproof.net?subject=TextProof%20support">Contact support ↗</a>
-      <a class="btn btn-s" href="mailto:feedback@textproof.net?subject=TextProof%20feedback">Send feedback ↗</a>
-    </div>
-    <p class="pane-note">Email <a href="mailto:hello@textproof.net">hello@textproof.net</a>. Replies within two working days.</p>
+    <form class="cform" novalidate>
+      <div class="row">
+        <input name="name" type="text" autocomplete="name" placeholder="Your name" aria-label="Your name">
+        <input name="email" type="email" inputmode="email" autocomplete="email" placeholder="Your email" aria-label="Your email" required>
+      </div>
+      <select name="topic" aria-label="What is it about?">
+        <option>Support: help with an export</option>
+        <option>Something didn't work</option>
+        <option>Feedback or an idea</option>
+        <option>Question before buying</option>
+        <option>Press or other</option>
+      </select>
+      <textarea name="message" placeholder="What happened, or what you'd like TextProof to do. A few lines is plenty." aria-label="Message" required></textarea>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+      <button type="submit">Send message</button>
+      <p class="cform-msg" role="status" aria-live="polite"></p>
+    </form>
+    <p class="pane-note">Or email <a href="mailto:hello@textproof.net">hello@textproof.net</a> directly. Replies within two working days. Your message isn't stored anywhere except the email it becomes.</p>
   </div>
 </section>
 
@@ -848,13 +831,32 @@ tabs.forEach((tab, index) => {
 });
 selectTab(tabs[0]);
 const motionToggle = document.querySelector('.motion-toggle');
-motionToggle.addEventListener('click', () => {
+motionToggle?.addEventListener('click', () => {
   const paused = document.body.classList.toggle('motion-paused');
   motionToggle.setAttribute('aria-pressed', String(paused));
   motionToggle.textContent = paused ? 'Play animation' : 'Pause animation';
 });
 </script>
 <script>
+document.querySelectorAll('form.cform').forEach(function (f) {
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var msg = f.querySelector('.cform-msg'), btn = f.querySelector('button');
+    var data = { name: f.name.value, email: f.email.value, topic: f.topic.value, message: f.message.value, website: f.website.value };
+    msg.className = 'cform-msg';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(data.email)) { msg.textContent = 'Please enter a valid email address so we can reply.'; return; }
+    if (!data.message.trim()) { msg.textContent = 'Tell us a little about what you need.'; return; }
+    btn.disabled = true; msg.textContent = 'Sending…';
+    fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (x) {
+        if (x.ok) { f.reset(); msg.className = 'cform-msg ok'; msg.textContent = 'Thanks. You’ll hear back within two working days.'; }
+        else { msg.textContent = (x.j && x.j.error) || 'Something went wrong. Please email hello@textproof.net.'; }
+      })
+      .catch(function () { msg.textContent = 'No connection. Please email hello@textproof.net.'; })
+      .then(function () { btn.disabled = false; });
+  });
+});
 document.querySelectorAll('form.signup').forEach(function (f) {
   f.addEventListener('submit', function (e) {
     e.preventDefault();
