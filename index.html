@@ -1,1287 +1,543 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Google Search Console ownership verification. Required for the Google Play
-       Console organisation account-type change. Do not remove — removing it
-       un-verifies the domain. -->
-  <meta name="google-site-verification" content="Go9ZNC_MjxvmaUTgfb4iK0RJtg9QLhrOP5MjT_R4Gfk" />
-  <title>AJ Software Development</title>
-  <meta name="description" content="Anthony Jackson is an independent UK software developer with 25 years' experience, building iOS and Android apps, bespoke software and Sage X3 solutions." />
-  <link rel="canonical" href="https://ajsoftwaredev.org/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://ajsoftwaredev.org/" />
-  <meta property="og:title" content="AJ Software Development" />
-  <meta property="og:description" content="Anthony Jackson is an independent UK software developer with 25 years' experience, building iOS and Android apps, bespoke software and Sage X3 solutions." />
-  <meta property="og:site_name" content="AJ Software Development" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="AJ Software Development" />
-  <meta name="twitter:description" content="Anthony Jackson is an independent UK software developer with 25 years' experience, building iOS and Android apps, bespoke software and Sage X3 solutions." />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://ajsoftwaredev.org/#organization",
-        "name": "AJ Software Development",
-        "legalName": "AJ Software Development Limited",
-        "url": "https://ajsoftwaredev.org/",
-        "email": "anthony@ajsoftwaredev.org",
-        "address": { "@type": "PostalAddress", "addressLocality": "Wigan", "addressCountry": "GB" },
-        "founder": { "@id": "https://ajsoftwaredev.org/#anthony-jackson" },
-        "sameAs": [
-          "https://northstarbible.com/",
-          "https://lunara-sleep-ai.com/",
-          "https://aj-racing-tips-production.up.railway.app/",
-          "https://castlog.co.uk/",
-          "https://bysolis.com",
-          "https://5echaractersheet.com",
-          "https://textproof.net"
-        ]
-      },
-      {
-        "@type": "Person",
-        "@id": "https://ajsoftwaredev.org/#anthony-jackson",
-        "name": "Anthony Jackson",
-        "jobTitle": "Founder & Lead Developer",
-        "url": "https://ajsoftwaredev.org/",
-        "email": "anthony@ajsoftwaredev.org",
-        "nationality": "GB",
-        "worksFor": { "@id": "https://ajsoftwaredev.org/#organization" }
-      }
-    ]
-  }
-  </script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy: #0a0f1e;
-      --dark: #111827;
-      --card: #1a2035;
-      --accent: #4f8ef7;
-      --accent2: #7c5cfc;
-      --gold: #f5a623;
-      --text: #e8eaf0;
-      --muted: #8892a4;
-      --border: rgba(255,255,255,0.07);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--navy);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 2.5rem;
-      background: rgba(10,15,30,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      font-size: 1.3rem; font-weight: 700; letter-spacing: -0.5px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      color: var(--muted); text-decoration: none; font-size: 0.9rem;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
-    .nav-links a.ext-link { color: var(--accent); }
-    .nav-links a.ext-link:hover { color: #7cb9ff; }
-
-    .nav-cta {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff; border: none; padding: 0.5rem 1.3rem;
-      border-radius: 6px; font-size: 0.9rem; cursor: pointer;
-      text-decoration: none; transition: opacity 0.2s;
-    }
-    .nav-cta:hover { opacity: 0.85; }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center;
-      padding: 6rem 2rem 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(79,142,247,0.12) 0%, transparent 70%),
-                  radial-gradient(ellipse 60% 50% at 80% 70%, rgba(124,92,252,0.08) 0%, transparent 60%);
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: rgba(79,142,247,0.12);
-      border: 1px solid rgba(79,142,247,0.3);
-      color: var(--accent);
-      padding: 0.3rem 1rem; border-radius: 100px;
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
-      margin-bottom: 1.5rem;
-      text-transform: uppercase;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 800; line-height: 1.1;
-      letter-spacing: -1.5px;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      font-size: 1.2rem; color: var(--muted);
-      max-width: 640px; margin: 0 auto 2.5rem;
-    }
-
-    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff; padding: 0.85rem 2rem; border-radius: 8px;
-      text-decoration: none; font-weight: 600; font-size: 1rem;
-      transition: transform 0.2s, opacity 0.2s;
-    }
-    .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
-
-    .btn-outline {
-      border: 1px solid var(--border);
-      color: var(--text); padding: 0.85rem 2rem; border-radius: 8px;
-      text-decoration: none; font-weight: 600; font-size: 1rem;
-      background: rgba(255,255,255,0.04);
-      transition: background 0.2s;
-    }
-    .btn-outline:hover { background: rgba(255,255,255,0.08); }
-
-    .hero-stats {
-      display: flex; gap: 3rem; justify-content: center;
-      margin-top: 4rem; flex-wrap: wrap;
-    }
-
-    .stat { text-align: center; }
-    .stat-num {
-      font-size: 2.2rem; font-weight: 800;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.2rem; }
-
-    /* SECTIONS */
-    section { padding: 5rem 2rem; }
-    .container { max-width: 1100px; margin: 0 auto; }
-
-    .section-label {
-      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .section-title {
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 800; line-height: 1.2; letter-spacing: -0.5px;
-      margin-bottom: 1rem;
-    }
-
-    .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 580px; }
-
-    /* ABOUT */
-    .about { background: var(--dark); }
-
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-      align-items: center; margin-top: 3rem;
-    }
-
-    .about-story p {
-      color: var(--muted); margin-bottom: 1rem; font-size: 1rem;
-    }
-
-    .timeline { margin-top: 2rem; }
-    .timeline-item {
-      display: flex; gap: 1.2rem; margin-bottom: 1.5rem;
-    }
-    .timeline-dot {
-      width: 12px; height: 12px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      margin-top: 6px; flex-shrink: 0;
-    }
-    .timeline-year { font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 0.2rem; }
-    .timeline-text { font-size: 0.95rem; color: var(--muted); }
-    .timeline-text strong { color: var(--text); }
-
-    .about-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px; padding: 2.5rem;
-    }
-
-    .about-card h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
-    .about-card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
-
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .tag {
-      background: rgba(79,142,247,0.1);
-      border: 1px solid rgba(79,142,247,0.2);
-      color: var(--accent); padding: 0.3rem 0.8rem;
-      border-radius: 100px; font-size: 0.8rem; font-weight: 600;
-    }
-
-    /* SERVICES */
-    .services-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem; margin-top: 3rem;
-    }
-
-    .service-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px; padding: 2rem;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-    .service-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(79,142,247,0.3);
-    }
-
-    .service-icon {
-      width: 52px; height: 52px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; margin-bottom: 1.2rem;
-    }
-
-    .service-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .service-card p { color: var(--muted); font-size: 0.9rem; }
-
-    /* APPS */
-    .apps { background: var(--dark); }
-
-    .apps-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem; margin-top: 3rem;
-    }
-
-    .app-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px; overflow: hidden;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-    .app-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(79,142,247,0.3);
-    }
-
-    .app-header {
-      padding: 1.8rem 1.8rem 1.2rem;
-      display: flex; align-items: center; gap: 1rem;
-    }
-
-    .app-icon {
-      width: 56px; height: 56px; border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.8rem; flex-shrink: 0;
-    }
-
-    .app-name { font-size: 1.1rem; font-weight: 700; }
-    .app-category {
-      font-size: 0.75rem; color: var(--muted);
-      margin-top: 0.15rem;
-    }
-
-    .app-body { padding: 0 1.8rem 1.8rem; }
-    .app-body p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
-
-    .app-status {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      margin-top: 1rem;
-      font-size: 0.78rem; font-weight: 600;
-      padding: 0.25rem 0.75rem; border-radius: 100px;
-    }
-    .status-live { background: rgba(34,197,94,0.12); color: #22c55e; }
-    .status-testing { background: rgba(245,166,35,0.12); color: var(--gold); }
-    .status-dev { background: rgba(79,142,247,0.12); color: var(--accent); }
-
-    .status-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: currentColor;
-    }
-
-    /* SCREENSHOT MOCKUP */
-    .app-mockup {
-      margin: 0 1.8rem 1.8rem;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      height: 160px;
-      overflow: hidden;
-      position: relative;
-    }
-    .app-mockup-inner {
-      width: 100%; height: 100%;
-      padding: 0.8rem;
-      box-sizing: border-box;
-      display: flex; flex-direction: column; gap: 0.4rem;
-      overflow: hidden;
-    }
-    .mock-row {
-      display: flex; gap: 0.4rem; align-items: center;
-    }
-    .mock-bar {
-      height: 8px; border-radius: 4px; background: rgba(255,255,255,0.12);
-    }
-    .mock-label {
-      font-size: 0.55rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
-    }
-    .mock-value {
-      font-size: 1rem; font-weight: 800; line-height: 1;
-    }
-    .mock-tag {
-      font-size: 0.5rem; font-weight: 600; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em;
-    }
-    .mock-card {
-      background: rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem;
-    }
-
-    /* CONTACT */
-    .contact-grid {
-      display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem;
-      margin-top: 3rem; align-items: start;
-    }
-
-    .contact-info h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
-    .contact-info p { color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; }
-
-    .contact-item {
-      display: flex; gap: 1rem; align-items: flex-start;
-      margin-bottom: 1.2rem;
-    }
-    .contact-item-icon {
-      width: 40px; height: 40px; border-radius: 10px;
-      background: rgba(79,142,247,0.1);
-      border: 1px solid rgba(79,142,247,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; flex-shrink: 0;
-    }
-    .contact-item-text { font-size: 0.85rem; }
-    .contact-item-text strong { display: block; margin-bottom: 0.1rem; }
-    .contact-item-text span { color: var(--muted); }
-
-    .contact-form {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px; padding: 2.5rem;
-    }
-
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-    .form-group { margin-bottom: 1.2rem; }
-    .form-group label {
-      display: block; font-size: 0.8rem; font-weight: 600;
-      color: var(--muted); margin-bottom: 0.4rem;
-      text-transform: uppercase; letter-spacing: 0.5px;
-    }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border);
-      border-radius: 8px; padding: 0.75rem 1rem;
-      color: var(--text); font-size: 0.95rem;
-      font-family: inherit;
-      transition: border-color 0.2s;
-      outline: none;
-    }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: var(--accent);
-    }
-    .form-group textarea { resize: vertical; min-height: 110px; }
-    .form-group select option { background: var(--dark); }
-
-    .form-submit {
-      width: 100%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff; border: none; padding: 0.9rem;
-      border-radius: 8px; font-size: 1rem; font-weight: 600;
-      cursor: pointer; transition: opacity 0.2s, transform 0.2s;
-    }
-    .form-submit:hover { opacity: 0.9; transform: translateY(-1px); }
-
-    /* FOOTER */
-    footer {
-      background: var(--dark);
-      border-top: 1px solid var(--border);
-      padding: 2.5rem 2rem;
-      text-align: center;
-    }
-    footer .footer-logo {
-      font-size: 1.2rem; font-weight: 700;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      margin-bottom: 0.5rem;
-    }
-    footer p { color: var(--muted); font-size: 0.85rem; }
-    footer .legal {
-      color: var(--muted); font-size: 0.78rem; line-height: 1.7;
-      max-width: 640px; margin: 1.25rem auto 0;
-      padding-top: 1.25rem; border-top: 1px solid var(--border);
-      opacity: 0.8;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.2rem; }
-      .nav-links { display: none; }
-      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .form-row { grid-template-columns: 1fr; }
-      .hero-stats { gap: 2rem; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google Search Console ownership verification. Required for the Google Play
+     Console organisation account-type change. Do not remove — removing it
+     un-verifies the domain. -->
+<meta name="google-site-verification" content="Go9ZNC_MjxvmaUTgfb4iK0RJtg9QLhrOP5MjT_R4Gfk">
+<title>AJ Software Development — Apps people use, and a private AI for UK business</title>
+<meta name="description" content="AJ Software Development is a UK software company. Six apps live on the App Store — Clarity, TextProof, North Star Bible, Lunara, CastLog and 5e Character Sheet — and AJ AI, a permission-aware business assistant that keeps customer data in the UK. 25 years of enterprise software behind it.">
+<link rel="canonical" href="https://ajsoftwaredev.org/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ajsoftwaredev.org/">
+<meta property="og:site_name" content="AJ Software Development">
+<meta property="og:title" content="AJ Software Development — software people actually use">
+<meta property="og:description" content="Six apps live on the App Store, a private AI for UK businesses, and 25 years of enterprise software behind them. Wigan, England.">
+<meta property="og:image" content="https://ajsoftwaredev.org/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AJ Software Development — software people actually use">
+<meta name="twitter:description" content="Six apps live on the App Store, a private AI for UK businesses, and 25 years of enterprise software behind them.">
+<meta name="twitter:image" content="https://ajsoftwaredev.org/assets/og.png">
+<meta name="theme-color" content="#06080c">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=20261016c">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ajsoftwaredev.org/#organization",
+      "name": "AJ Software Development",
+      "legalName": "AJ Software Development Limited",
+      "url": "https://ajsoftwaredev.org/",
+      "email": "anthony@ajsoftwaredev.org",
+      "address": { "@type": "PostalAddress", "addressLocality": "Wigan", "addressCountry": "GB" },
+      "founder": { "@id": "https://ajsoftwaredev.org/#anthony-jackson" },
+      "sameAs": [
+        "https://claritycallsapp.com/",
+        "https://textproof.net/",
+        "https://northstarbible.com/",
+        "https://lunara-sleep-ai.com/",
+        "https://castlog.co.uk/",
+        "https://5echaractersheet.com/"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://ajsoftwaredev.org/#anthony-jackson",
+      "name": "Anthony Jackson",
+      "jobTitle": "Founder & Lead Developer",
+      "url": "https://ajsoftwaredev.org/",
+      "email": "anthony@ajsoftwaredev.org",
+      "nationality": "GB",
+      "worksFor": { "@id": "https://ajsoftwaredev.org/#organization" }
+    },
+    { "@type": "SoftwareApplication", "name": "Clarity", "operatingSystem": "iOS", "applicationCategory": "HealthApplication", "url": "https://claritycallsapp.com/", "author": { "@id": "https://ajsoftwaredev.org/#organization" } },
+    { "@type": "SoftwareApplication", "name": "TextProof", "operatingSystem": "iOS", "applicationCategory": "UtilitiesApplication", "url": "https://textproof.net/", "author": { "@id": "https://ajsoftwaredev.org/#organization" } },
+    { "@type": "SoftwareApplication", "name": "North Star Bible", "operatingSystem": "iOS, Android", "applicationCategory": "LifestyleApplication", "url": "https://northstarbible.com/", "author": { "@id": "https://ajsoftwaredev.org/#organization" } },
+    { "@type": "SoftwareApplication", "name": "Lunara", "operatingSystem": "iOS", "applicationCategory": "HealthApplication", "url": "https://lunara-sleep-ai.com/", "author": { "@id": "https://ajsoftwaredev.org/#organization" } },
+    { "@type": "SoftwareApplication", "name": "CastLog", "operatingSystem": "iOS", "applicationCategory": "SportsApplication", "url": "https://castlog.co.uk/", "author": { "@id": "https://ajsoftwaredev.org/#organization" } },
+    { "@type": "SoftwareApplication", "name": "5e Character Sheet", "operatingSystem": "iOS", "applicationCategory": "GameApplication", "url": "https://5echaractersheet.com/", "author": { "@id": "https://ajsoftwaredev.org/#organization" } }
+  ]
+}
+</script>
 </head>
 <body>
+<div id="boot" aria-hidden="true">
+  <div class="boot-in">
+    <svg class="boot-mark" viewBox="0 0 32 32" fill="none"><rect x="1" y="1" width="30" height="30" rx="8" stroke="#5b9dff" stroke-width="1.2" class="boot-box"/><path d="M6 25 14 7h4l8 18h-4.2l-1.9-4.5H12.1L10.2 25H6Zm7.5-7.9h5L16 11.3l-2.5 5.8Z" fill="#fff" class="boot-a"/><path d="M24 7h3.5v12.2c0 2-.5 3.5-1.6 4.5-1 1-2.5 1.5-4.4 1.5-.6 0-1.2 0-1.8-.2v-3.3c.5.1 1 .2 1.4.2.9 0 1.6-.2 2.1-.7.5-.5.8-1.2.8-2.2V7Z" fill="#8cc1ff" class="boot-j"/></svg>
+    <pre class="boot-log"><span class="boot-line"></span></pre>
+    <p class="boot-skip">click to skip</p>
+  </div>
+</div>
+<a class="skip" href="#products">Skip to the apps</a>
+<div id="progress" aria-hidden="true"></div>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-logo">AJ Software Development</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#apps">Our Apps</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="#contact" class="nav-cta">Get in Touch</a>
-  </nav>
+<header class="nav">
+  <div class="nav-in">
+    <a class="logo" href="#top" aria-label="AJ Software Development, home">
+      <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M6 25 14 7h4l8 18h-4.2l-1.9-4.5H12.1L10.2 25H6Zm7.5-7.9h5L16 11.3l-2.5 5.8Z" fill="#fff"/><path d="M24 7h3.5v12.2c0 2-.5 3.5-1.6 4.5-1 1-2.5 1.5-4.4 1.5-.6 0-1.2 0-1.8-.2v-3.3c.5.1 1 .2 1.4.2.9 0 1.6-.2 2.1-.7.5-.5.8-1.2.8-2.2V7Z" fill="#8cc1ff"/></svg></span>
+      <span class="logo-word">AJ Software</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#products">Apps</a></li>
+        <li><a href="#ajai">AJ AI</a></li>
+        <li><a href="#business">For business</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact" class="nav-cta">Start a conversation</a></li>
+      </ul>
+    </nav>
+    <button class="menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span><span></span></button>
+  </div>
+  <div id="mobile-menu" class="mobile-menu" hidden>
+    <a href="#products">Apps</a><a href="#ajai">AJ AI</a><a href="#business">For business</a><a href="#about">About</a><a href="#contact">Contact</a>
+  </div>
+</header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div style="position:relative; z-index:1;">
-      <div class="hero-badge">AJ Software Development</div>
-      <h1>
-        Turning 25 Years of<br/>
-        Expertise into <span>Exceptional Software</span>
-      </h1>
-      <p>
-        From enterprise Sage X3 implementations to cutting-edge AI-powered mobile apps —
-        we build software that makes a real difference.
-      </p>
-      <div class="hero-btns">
-        <a href="#apps" class="btn-primary">See Our Apps</a>
-        <a href="#contact" class="btn-outline">Contact Us</a>
+<main id="top">
+
+<!-- ============================================================ HERO -->
+<section class="hero" id="hero">
+  <div class="grid" aria-hidden="true"></div>
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="kicker"><span class="dot"></span>AJ Software Development Ltd · Apps &amp; business AI · Wigan, England</p>
+      <h1>Software people <em>actually</em> use.</h1>
+      <p class="sell">Six apps live on the App Store, built one at a time and used every day by families, anglers, players and people who just needed a record of what was said. Now, the same care turned toward business: a private AI that keeps your data in the UK.</p>
+      <div class="hero-actions">
+        <a class="btn btn-p" href="#products">See the apps <span aria-hidden="true">↓</span></a>
+        <a class="btn btn-s" href="#ajai">AJ AI for business</a>
       </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <div class="stat-num">25+</div>
-          <div class="stat-label">Years Experience</div>
+      <dl class="hero-facts">
+        <div><dt>Apps live</dt><dd><span data-count="6">6</span></dd></div>
+        <div><dt>Years in software</dt><dd><span data-count="25">25</span>+</dd></div>
+        <div><dt>Data residency</dt><dd>UK</dd></div>
+        <div><dt>Subscriptions forced</dt><dd>0</dd></div>
+      </dl>
+    </div>
+
+    <div class="stage" aria-label="Three of our apps: Clarity, CastLog and North Star Bible">
+      <figure class="dev dev-a" data-depth="18">
+        <div class="dev-frame"><img src="assets/apps/clarity-call.webp" width="636" height="1400" alt="Clarity: a family video call answering itself on the companion screen" loading="eager" fetchpriority="high"></div>
+        <figcaption>Clarity</figcaption>
+      </figure>
+      <figure class="dev dev-b" data-depth="34">
+        <div class="dev-frame"><img src="assets/apps/castlog-1.webp" width="647" height="1400" alt="CastLog: a photographed carp identified, weighed and logged" loading="eager"></div>
+        <figcaption>CastLog</figcaption>
+      </figure>
+      <figure class="dev dev-c" data-depth="10">
+        <div class="dev-frame"><img src="assets/apps/northstar-1.webp" width="646" height="1400" alt="North Star Bible home screen with today's reading" loading="eager"></div>
+        <figcaption>North Star</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <p class="hud" aria-hidden="true"><span>build 2026.10.16</span><span>0 trackers</span><span>0 cookies</span><span>0 frameworks</span><span>hand-written html · css · js</span></p>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Clarity · auto-answer video calls for dementia care</span><span>TextProof · iMessage &amp; WhatsApp to PDF, on-device</span><span>North Star Bible · iOS &amp; Android</span><span>Lunara · CBT-I sleep coaching</span><span>CastLog · AI fish identification</span><span>5e Character Sheet · fully offline</span><span>AJ AI · in pilot</span>
+      <span>Clarity · auto-answer video calls for dementia care</span><span>TextProof · iMessage &amp; WhatsApp to PDF, on-device</span><span>North Star Bible · iOS &amp; Android</span><span>Lunara · CBT-I sleep coaching</span><span>CastLog · AI fish identification</span><span>5e Character Sheet · fully offline</span><span>AJ AI · in pilot</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PRODUCTS -->
+<section class="products" id="products">
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="kicker">01 — The apps</p>
+      <h2>Each one solves a problem somebody actually had.</h2>
+      <p class="sec-sub">No feature lists for their own sake. A clock for a parent who forgets the day. A fair record of a text conversation. A fishing log that knows the fish. Every app has its own site, its own design and its own reason to exist.</p>
+    </header>
+  </div>
+
+  <!-- Clarity -->
+  <article class="product" id="clarity" data-glow="#2b7566" data-glow2="#d98a2b">
+    <div class="wrap product-grid">
+      <div class="product-copy">
+        <div class="product-id"><img src="assets/apps/clarity-icon.png" width="56" height="56" alt=""><div><h3>Clarity</h3><p class="product-cat">Care · iPhone &amp; iPad · Free</p></div></div>
+        <p class="product-lead">They don't have to answer. <strong>Clarity does.</strong></p>
+        <p>A spare iPhone or iPad becomes a calm, always-on companion for someone with Alzheimer's, dementia or a disability: the day in big words, reminders that ring until they're done, and family video calls that chime, show who's calling and connect by themselves. Nothing to press.</p>
+        <ul class="proof">
+          <li>Video calls that answer themselves</li>
+          <li>Day clock that shifts with the time of day</li>
+          <li>Two devices, one six-digit code, done</li>
+        </ul>
+        <div class="product-actions">
+          <a class="btn btn-store" href="https://apps.apple.com/app/id6788494955" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.3-1.2 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.9-1.1-2.9-4Zm-2.5-7.4c.7-.8 1.2-2 1-3.2-1 .1-2.3.7-3 1.6-.7.7-1.2 1.9-1.1 3 1.2.1 2.3-.6 3.1-1.4Z"/></svg><span><small>Download on the</small>App Store</span></a>
+          <a class="btn btn-s" href="https://claritycallsapp.com/" target="_blank" rel="noopener">claritycallsapp.com <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="stat">
-          <div class="stat-num">8</div>
-          <div class="stat-label">Apps in Development</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">3</div>
-          <div class="stat-label">Platforms</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">∞</div>
-          <div class="stat-label">Ambition</div>
+      </div>
+      <div class="product-visual">
+        <div class="shots shots-pair">
+          <figure class="dev tilt" data-depth="14"><div class="dev-frame"><img src="assets/apps/clarity-1.webp" width="589" height="1400" alt="Clarity day clock: It's Wednesday morning, 8 July, 9:15 am, with a reminder to take tablets coming up" loading="lazy"></div></figure>
+          <figure class="dev tilt dev-back" data-depth="26"><div class="dev-frame"><img src="assets/apps/clarity-evening.webp" width="643" height="1400" alt="Clarity in the evening, dark theme, showing a message from family: You are safe. We love you x" loading="lazy"></div></figure>
         </div>
       </div>
     </div>
-  </section>
+  </article>
 
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="section-label">Our Story</div>
-      <div class="section-title">From Banking to<br/>Building the Future</div>
-
-      <div class="about-grid">
-        <div class="about-story">
-          <p>
-            AJ Software Development was founded by Anthony Jackson — a software professional with over
-            25 years of experience spanning banking technology, enterprise document management,
-            Sage X3 ERP, and now AI-powered consumer applications.
-          </p>
-          <p>
-            Anthony began his career at Alliance Leicester and Santander, spending 10 years in
-            financial technology before moving into contracting. He then spent 7 years in V1 business
-            support — delivering V1 document management, EDM systems, and Sage X3 integrations —
-            before transitioning fully into Sage X3 as a specialist covering support, installs,
-            managed services, and the technical side of full implementations.
-          </p>
-          <p>
-            Today, that depth of enterprise experience is being channelled into building
-            the next generation of AI-powered mobile and bespoke software applications.
-          </p>
-
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div>
-                <div class="timeline-year">BANKING CAREER</div>
-                <div class="timeline-text">
-                  <strong>Alliance Leicester → Santander</strong> — 10 years in financial technology,
-                  working at the intersection of banking and enterprise software.
-                </div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div>
-                <div class="timeline-year">V1 &amp; EDM — 7 YEARS</div>
-                <div class="timeline-text">
-                  <strong>V1 Business Support &amp; Development</strong> — document management, EDM system delivery,
-                  and Sage X3 integration. Contracting across multiple businesses and sectors.
-                </div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div>
-                <div class="timeline-year">SAGE X3 SPECIALIST — 9 YEARS</div>
-                <div class="timeline-text">
-                  <strong>Datel</strong> — 9 years of full Sage X3 specialisation covering support,
-                  installs, managed services, bespoke software creation and full ERP implementations
-                  across multiple sectors.
-                </div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div>
-                <div class="timeline-year">TODAY</div>
-                <div class="timeline-text">
-                  <strong>AJ Software Development</strong> — building AI-powered Apple &amp; Android apps
-                  and bespoke software solutions, launching globally.
-                </div>
-              </div>
-            </div>
-          </div>
+  <!-- TextProof -->
+  <article class="product product-alt" id="textproof" data-glow="#387cf6" data-glow2="#80b4ff">
+    <div class="wrap product-grid">
+      <div class="product-copy">
+        <div class="product-id"><span class="icon-tp" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.2 3.6A.5.5 0 0 1 5 19.2V16h-.5A.5.5 0 0 1 4 15.5z" fill="#fff"/><path d="m10.6 10.2 1.7 1.7 3.4-3.6" stroke="#1a5fb4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>TextProof</h3><p class="product-cat">Records · iPhone · £9.99 once, no subscription</p></div></div>
+        <p class="product-lead">Your conversations. <strong>Made tangible.</strong></p>
+        <p>Film a chat on your iPhone and TextProof turns the recording into a PDF, spreadsheet or text file: every message labelled, timestamped and in order. It runs entirely on the phone, and where it couldn't read something, the export says so instead of guessing. Built for deposits, disputes and anyone who needs a fair record.</p>
+        <ul class="proof">
+          <li>iMessage and WhatsApp, from screen recordings</li>
+          <li>100% on-device, nothing uploaded</li>
+          <li>The export admits what it missed</li>
+        </ul>
+        <div class="product-actions">
+          <a class="btn btn-store" href="https://apps.apple.com/app/textproof-text-message-export/id6804264075" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.3-1.2 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.9-1.1-2.9-4Zm-2.5-7.4c.7-.8 1.2-2 1-3.2-1 .1-2.3.7-3 1.6-.7.7-1.2 1.9-1.1 3 1.2.1 2.3-.6 3.1-1.4Z"/></svg><span><small>Download on the</small>App Store</span></a>
+          <a class="btn btn-s" href="https://textproof.net/" target="_blank" rel="noopener">textproof.net <span aria-hidden="true">↗</span></a>
         </div>
-
-        <div class="about-card">
-          <h3>Anthony Jackson</h3>
-          <p>Founder & Lead Developer — bringing enterprise-grade thinking to consumer software.</p>
-          <div class="skill-tags">
-            <span class="tag">Sage X3</span>
-            <span class="tag">Sage X3 4GL</span>
-            <span class="tag">iOS / Apple</span>
-            <span class="tag">Android</span>
-            <span class="tag">React Native</span>
-            <span class="tag">React.js</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">AI Integration</span>
-            <span class="tag">Supabase</span>
-            <span class="tag">EDM Systems</span>
-            <span class="tag">Banking Tech</span>
-            <span class="tag">ERP</span>
-            <span class="tag">Bespoke Software</span>
-            <span class="tag">SQL Server</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag">API Design</span>
-          </div>
+      </div>
+      <div class="product-visual">
+        <div class="shots shots-doc">
+          <figure class="dev tilt" data-depth="16" aria-hidden="true">
+            <div class="dev-frame"><div class="tp-screen">
+              <div class="tp-bar"><b>‹ Home</b><span>Conversation 28 Aug</span></div>
+              <div class="tp-sub">54 messages · no gaps · tap any bubble to fix it</div>
+              <div class="tp-day">Tuesday 26 August</div>
+              <p class="tp-m l">That carpet was already marked when I moved in.</p>
+              <p class="tp-m r">I do remember. You sent the photos on the day you got the keys.</p>
+              <p class="tp-m l">So can that come off then?</p>
+              <p class="tp-m r">I'll put it to them. How much are they saying?</p>
+              <p class="tp-m l">They've said £340</p>
+              <p class="tp-m r">That seems steep for one bedroom carpet</p>
+              <div class="tp-day">Wednesday 27 August</div>
+              <p class="tp-m l">Morning. Any news on the carpet?</p>
+              <p class="tp-m r">Spoke to them first thing. They've dropped it to £120</p>
+              <div class="tp-cta">Export · PDF</div>
+            </div></div>
+          </figure>
+          <figure class="doc tilt" data-depth="30"><img src="assets/apps/textproof-export.webp" width="1204" height="900" alt="A TextProof PDF export: labelled message bubbles with times, a picture marked in place, page 2 of 4, with its fingerprint code" loading="lazy"><figcaption>PDF export · fingerprinted · page 2 of 4</figcaption></figure>
         </div>
       </div>
     </div>
-  </section>
+  </article>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="container">
-      <div class="section-label">What We Do</div>
-      <div class="section-title">Our Services</div>
-      <div class="section-sub">
-        Enterprise ERP, bespoke software, and AI-powered mobile apps — end to end.
+  <!-- North Star -->
+  <article class="product" id="northstar" data-glow="#c9a24a" data-glow2="#2b3a7a">
+    <div class="wrap product-grid">
+      <div class="product-copy">
+        <div class="product-id"><img src="assets/apps/northstar-icon.png" width="56" height="56" alt=""><div><h3>North Star Bible</h3><p class="product-cat">Faith · iPhone &amp; Android</p></div></div>
+        <p class="product-lead">When you're lost, <strong>look up.</strong></p>
+        <p>A Bible app shaped by scripture, not the other way around. Daily devotionals, reading plans and journals, plus a guide you can ask anything that points you to His Word and walks beside you wherever you are right now.</p>
+        <ul class="proof">
+          <li>Daily devotional and reading plans</li>
+          <li>Ask a question, get scripture back</li>
+          <li>iOS and Android</li>
+        </ul>
+        <div class="product-actions">
+          <a class="btn btn-store" href="https://apps.apple.com/app/apple-store/id6763734183" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.3-1.2 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.9-1.1-2.9-4Zm-2.5-7.4c.7-.8 1.2-2 1-3.2-1 .1-2.3.7-3 1.6-.7.7-1.2 1.9-1.1 3 1.2.1 2.3-.6 3.1-1.4Z"/></svg><span><small>Download on the</small>App Store</span></a>
+          <a class="btn btn-store" href="https://play.google.com/store/apps/details?id=com.northstar.bible&hl=en_GB" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3.6 2.3 13 12l-9.4 9.7c-.3-.2-.6-.6-.6-1.2V3.5c0-.6.3-1 .6-1.2Zm1.6-.3 11 6.3-2.6 2.6L5.2 2Zm0 20 8.4-8.9 2.6 2.6L5.2 22Zm12.4-7.1-3-3 3-3 3.3 1.9c.9.5.9 1.6 0 2.1l-3.3 1.9Z"/></svg><span><small>Get it on</small>Google Play</span></a>
+          <a class="btn btn-s" href="https://northstarbible.com/" target="_blank" rel="noopener">northstarbible.com <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
-
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon" style="background: rgba(79,142,247,0.12);">📊</div>
-          <h3>Sage X3 Implementation</h3>
-          <p>
-            Full Sage X3 ERP delivery — from requirements through go-live. Configuration,
-            customisation, data migration, and user training backed by real-world enterprise experience.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon" style="background: rgba(34,197,94,0.12);">🛠️</div>
-          <h3>Sage Support</h3>
-          <p>
-            Ongoing Sage X3 support — incident resolution, performance tuning, patching,
-            user assistance, and managed services from a specialist who knows the platform end to end.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon" style="background: rgba(124,92,252,0.12);">💼</div>
-          <h3>Management Consulting</h3>
-          <p>
-            Strategic guidance for ERP programmes, software delivery, and digital transformation.
-            Stakeholder alignment, governance, and pragmatic roadmaps drawn from 25 years on the ground.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon" style="background: rgba(124,92,252,0.12);">📱</div>
-          <h3>Apple & Android App Development</h3>
-          <p>
-            Native and cross-platform iOS and Android applications built with React Native and Expo.
-            Consumer apps to enterprise tools — with AI features built in from day one.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon" style="background: rgba(245,166,35,0.12);">⚙️</div>
-          <h3>Bespoke Software</h3>
-          <p>
-            Custom software built around your exact business needs. No off-the-shelf compromises —
-            solutions designed, built, and supported specifically for you.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon" style="background: rgba(34,197,94,0.12);">🤖</div>
-          <h3>AI Integration</h3>
-          <p>
-            Integrate large language models and AI capabilities into your existing systems or
-            new applications. From chatbots to intelligent automation — we make AI practical.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon" style="background: rgba(239,68,68,0.12);">🗄️</div>
-          <h3>Document Management (EDM)</h3>
-          <p>
-            Enterprise document management system design and implementation. Built on 25 years
-            of real-world EDM experience in high-compliance banking environments.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon" style="background: rgba(79,142,247,0.12);">🔧</div>
-          <h3>Technical Consulting</h3>
-          <p>
-            Architecture reviews, technology strategy, and hands-on consulting for businesses
-            navigating digital transformation or scaling their software capabilities.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon" style="background: rgba(245,166,35,0.12);">🧩</div>
-          <h3>Sage X3 4GL Scripting</h3>
-          <p>
-            Working knowledge of Sage X3's native 4GL scripting — supporting customisations,
-            minor modifications, and understanding bespoke development requirements within the platform.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon" style="background: rgba(34,197,94,0.12);">⚡</div>
-          <h3>React & JavaScript Development</h3>
-          <p>
-            Full-stack JavaScript development using React, React Native, and Node.js — from
-            responsive web apps to cross-platform mobile applications and backend APIs.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- APPS -->
-  <section class="apps" id="apps">
-    <div class="container">
-      <div class="section-label">Our Products</div>
-      <div class="section-title">Apps We're Building</div>
-      <div class="section-sub">
-        AI-powered consumer and professional apps — from faith to fitness to finance.
-      </div>
-
-      <div class="apps-grid">
-
-        <div class="app-card">
-          <div class="app-header">
-            <div class="app-icon" style="background:#0a0f1e; overflow:hidden; padding:0;">
-              <img src="assets/northstar-icon.png" alt="North Star Bible" style="width:100%;height:100%;object-fit:cover;display:block;" />
-            </div>
-            <div>
-              <div class="app-name">North Star Bible</div>
-              <div class="app-category">Faith & Spirituality</div>
-            </div>
-          </div>
-          <div class="app-mockup" style="background: linear-gradient(160deg,#0a0f1e 0%,#0d1b3e 100%);">
-            <div class="app-mockup-inner">
-              <div class="mock-row" style="justify-content:space-between; margin-bottom:0.2rem;">
-                <span class="mock-label" style="color:#f5a623;">✦ Daily Verse</span>
-                <span class="mock-tag" style="background:rgba(245,166,35,0.15);color:#f5a623;">Build 21</span>
-              </div>
-              <div class="mock-card" style="border-left:2px solid #f5a623; background:rgba(245,166,35,0.07);">
-                <div style="font-size:0.6rem;color:#e2c97e;line-height:1.5;font-style:italic;">"For I know the plans I have for you, declares the Lord, plans to prosper you…"</div>
-                <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);margin-top:3px;">Jeremiah 29:11</div>
-              </div>
-              <div class="mock-row" style="gap:0.5rem; margin-top:0.2rem;">
-                <div style="flex:1; background:rgba(255,255,255,0.05); border-radius:6px; padding:0.35rem 0.5rem;">
-                  <div class="mock-label" style="color:rgba(255,255,255,0.4);">Reading Plan</div>
-                  <div style="font-size:0.6rem;color:#fff;margin-top:2px;">Day 12 of 30</div>
-                  <div style="height:4px;background:rgba(255,255,255,0.1);border-radius:2px;margin-top:4px;"><div style="width:40%;height:100%;background:#f5a623;border-radius:2px;"></div></div>
-                </div>
-                <div style="flex:1; background:rgba(255,255,255,0.05); border-radius:6px; padding:0.35rem 0.5rem;">
-                  <div class="mock-label" style="color:rgba(255,255,255,0.4);">Streak</div>
-                  <div class="mock-value" style="color:#f5a623; font-size:1.1rem;">🔥 12</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="app-body">
-            <p>An AI-powered Bible companion app featuring reading plans, daily devotionals, and intelligent scripture insights — helping users deepen their faith journey.</p>
-            <div class="app-status status-live">
-              <div class="status-dot"></div> Live · Build 21
-            </div>
-            <br/>
-            <a href="https://northstarbible.com/" target="_blank" rel="noopener" style="
-              display:inline-flex; align-items:center; gap:0.4rem;
-              background: linear-gradient(135deg, var(--accent), var(--accent2));
-              color:#fff; padding:0.5rem 1.2rem; border-radius:6px;
-              text-decoration:none; font-size:0.85rem; font-weight:600;
-              transition: opacity 0.2s;">
-              🌐 Visit northstarbible.com
-            </a>
-          </div>
-        </div>
-
-        <div class="app-card">
-          <div class="app-header">
-            <div class="app-icon" style="background:#0C0C0E; border:1px solid #2a2a32;">
-              <svg width="28" height="28" viewBox="0 0 100 100">
-                <rect x="9" y="26" width="9" height="48" rx="1.2" fill="#D4A055"/>
-                <rect x="9" y="26" width="30" height="9" rx="1.2" fill="#D4A055"/>
-                <rect x="9" y="44" width="22" height="9" rx="1.2" fill="#D4A055"/>
-                <line x1="31" y1="50" x2="69" y2="50" stroke="#D4A055" stroke-width="2.6" stroke-linecap="square"/>
-                <path d="M 60 42 A 16 16 0 1 1 60 58" stroke="#D4A055" stroke-width="4.2" fill="none" stroke-linecap="square"/>
-              </svg>
-            </div>
-            <div>
-              <div class="app-name">Forge</div>
-              <div class="app-category">Fitness & Coaching SaaS</div>
-            </div>
-          </div>
-          <div class="app-mockup" style="background:#0C0C0E; border-color:#2a2a32;">
-            <div class="app-mockup-inner">
-              <div class="mock-row" style="justify-content:space-between; margin-bottom:0.2rem;">
-                <span class="mock-label" style="color:#D4A055;">Today's Session</span>
-                <span class="mock-tag" style="background:rgba(212,160,85,0.15);color:#D4A055;">Phase 1</span>
-              </div>
-              <div class="mock-row" style="gap:0.5rem;">
-                <div style="flex:1; background:rgba(255,255,255,0.04); border:1px solid #2a2a32; border-radius:6px; padding:0.35rem 0.5rem;">
-                  <div class="mock-label" style="color:#6E6E7B;">Workout</div>
-                  <div style="font-size:0.62rem;color:#D0D5DD;margin-top:2px;font-weight:600;">Upper Body A</div>
-                </div>
-                <div style="flex:1; background:rgba(255,255,255,0.04); border:1px solid #2a2a32; border-radius:6px; padding:0.35rem 0.5rem;">
-                  <div class="mock-label" style="color:#6E6E7B;">Clients</div>
-                  <div style="font-size:0.62rem;color:#D4A055;margin-top:2px;font-weight:700;">8 Active</div>
-                </div>
-              </div>
-              <div style="background:rgba(212,160,85,0.07); border:1px solid rgba(212,160,85,0.2); border-radius:6px; padding:0.35rem 0.6rem; margin-top:0.1rem;">
-                <div class="mock-row" style="justify-content:space-between;">
-                  <span style="font-size:0.58rem;color:#D0D5DD;">Bench Press</span>
-                  <span style="font-size:0.58rem;color:#D4A055;font-weight:700;">4×8 · 80kg</span>
-                </div>
-                <div class="mock-row" style="justify-content:space-between;margin-top:3px;">
-                  <span style="font-size:0.58rem;color:#D0D5DD;">Pull Ups</span>
-                  <span style="font-size:0.58rem;color:#D4A055;font-weight:700;">3×10 · BW</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="app-body">
-            <p>A multi-tenant fitness coaching platform connecting personal trainers with their clients. Workout programming, progress tracking, and AI coaching — all in one.</p>
-            <div class="app-status status-testing">
-              <div class="status-dot"></div> Phase 1 Shipped
-            </div>
-          </div>
-        </div>
-
-        <div class="app-card">
-          <div class="app-header">
-            <div class="app-icon" style="background:#0a0a1e; overflow:hidden; padding:0;">
-              <img src="assets/lunara-icon.png" alt="Lunara" style="width:100%;height:100%;object-fit:cover;display:block;" />
-            </div>
-            <div>
-              <div class="app-name">Lunara</div>
-              <div class="app-category">AI Sleep Companion</div>
-            </div>
-          </div>
-          <div class="app-mockup" style="background: linear-gradient(160deg,#0a0a1e 0%,#1a0a3e 100%);">
-            <div class="app-mockup-inner">
-              <div class="mock-row" style="justify-content:space-between; margin-bottom:0.2rem;">
-                <span class="mock-label" style="color:#7c5cfc;">🌙 Sleep Report</span>
-                <span class="mock-tag" style="background:rgba(124,92,252,0.15);color:#7c5cfc;">AI Coach</span>
-              </div>
-              <div class="mock-row" style="gap:0.5rem;">
-                <div style="flex:1.2; background:rgba(255,255,255,0.05); border-radius:6px; padding:0.35rem 0.5rem;">
-                  <div class="mock-label" style="color:rgba(255,255,255,0.4);">Last Night</div>
-                  <div class="mock-value" style="color:#7c5cfc;">7h 42m</div>
-                  <div style="font-size:0.5rem;color:#22c55e;margin-top:2px;">↑ 24 min vs avg</div>
-                </div>
-                <div style="flex:1; background:rgba(255,255,255,0.05); border-radius:6px; padding:0.35rem 0.5rem;">
-                  <div class="mock-label" style="color:rgba(255,255,255,0.4);">Score</div>
-                  <div class="mock-value" style="color:#f5a623;">84</div>
-                  <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);margin-top:2px;">Great</div>
-                </div>
-              </div>
-              <div class="mock-card" style="margin-top:0.1rem;">
-                <div style="font-size:0.55rem;color:#a78bfa;font-style:italic;">"Your deep sleep improved. Try keeping the same bedtime tomorrow."</div>
-              </div>
-            </div>
-          </div>
-          <div class="app-body">
-            <p>An AI-powered sleep companion with voice interaction and wearable integration. Personalised sleep coaching to help users build better rest habits.</p>
-            <div class="app-status status-live">
-              <div class="status-dot"></div> Live
-            </div>
-            <br/>
-            <a href="https://lunara-sleep-ai.com/" target="_blank" rel="noopener" style="
-              display:inline-flex; align-items:center; gap:0.4rem;
-              background: linear-gradient(135deg, var(--accent), var(--accent2));
-              color:#fff; padding:0.5rem 1.2rem; border-radius:6px;
-              text-decoration:none; font-size:0.85rem; font-weight:600;
-              transition: opacity 0.2s;">
-              🌐 Visit lunara-sleep-ai.com
-            </a>
-          </div>
-        </div>
-
-        <div class="app-card">
-          <div class="app-header">
-            <div class="app-icon" style="background: linear-gradient(135deg,#10b981,#047857); font-family:'Segoe UI',system-ui,sans-serif; font-size:1.4rem; font-weight:900; color:#fff; letter-spacing:-0.5px;">AJ</div>
-            <div>
-              <div class="app-name">Race Predictor</div>
-              <div class="app-category">Horse Racing · ML</div>
-            </div>
-          </div>
-          <div class="app-mockup" style="background: linear-gradient(160deg,#0d0900 0%,#1a1000 100%);">
-            <div class="app-mockup-inner">
-              <div class="mock-row" style="justify-content:space-between; margin-bottom:0.2rem;">
-                <span class="mock-label" style="color:#f5a623;">🏇 Today's Picks</span>
-                <span class="mock-tag" style="background:rgba(245,166,35,0.15);color:#f5a623;">V3.3 Live</span>
-              </div>
-              <div class="mock-card" style="background:rgba(245,166,35,0.07); border-left:2px solid #f5a623;">
-                <div class="mock-row" style="justify-content:space-between;">
-                  <div>
-                    <div class="mock-label" style="color:#f5a623;">⭐ Best Pick</div>
-                    <div style="font-size:0.7rem;color:#fff;font-weight:700;margin-top:2px;">WAREETH</div>
-                    <div style="font-size:0.5rem;color:rgba(255,255,255,0.5);">Salisbury · 14:00</div>
-                  </div>
-                  <div style="text-align:right;">
-                    <div style="font-size:0.85rem;color:#22c55e;font-weight:800;">5/8</div>
-                    <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);">ML Confidence</div>
-                    <div style="font-size:0.65rem;color:#22c55e;font-weight:700;">HIGH</div>
-                  </div>
-                </div>
-              </div>
-              <div class="mock-row" style="gap:0.4rem; margin-top:0.1rem;">
-                <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:5px;padding:0.3rem 0.4rem;">
-                  <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);">Best 3 #1</div>
-                  <div style="font-size:0.58rem;color:#fff;font-weight:600;">SEE THE FIRE</div>
-                </div>
-                <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:5px;padding:0.3rem 0.4rem;">
-                  <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);">Value Bet</div>
-                  <div style="font-size:0.58rem;color:#f5a623;font-weight:600;">DOUBLE OBAN</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="app-body">
-            <p>Machine learning-powered horse racing prediction system. Version 3.3 live — statistics currently being verified. Free to use during this period.</p>
-            <div class="app-status status-live">
-              <div class="status-dot"></div> Live · V3.3 · Free During Verification
-            </div>
-            <br/>
-            <a href="https://aj-racing-tips-production.up.railway.app/" target="_blank" rel="noopener" style="
-              display:inline-flex; align-items:center; gap:0.4rem;
-              background: linear-gradient(135deg,#f5a623,#e8891a);
-              color:#fff; padding:0.5rem 1.2rem; border-radius:6px;
-              text-decoration:none; font-size:0.85rem; font-weight:600;
-              transition: opacity 0.2s;">
-              🏇 Try Race Predictor
-            </a>
-          </div>
-        </div>
-
-        <div class="app-card">
-          <div class="app-header">
-            <div class="app-icon" style="background:#0a0f1e; overflow:hidden; padding:0;">
-              <img src="assets/castlog-icon.png" alt="CastLog" style="width:100%;height:100%;object-fit:cover;display:block;" />
-            </div>
-            <div>
-              <div class="app-name">CastLog</div>
-              <div class="app-category">Fishing · Logbook</div>
-            </div>
-          </div>
-          <div class="app-mockup" style="background: linear-gradient(160deg,#0a1a14 0%,#0d2a1f 100%);">
-            <div class="app-mockup-inner">
-              <div class="mock-row" style="justify-content:space-between; margin-bottom:0.2rem;">
-                <span class="mock-label" style="color:#34d399;">🎣 Latest Catch</span>
-                <span class="mock-tag" style="background:rgba(52,211,153,0.15);color:#34d399;">Site Live</span>
-              </div>
-              <div class="mock-card" style="background:rgba(52,211,153,0.07); border-left:2px solid #34d399;">
-                <div class="mock-row" style="justify-content:space-between;">
-                  <div>
-                    <div style="font-size:0.7rem;color:#fff;font-weight:700;">Common Carp</div>
-                    <div style="font-size:0.5rem;color:rgba(255,255,255,0.5);margin-top:2px;">Linear Fisheries · 06:42</div>
-                  </div>
-                  <div style="text-align:right;">
-                    <div style="font-size:0.85rem;color:#34d399;font-weight:800;">18lb 4oz</div>
-                    <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);">PB +2lb</div>
-                  </div>
-                </div>
-              </div>
-              <div class="mock-row" style="gap:0.4rem; margin-top:0.1rem;">
-                <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:5px;padding:0.3rem 0.4rem;">
-                  <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);">Sessions</div>
-                  <div style="font-size:0.62rem;color:#fff;font-weight:700;">24</div>
-                </div>
-                <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:5px;padding:0.3rem 0.4rem;">
-                  <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);">Catches</div>
-                  <div style="font-size:0.62rem;color:#34d399;font-weight:700;">87</div>
-                </div>
-                <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:5px;padding:0.3rem 0.4rem;">
-                  <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);">Species</div>
-                  <div style="font-size:0.62rem;color:#fff;font-weight:700;">9</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="app-body">
-            <p>A smart fishing logbook for anglers — log catches, track sessions, capture weather and conditions, and build a personal record of every trip.</p>
-            <div class="app-status status-live">
-              <div class="status-dot"></div> Live
-            </div>
-            <br/>
-            <a href="https://castlog.co.uk/" target="_blank" rel="noopener" style="
-              display:inline-flex; align-items:center; gap:0.4rem;
-              background: linear-gradient(135deg, var(--accent), var(--accent2));
-              color:#fff; padding:0.5rem 1.2rem; border-radius:6px;
-              text-decoration:none; font-size:0.85rem; font-weight:600;
-              transition: opacity 0.2s;">
-              🌐 Visit castlog.co.uk
-            </a>
-          </div>
-        </div>
-
-        <div class="app-card">
-          <div class="app-header">
-            <div class="app-icon" style="background: linear-gradient(135deg,#1a2035,#7c5cfc);">☀️</div>
-            <div>
-              <div class="app-name">Solis</div>
-              <div class="app-category">Wellness</div>
-            </div>
-          </div>
-          <div class="app-mockup" style="background: linear-gradient(160deg,#0a0a1e 0%,#1a0a3e 100%);">
-            <div class="app-mockup-inner">
-              <div class="mock-row" style="justify-content:space-between; margin-bottom:0.2rem;">
-                <span class="mock-label" style="color:#f5a623;">☀️ bysolis.com</span>
-                <span class="mock-tag" style="background:rgba(245,166,35,0.15);color:#f5a623;">Live Site</span>
-              </div>
-              <div class="mock-card" style="background:rgba(124,92,252,0.07); border-left:2px solid #7c5cfc;">
-                <div style="font-size:0.6rem;color:#cbb6ff;line-height:1.5;font-style:italic;">Another exciting product from AJ Software Development.</div>
-              </div>
-              <div class="mock-row" style="gap:0.5rem; margin-top:0.1rem;">
-                <div style="flex:1; background:rgba(255,255,255,0.05); border-radius:6px; padding:0.35rem 0.5rem;">
-                  <div class="mock-label" style="color:rgba(255,255,255,0.4);">Status</div>
-                  <div style="font-size:0.62rem;color:#7c5cfc;margin-top:2px;font-weight:700;">In Development</div>
-                </div>
-                <div style="flex:1; background:rgba(255,255,255,0.05); border-radius:6px; padding:0.35rem 0.5rem;">
-                  <div class="mock-label" style="color:rgba(255,255,255,0.4);">Landing</div>
-                  <div style="font-size:0.62rem;color:#f5a623;margin-top:2px;font-weight:700;">Live</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="app-body">
-            <p>Another exciting product from AJ Software Development — visit the site to find out more.</p>
-            <div class="app-status status-dev">
-              <div class="status-dot"></div> In Development
-            </div>
-            <br/>
-            <a href="https://bysolis.com" target="_blank" rel="noopener" style="
-              display:inline-flex; align-items:center; gap:0.4rem;
-              background: linear-gradient(135deg, var(--accent), var(--accent2));
-              color:#fff; padding:0.5rem 1.2rem; border-radius:6px;
-              text-decoration:none; font-size:0.85rem; font-weight:600;
-              transition: opacity 0.2s;">
-              🌐 Visit bysolis.com
-            </a>
-          </div>
-        </div>
-
-        <div class="app-card">
-          <div class="app-header">
-            <div class="app-icon" style="background: linear-gradient(135deg,#0e7490,#155e75);">🕐</div>
-            <div>
-              <div class="app-name">Clarity</div>
-              <div class="app-category">Alzheimer's & Dementia Care</div>
-            </div>
-          </div>
-          <div class="app-mockup" style="background: linear-gradient(160deg,#052e33 0%,#0a1a1e 100%);">
-            <div class="app-mockup-inner">
-              <div class="mock-row" style="justify-content:space-between; margin-bottom:0.2rem;">
-                <span class="mock-label" style="color:#22d3ee;">🕐 Today</span>
-                <span class="mock-tag" style="background:rgba(34,211,238,0.15);color:#22d3ee;">Live</span>
-              </div>
-              <div class="mock-card" style="background:rgba(34,211,238,0.07); border-left:2px solid #22d3ee;">
-                <div style="font-size:0.6rem;color:#a5f3fc;line-height:1.5;">Wednesday · Afternoon<br/>Next reminder: Take medication</div>
-              </div>
-              <div class="mock-row" style="gap:0.5rem; margin-top:0.1rem;">
-                <div style="flex:1; background:rgba(255,255,255,0.05); border-radius:6px; padding:0.35rem 0.5rem;">
-                  <div class="mock-label" style="color:rgba(255,255,255,0.4);">Reminders</div>
-                  <div style="font-size:0.62rem;color:#fff;margin-top:2px;font-weight:700;">4 Today</div>
-                </div>
-                <div style="flex:1; background:rgba(255,255,255,0.05); border-radius:6px; padding:0.35rem 0.5rem;">
-                  <div class="mock-label" style="color:rgba(255,255,255,0.4);">Mode</div>
-                  <div style="font-size:0.62rem;color:#22d3ee;margin-top:2px;font-weight:700;">Large & Clear</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="app-body">
-            <p>A simple, large-print clock and reminder app designed for people living with Alzheimer's and dementia — clear day/time orientation plus gentle medication and routine reminders for patients and carers.</p>
-            <div class="app-status status-live">
-              <div class="status-dot"></div> Live
-            </div>
-            <br/>
-            <a href="/clarity/" style="
-              display:inline-flex; align-items:center; gap:0.4rem;
-              background: linear-gradient(135deg, var(--accent), var(--accent2));
-              color:#fff; padding:0.5rem 1.2rem; border-radius:6px;
-              text-decoration:none; font-size:0.85rem; font-weight:600;
-              transition: opacity 0.2s;">
-              🕐 About Clarity
-            </a>
-            <a href="https://apps.apple.com/app/id6788494955" target="_blank" rel="noopener" style="
-              display:inline-flex; align-items:center; gap:0.4rem; margin-left:0.5rem;
-              background: rgba(255,255,255,0.08); border:1px solid var(--border);
-              color:#fff; padding:0.5rem 1.2rem; border-radius:6px;
-              text-decoration:none; font-size:0.85rem; font-weight:600;
-              transition: opacity 0.2s;">
-               App Store
-            </a>
-          </div>
-        </div>
-
-        <div class="app-card">
-          <div class="app-header">
-            <div class="app-icon" style="background: linear-gradient(160deg,#2b74d0,#134a92);">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.2 3.6A.5.5 0 0 1 5 19.2V16h-.5A.5.5 0 0 1 4 15.5z" fill="#fff"/><path d="m10.6 10.2 1.7 1.7 3.4-3.6" stroke="#1a5fb4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div>
-              <div class="app-name">TextProof</div>
-              <div class="app-category">Message Export · Records</div>
-            </div>
-          </div>
-          <div class="app-mockup" style="background: linear-gradient(160deg,#0d1420 0%,#142135 100%);">
-            <div class="app-mockup-inner">
-              <div class="mock-row" style="justify-content:space-between; margin-bottom:0.2rem;">
-                <span class="mock-label" style="color:#7fb3ff;">📄 Conversation export</span>
-                <span class="mock-tag" style="background:rgba(127,179,255,0.15);color:#7fb3ff;">On-device</span>
-              </div>
-              <div class="mock-card" style="background:rgba(127,179,255,0.07); border-left:2px solid #7fb3ff;">
-                <div class="mock-row" style="justify-content:space-between;">
-                  <span style="font-size:0.58rem;color:#fff;">09 Sep · 14:02 · Them</span>
-                  <span style="font-size:0.55rem;color:rgba(255,255,255,0.45);">iMessage</span>
-                </div>
-                <div style="font-size:0.58rem;color:#c3dcff;margin-top:2px;">"The deposit will be back by Friday."</div>
-              </div>
-              <div class="mock-row" style="gap:0.4rem; margin-top:0.1rem;">
-                <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:5px;padding:0.3rem 0.4rem;">
-                  <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);">Messages</div>
-                  <div style="font-size:0.62rem;color:#fff;font-weight:700;">142</div>
-                </div>
-                <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:5px;padding:0.3rem 0.4rem;">
-                  <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);">Gaps</div>
-                  <div style="font-size:0.62rem;color:#34d399;font-weight:700;">None</div>
-                </div>
-                <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:5px;padding:0.3rem 0.4rem;">
-                  <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);">Export</div>
-                  <div style="font-size:0.62rem;color:#7fb3ff;font-weight:700;">PDF · CSV</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="app-body">
-            <p>Extract text from iPhone screen recordings and screenshots. Export iMessage and WhatsApp conversations to PDF, CSV or text. Review on-device before sharing.</p>
-            <div class="app-status status-live">
-              <div class="status-dot"></div> Live
-            </div>
-            <br/>
-            <a href="https://textproof.net" target="_blank" rel="noopener" style="
-              display:inline-flex; align-items:center; gap:0.4rem;
-              background: linear-gradient(135deg, var(--accent), var(--accent2));
-              color:#fff; padding:0.5rem 1.2rem; border-radius:6px;
-              text-decoration:none; font-size:0.85rem; font-weight:600;
-              transition: opacity 0.2s;">
-              🌐 Visit textproof.net
-            </a>
-            <a href="https://apps.apple.com/app/textproof-text-message-export/id6804264075" target="_blank" rel="noopener" style="
-              display:inline-flex; align-items:center; gap:0.4rem; margin-left:0.5rem;
-              background: rgba(255,255,255,0.08); border:1px solid var(--border);
-              color:#fff; padding:0.5rem 1.2rem; border-radius:6px;
-              text-decoration:none; font-size:0.85rem; font-weight:600;
-              transition: opacity 0.2s;">
-               App Store
-            </a>
-          </div>
-        </div>
-
-        <div class="app-card">
-          <div class="app-header">
-            <div class="app-icon" style="background: linear-gradient(135deg,#7f1d1d,#4c1d95);">🎲</div>
-            <div>
-              <div class="app-name">5e Character Sheet</div>
-              <div class="app-category">D&amp;D · Tabletop Gaming</div>
-            </div>
-          </div>
-          <div class="app-mockup" style="height:220px; background:#0a0508;">
-            <img src="assets/5e-character-sheet-screenshot.jpg" alt="5e Character Sheet app screenshot" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;" />
-          </div>
-          <div class="app-body">
-            <p>A digital D&amp;D 5th Edition character sheet — stats, spells, inventory, and combat tracking, built for players and dungeon masters who want their sheet to just work.</p>
-            <div class="app-status status-testing">
-              <div class="status-dot"></div> In Testing · Notify Me at Launch
-            </div>
-            <br/>
-            <a href="https://5echaractersheet.com" target="_blank" rel="noopener" style="
-              display:inline-flex; align-items:center; gap:0.4rem;
-              background: linear-gradient(135deg, var(--accent), var(--accent2));
-              color:#fff; padding:0.5rem 1.2rem; border-radius:6px;
-              text-decoration:none; font-size:0.85rem; font-weight:600;
-              transition: opacity 0.2s;">
-              🌐 Visit 5echaractersheet.com
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-label">Get In Touch</div>
-      <div class="section-title">Let's Build Something<br/>Together</div>
-
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h3>Ready to talk?</h3>
-          <p>
-            Whether you need a Sage X3 implementation, a bespoke software solution,
-            or want to explore what AI can do for your business — we'd love to hear from you.
-          </p>
-
-          <div class="contact-item">
-            <div class="contact-item-icon">✉️</div>
-            <div class="contact-item-text">
-              <strong>Email</strong>
-              <span>anthony@ajsoftwaredev.org</span>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-item-icon">📍</div>
-            <div class="contact-item-text">
-              <strong>Based In</strong>
-              <span>United Kingdom</span>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-item-icon">🕐</div>
-            <div class="contact-item-text">
-              <strong>Response Time</strong>
-              <span>Within 24 hours</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="contact-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label>First Name</label>
-              <input type="text" placeholder="John" />
-            </div>
-            <div class="form-group">
-              <label>Last Name</label>
-              <input type="text" placeholder="Smith" />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" placeholder="john@company.com" />
-          </div>
-
-          <div class="form-group">
-            <label>Service Interested In</label>
-            <select>
-              <option value="">Please select...</option>
-              <option>Sage X3 Implementation</option>
-              <option>Sage Support</option>
-              <option>Management Consulting</option>
-              <option>Apple App Development</option>
-              <option>Bespoke Software</option>
-              <option>AI Integration</option>
-              <option>Document Management (EDM)</option>
-              <option>Technical Consulting</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Message</label>
-            <textarea placeholder="Tell us about your project or requirements..."></textarea>
-          </div>
-
-          <button class="form-submit" onclick="alert('Thank you! We\'ll be in touch within 24 hours.')">
-            Send Message
-          </button>
+      <div class="product-visual">
+        <div class="shots shots-pair">
+          <figure class="dev tilt" data-depth="14"><div class="dev-frame"><img src="assets/apps/northstar-1.webp" width="646" height="1400" alt="North Star Bible home screen" loading="lazy"></div></figure>
+          <figure class="dev tilt dev-back" data-depth="26"><div class="dev-frame"><img src="assets/apps/northstar-2.webp" width="687" height="1400" alt="A North Star daily devotional" loading="lazy"></div></figure>
         </div>
       </div>
     </div>
-  </section>
+  </article>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">AJ Software Development</div>
-    <p>© 2026 AJ Software Development Limited. Built with expertise, delivered with care.</p>
-    <p class="legal">
-      AJ Software Development is a trading name of <strong>AJ Software Development Limited</strong>,
-      a company registered in England and Wales under company number <strong>17191882</strong>.
-      Registered office: 19 Vale Gardens, Ince, Wigan, England, WN3 4JD.
-      Contact: <a href="mailto:anthony@ajsoftwaredev.org" style="color:inherit;">anthony@ajsoftwaredev.org</a>
-    </p>
-  </footer>
+  <!-- Lunara -->
+  <article class="product product-alt" id="lunara" data-glow="#7c5cfc" data-glow2="#3bc9db">
+    <div class="wrap product-grid">
+      <div class="product-copy">
+        <div class="product-id"><img src="assets/apps/lunara-icon.png" width="56" height="56" alt=""><div><h3>Lunara</h3><p class="product-cat">Sleep · iPhone · Free for four weeks</p></div></div>
+        <p class="product-lead">The sleep app your <strong>doctor will thank you for.</strong></p>
+        <p>Built around CBT-I, the treatment doctors recommend for insomnia. Lunara analyses your sleep nightly, builds a personalised programme with an AI coach, and generates a clinical report you can take to your GP.</p>
+        <ul class="proof">
+          <li>CBT-I, the clinical gold standard</li>
+          <li>Nightly analysis and a personal plan</li>
+          <li>A report your doctor can read</li>
+        </ul>
+        <div class="product-actions">
+          <a class="btn btn-store" href="https://apps.apple.com/app/id6765924519" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.3-1.2 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.9-1.1-2.9-4Zm-2.5-7.4c.7-.8 1.2-2 1-3.2-1 .1-2.3.7-3 1.6-.7.7-1.2 1.9-1.1 3 1.2.1 2.3-.6 3.1-1.4Z"/></svg><span><small>Download on the</small>App Store</span></a>
+          <a class="btn btn-s" href="https://lunara-sleep-ai.com/" target="_blank" rel="noopener">lunara-sleep-ai.com <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="product-visual">
+        <div class="shots shots-pair">
+          <figure class="dev tilt" data-depth="14"><div class="dev-frame"><img src="assets/apps/lunara-1.webp" width="647" height="1400" alt="Lunara home: last night's sleep score of 100 with the night's stages" loading="lazy"></div></figure>
+          <figure class="dev tilt dev-back" data-depth="26"><div class="dev-frame"><img src="assets/apps/lunara-2.webp" width="647" height="1400" alt="A Lunara sleep plan" loading="lazy"></div></figure>
+        </div>
+      </div>
+    </div>
+  </article>
 
+  <!-- CastLog -->
+  <article class="product" id="castlog" data-glow="#2aa198" data-glow2="#f29d38">
+    <div class="wrap product-grid">
+      <div class="product-copy">
+        <div class="product-id"><img src="assets/apps/castlog-icon.png" width="56" height="56" alt=""><div><h3>CastLog</h3><p class="product-cat">Fishing · iPhone &amp; iPad · Free to download · UK &amp; US</p></div></div>
+        <p class="product-lead">Photo your catch. <strong>CastLog names it.</strong></p>
+        <p>Snap the fish and CastLog identifies the species, estimates weight and length, and logs the spot, weather and conditions the moment you take the photo. Every catch in a private journal with personal bests and season stats.</p>
+        <ul class="proof">
+          <li>AI species identification from a photo</li>
+          <li>Weather, tide and conditions logged automatically</li>
+          <li>Personal bests and season stats</li>
+        </ul>
+        <div class="product-actions">
+          <a class="btn btn-store" href="https://apps.apple.com/us/app/castlog-fishing-log-ai/id6774603668" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.3-1.2 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.9-1.1-2.9-4Zm-2.5-7.4c.7-.8 1.2-2 1-3.2-1 .1-2.3.7-3 1.6-.7.7-1.2 1.9-1.1 3 1.2.1 2.3-.6 3.1-1.4Z"/></svg><span><small>Download on the</small>App Store</span></a>
+          <a class="btn btn-s" href="https://castlog.co.uk/" target="_blank" rel="noopener">castlog.co.uk <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="product-visual">
+        <div class="shots shots-pair">
+          <figure class="dev tilt" data-depth="14"><div class="dev-frame"><img src="assets/apps/castlog-1.webp" width="647" height="1400" alt="CastLog: a common carp identified from a photo, 14lb 6oz, with location and conditions" loading="lazy"></div></figure>
+          <figure class="dev tilt dev-back" data-depth="26"><div class="dev-frame"><img src="assets/apps/castlog-2.webp" width="647" height="1400" alt="CastLog AI identification screen" loading="lazy"></div></figure>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 5e -->
+  <article class="product product-alt" id="fivee" data-glow="#c0392b" data-glow2="#c9a24a">
+    <div class="wrap product-grid">
+      <div class="product-copy">
+        <div class="product-id"><img src="assets/apps/fivee-icon.png" width="56" height="56" alt=""><div><h3>5e Character Sheet</h3><p class="product-cat">Tabletop · iPhone · Offline · No account</p></div></div>
+        <p class="product-lead">Roll fast. Own everything. <strong>Remember the story.</strong></p>
+        <p>A beautiful, fully offline character sheet for fifth-edition tabletop roleplaying. No account, no subscription, no data loss. Spell slots, inventory, combat and a journal — just you and your character, at the table or on the go.</p>
+        <ul class="proof">
+          <li>Works with no signal at all</li>
+          <li>319 spells, searchable</li>
+          <li>Built-in dice roller</li>
+        </ul>
+        <div class="product-actions">
+          <a class="btn btn-store" href="https://apps.apple.com/app/id6790137217" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.3-1.2 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.9-1.1-2.9-4Zm-2.5-7.4c.7-.8 1.2-2 1-3.2-1 .1-2.3.7-3 1.6-.7.7-1.2 1.9-1.1 3 1.2.1 2.3-.6 3.1-1.4Z"/></svg><span><small>Download on the</small>App Store</span></a>
+          <a class="btn btn-s" href="https://5echaractersheet.com/" target="_blank" rel="noopener">5echaractersheet.com <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="product-visual">
+        <div class="shots shots-pair">
+          <figure class="dev tilt" data-depth="14"><div class="dev-frame"><img src="assets/apps/fivee-1.webp" width="560" height="1212" alt="5e Character Sheet: a character's stats and combat tracking" loading="lazy"></div></figure>
+          <figure class="dev tilt dev-back" data-depth="26"><div class="dev-frame"><img src="assets/apps/fivee-2.webp" width="560" height="1212" alt="5e Character Sheet spells: slots and prepared spells with Cast buttons" loading="lazy"></div></figure>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ AJ AI -->
+<section class="ajai" id="ajai">
+  <div class="wrap">
+    <header class="sec-head sec-head-wide">
+      <p class="kicker"><span class="dot dot-amber"></span>02 — AJ AI · In pilot with our first customer</p>
+      <h2>One secure assistant that knows <em>your whole business.</em></h2>
+      <p class="sec-sub">Ask "tell me everything important about ABC Windows" and get one answer drawn from your accounts, your email, your documents and your database — only the parts that person is allowed to see. Not a chatbot bolted onto one system: an AI layer across the SME, built for companies of five to fifty people.</p>
+    </header>
+
+    <div class="ajai-grid">
+      <figure class="flow" aria-label="How AJ AI works: your systems feed one permission-aware core, which gives one answer with sources">
+        <svg viewBox="0 0 760 420" class="flow-svg" role="img">
+          <defs>
+            <linearGradient id="g-line" x1="0" x2="1"><stop offset="0" stop-color="#3b82f6" stop-opacity=".2"/><stop offset="1" stop-color="#8cc1ff"/></linearGradient>
+            <filter id="glow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <!-- sources -->
+          <g class="src" font-family="JetBrains Mono, monospace" font-size="12" fill="#b7c3d6">
+            <g transform="translate(20,40)"><rect width="190" height="46" rx="8" fill="#0d131c" stroke="#263142"/><text x="16" y="28">Microsoft 365 · mail, files</text></g>
+            <g transform="translate(20,112)"><rect width="190" height="46" rx="8" fill="#0d131c" stroke="#263142"/><text x="16" y="28">Sage 50 / Sage X3</text></g>
+            <g transform="translate(20,184)"><rect width="190" height="46" rx="8" fill="#0d131c" stroke="#263142"/><text x="16" y="28">Approved documents</text></g>
+            <g transform="translate(20,256)"><rect width="190" height="46" rx="8" fill="#0d131c" stroke="#263142"/><text x="16" y="28">SQL · file shares</text></g>
+            <g transform="translate(20,328)"><rect width="190" height="46" rx="8" fill="#0d131c" stroke="#263142"/><text x="16" y="28">OneNote · marketing</text></g>
+          </g>
+          <!-- lines -->
+          <g class="lines" fill="none" stroke="url(#g-line)" stroke-width="1.5">
+            <path class="ln" d="M210 63 C 290 63, 300 210, 380 210"/>
+            <path class="ln" d="M210 135 C 290 135, 300 210, 380 210"/>
+            <path class="ln" d="M210 207 C 290 207, 300 210, 380 210"/>
+            <path class="ln" d="M210 279 C 290 279, 300 210, 380 210"/>
+            <path class="ln" d="M210 351 C 290 351, 300 210, 380 210"/>
+          </g>
+          <!-- pulses -->
+          <g class="pulses" fill="#8cc1ff" filter="url(#glow)">
+            <circle r="3"><animateMotion dur="3.2s" repeatCount="indefinite" path="M210 63 C 290 63, 300 210, 380 210"/></circle>
+            <circle r="3"><animateMotion dur="3.6s" begin=".6s" repeatCount="indefinite" path="M210 135 C 290 135, 300 210, 380 210"/></circle>
+            <circle r="3"><animateMotion dur="2.9s" begin="1.1s" repeatCount="indefinite" path="M210 207 C 290 207, 300 210, 380 210"/></circle>
+            <circle r="3"><animateMotion dur="3.4s" begin=".3s" repeatCount="indefinite" path="M210 279 C 290 279, 300 210, 380 210"/></circle>
+            <circle r="3"><animateMotion dur="3.8s" begin="1.6s" repeatCount="indefinite" path="M210 351 C 290 351, 300 210, 380 210"/></circle>
+          </g>
+          <!-- core -->
+          <g transform="translate(380,210)">
+            <circle r="78" fill="#0b1220" stroke="#2f4a7a"/>
+            <circle r="78" fill="none" stroke="#5b9dff" stroke-opacity=".35" class="ring"/>
+            <circle r="96" fill="none" stroke="#5b9dff" stroke-opacity=".12" stroke-dasharray="3 7" class="ring ring2"/>
+            <text text-anchor="middle" y="-14" font-family="Bricolage Grotesque, sans-serif" font-weight="700" font-size="20" fill="#eef2f8">AJ AI</text>
+            <text text-anchor="middle" y="8" font-family="JetBrains Mono, monospace" font-size="10" fill="#8cc1ff">PERMISSIONS · TENANT</text>
+            <text text-anchor="middle" y="24" font-family="JetBrains Mono, monospace" font-size="10" fill="#8cc1ff">ISOLATION · AUDIT</text>
+          </g>
+          <path class="ln ln-out" d="M476 210 L 540 210" fill="none" stroke="#8cc1ff" stroke-width="1.5"/>
+          <circle r="3" fill="#8cc1ff" filter="url(#glow)"><animateMotion dur="1.6s" repeatCount="indefinite" path="M476 210 L 540 210"/></circle>
+          <!-- answer -->
+          <g transform="translate(540,120)">
+            <rect width="200" height="180" rx="12" fill="#0d131c" stroke="#2f4a7a"/>
+            <text x="18" y="30" font-family="JetBrains Mono, monospace" font-size="10" fill="#8cc1ff">ONE ANSWER · WITH SOURCES</text>
+            <rect x="18" y="46" width="150" height="8" rx="4" fill="#223049"/>
+            <rect x="18" y="62" width="164" height="8" rx="4" fill="#223049"/>
+            <rect x="18" y="78" width="120" height="8" rx="4" fill="#223049"/>
+            <rect x="18" y="94" width="156" height="8" rx="4" fill="#223049"/>
+            <g font-family="JetBrains Mono, monospace" font-size="9.5" fill="#9fb0c8">
+              <text x="18" y="126">▸ Sage · invoice 10433</text>
+              <text x="18" y="144">▸ Outlook · 3 emails</text>
+              <text x="18" y="162">▸ Quote-ABC-2026.docx</text>
+            </g>
+          </g>
+        </svg>
+      </figure>
+
+      <div class="ajai-side">
+        <div class="residency">
+          <p class="kicker"><span class="dot"></span>Where your data lives</p>
+          <blockquote>Your business data is stored in the United Kingdom. AI processing takes place within the EU under Microsoft's Data Protection Addendum. Your data is never used to train any model.</blockquote>
+          <ul class="resi-list">
+            <li><b>UK stored.</b> Database, documents, index, logs and backups in Microsoft Azure UK South.</li>
+            <li><b>EU-only AI processing.</b> Models run inside Microsoft's EU Data Boundary; global routing is blocked by policy, not by promise.</li>
+            <li><b>Permission-aware.</b> Every answer is trimmed to what that person may see, enforced in the database, never by the prompt.</li>
+            <li><b>Your tenant, isolated.</b> Row-level security per customer and a full audit trail of every model call.</li>
+          </ul>
+          <p class="small">UK GDPR and the Data Protection Act 2018 apply. A Data Protection Impact Assessment is completed before each customer goes live. We don't call anything "GDPR compliant" because it runs on Azure; we show you the data flow.</p>
+        </div>
+
+        <form class="interest" id="interest" action="/api/contact" method="post" novalidate>
+          <label for="interest-email">Register interest in AJ AI</label>
+          <div class="interest-row">
+            <input id="interest-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@yourcompany.co.uk" required>
+            <input type="text" name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+            <input type="hidden" name="topic" value="AJ AI interest">
+            <button class="btn btn-p" type="submit">Keep me posted</button>
+          </div>
+          <p class="form-note" role="status" aria-live="polite">Pilot customers get the founding price. No newsletter, just the news that matters.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ BUSINESS -->
+<section class="business" id="business">
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="kicker">03 — For business</p>
+      <h2>Enterprise experience, <em>without the enterprise.</em></h2>
+      <p class="sec-sub">Twenty-five years inside banks, ERP consultancies and software teams, now available to one business at a time. You talk to the person who writes the code.</p>
+    </header>
+    <div class="svc-grid">
+      <article class="svc">
+        <p class="svc-n">01</p>
+        <h3>Sage X3</h3>
+        <p>Implementation, support, 4GL customisation, integrations and rescue. Nine years specialising in X3 across installs, managed services and full ERP programmes in multiple sectors.</p>
+      </article>
+      <article class="svc">
+        <p class="svc-n">02</p>
+        <h3>Bespoke software &amp; integration</h3>
+        <p>Systems built around how your business actually works: Node, React, .NET, SQL Server, PostgreSQL and the APIs that join them. Document management from a background in high-compliance banking.</p>
+      </article>
+      <article class="svc">
+        <p class="svc-n">03</p>
+        <h3>AI that respects your data</h3>
+        <p>Grounded, permission-aware AI inside your existing systems, with a stated data-residency position. If it can't be made safe for your customers' data, we'll tell you.</p>
+      </article>
+      <article class="svc">
+        <p class="svc-n">04</p>
+        <h3>iPhone &amp; Android apps</h3>
+        <p>Six of our own shipped to the App Store. We know the review process, the privacy labels, the subscription rules and what people actually keep on their phones.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ABOUT -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <p class="kicker">04 — About</p>
+      <h2>Anthony Jackson.<br>Twenty-five years, one standard.</h2>
+      <p>I started at Alliance &amp; Leicester and Santander, building financial technology for a decade. Then seven years in V1 business support and development: document management, EDM and Sage X3 integration, contracting across sectors. Then nine years at Datel as a Sage X3 specialist — support, installs, managed services, bespoke development and full ERP implementations.</p>
+      <p>AJ Software Development is what all of that turned into: a UK software company that ships consumer apps people rely on, and brings the same seriousness about data to businesses that have never had an engineer on the inside.</p>
+      <div class="about-tags">
+        <span>Sage X3 &amp; 4GL</span><span>React Native · Expo</span><span>Node · TypeScript</span><span>.NET</span><span>SQL Server · PostgreSQL</span><span>Azure</span><span>Supabase</span><span>LLM integration</span><span>EDM</span><span>Banking tech</span>
+      </div>
+    </div>
+    <ol class="timeline" aria-label="Career">
+      <li><span class="tl-years">10 yrs</span><div><b>Alliance &amp; Leicester · Santander</b><p>Financial technology, enterprise software and banking compliance.</p></div></li>
+      <li><span class="tl-years">7 yrs</span><div><b>V1 · EDM &amp; Sage integration</b><p>Document management, EDM systems and Sage X3 integration as a contractor.</p></div></li>
+      <li><span class="tl-years">9 yrs</span><div><b>Datel · Sage X3 specialist</b><p>Support, installs, managed services, bespoke development and full ERP implementations.</p></div></li>
+      <li class="tl-now"><span class="tl-years">Today</span><div><b>AJ Software Development Ltd</b><p>Six apps on the App Store. AJ AI in pilot. Wigan, England.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================ CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-copy">
+      <p class="kicker">05 — Contact</p>
+      <h2>Start a <em>conversation.</em></h2>
+      <p>A Sage X3 problem, a system that needs building, a question about AJ AI, or an idea for an app. Write a few lines and you'll hear back from Anthony within a working day.</p>
+      <p class="contact-direct"><a href="mailto:anthony@ajsoftwaredev.org">anthony@ajsoftwaredev.org</a></p>
+    </div>
+    <form class="cform" id="cform" action="/api/contact" method="post" novalidate>
+      <div class="f2">
+        <label>Name<input name="name" type="text" autocomplete="name" required></label>
+        <label>Company<input name="company" type="text" autocomplete="organization"></label>
+      </div>
+      <label>Email<input name="email" type="email" inputmode="email" autocomplete="email" required></label>
+      <label>What's it about?
+        <select name="topic">
+          <option>General enquiry</option>
+          <option>AJ AI</option>
+          <option>Sage X3</option>
+          <option>Bespoke software</option>
+          <option>AI integration</option>
+          <option>iPhone or Android app</option>
+          <option>Press or partnership</option>
+        </select>
+      </label>
+      <label>Message<textarea name="message" rows="5" required placeholder="A few lines is plenty."></textarea></label>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+      <button class="btn btn-p" type="submit">Send message</button>
+      <p class="form-note" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div>
+      <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M6 25 14 7h4l8 18h-4.2l-1.9-4.5H12.1L10.2 25H6Zm7.5-7.9h5L16 11.3l-2.5 5.8Z" fill="#fff"/><path d="M24 7h3.5v12.2c0 2-.5 3.5-1.6 4.5-1 1-2.5 1.5-4.4 1.5-.6 0-1.2 0-1.8-.2v-3.3c.5.1 1 .2 1.4.2.9 0 1.6-.2 2.1-.7.5-.5.8-1.2.8-2.2V7Z" fill="#8cc1ff"/></svg></span><span class="logo-word">AJ Software</span></a>
+      <p class="foot-tag">Software people actually use.</p>
+    </div>
+    <nav aria-label="Apps"><p class="foot-h">Apps</p>
+      <a href="https://claritycallsapp.com/">Clarity</a><a href="https://textproof.net/">TextProof</a><a href="https://northstarbible.com/">North Star Bible</a><a href="https://lunara-sleep-ai.com/">Lunara</a><a href="https://castlog.co.uk/">CastLog</a><a href="https://5echaractersheet.com/">5e Character Sheet</a>
+    </nav>
+    <nav aria-label="Company"><p class="foot-h">Company</p>
+      <a href="#ajai">AJ AI</a><a href="#business">For business</a><a href="#about">About</a><a href="#contact">Contact</a><a href="/clarity/privacy.html">Clarity privacy</a><a href="/clarity/support.html">Clarity support</a>
+    </nav>
+  </div>
+  <div class="wrap legal">
+    <p>© 2026 AJ Software Development Limited. AJ Software Development is a trading name of <strong>AJ Software Development Limited</strong>, a company registered in England and Wales under company number <strong>17191882</strong>. Registered office: 19 Vale Gardens, Ince, Wigan, England, WN3 4JD. <a href="mailto:anthony@ajsoftwaredev.org">anthony@ajsoftwaredev.org</a></p>
+    <p>Apple, the Apple logo and App Store are trademarks of Apple Inc. Google Play is a trademark of Google LLC. Sage is a trademark of The Sage Group plc. Microsoft and Azure are trademarks of Microsoft Corporation.</p>
+  </div>
+</footer>
+
+<script src="site.js?v=20261016c" defer></script>
 </body>
 </html>
