@@ -115,7 +115,7 @@
     const line = $('.boot-line', boot), log = $('.boot-log', boot);
     const lines = [
       ['$ ajsoftware --boot', ''],
-      ['apps.live', '6', 'ok'],
+      ['apps.live', '7', 'ok'],
       ['data.residency', 'uk-south', 'ok'],
       ['trackers', '0', 'ok'],
       ['render', 'hand-written html · css · js', 'ok'],
