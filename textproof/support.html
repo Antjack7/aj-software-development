@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How to Export iPhone Text Messages | TextProof Support</title>
-<meta name="description" content="Learn how to record an iPhone conversation, import screenshots, review extracted messages and export a PDF, CSV, text or photo record with TextProof.">
+<meta name="description" content="How to import a chat from Apple's Messages, a WhatsApp export or a screen recording, review it, and export a PDF, CSV or text file with TextProof.">
 <style>
   :root { --ink:#17202b; --muted:#5c6875; --bg:#fbfbfd; --line:#dde2e9; --accent:#1a5fb4; }
   * { box-sizing: border-box; }
@@ -28,11 +28,11 @@
 <meta property="og:site_name" content="TextProof">
 <meta property="og:url" content="https://textproof.net/support.html">
 <meta property="og:title" content="How to Export iPhone Text Messages | TextProof Support">
-<meta property="og:description" content="Learn how to record an iPhone conversation, import screenshots, review extracted messages and export a PDF, CSV, text or photo record with TextProof.">
+<meta property="og:description" content="How to import a chat from Apple's Messages, a WhatsApp export or a screen recording, review it, and export a PDF, CSV or text file with TextProof.">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Export iPhone Text Messages | TextProof Support">
-<meta name="twitter:description" content="Learn how to record an iPhone conversation, import screenshots, review extracted messages and export a PDF, CSV, text or photo record with TextProof.">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "How to Export iPhone Text Messages | TextProof Support", "description": "Learn how to record an iPhone conversation, import screenshots, review extracted messages and export a PDF, CSV, text or photo record with TextProof.", "url": "https://textproof.net/support.html", "inLanguage": "en-GB", "publisher": {"@type": "Organization", "name": "AJ Software Development", "url": "https://ajsoftwaredev.org/"}}</script>
+<meta name="twitter:description" content="How to import a chat from Apple's Messages, a WhatsApp export or a screen recording, review it, and export a PDF, CSV or text file with TextProof.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "How to Export iPhone Text Messages | TextProof Support", "description": "How to import a chat from Apple's Messages, a WhatsApp export or a screen recording, review it, and export a PDF, CSV or text file with TextProof.", "url": "https://textproof.net/support.html", "inLanguage": "en-GB", "publisher": {"@type": "Organization", "name": "AJ Software Development", "url": "https://ajsoftwaredev.org/"}}</script>
 <meta name="apple-itunes-app" content="app-id=6804264075">
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
@@ -53,9 +53,45 @@
   <p>Tell us what would make TextProof more useful, or describe anything that did not work as expected. <a href="mailto:feedback@textproof.net?subject=TextProof%20feedback">Send feedback by email</a>.</p>
 
   <h2>How TextProof works</h2>
-  <p>Apple does not allow any app to read your messages directly, so TextProof works from a
-  recording of your own screen. You film yourself scrolling through the conversation, and the app
-  reads the text out of that recording — entirely on your iPhone.</p>
+  <p>There are three ways to bring a conversation in, and all of them happen entirely on your
+  iPhone: import it from Apple's Messages app, send TextProof a WhatsApp export, or record your
+  screen while you scroll through the chat.</p>
+
+  <h2 id="messages">Import from Messages</h2>
+  <p>New in version 1.0.3, and it needs iOS 26.4 or later. On an older iPhone, use a screen
+  recording instead. Set it up once:</p>
+  <ol>
+    <li><strong>Add the Shortcut.</strong> TextProof takes you to Apple's Shortcuts app with the free TextProof Shortcut. Tap to add it.</li>
+    <li><strong>Turn on its automation.</strong> This lets TextProof start the Shortcut for you, so you never have to leave the app.</li>
+    <li><strong>Allow notifications.</strong> So TextProof can show the import's progress and tell you when it has finished.</li>
+  </ol>
+  <p>After that, tap Find my chats, pick the conversation, choose the dates (one week, one month,
+  one year, or your own) and tap Start import. A panel on your Lock Screen shows the days as they
+  are checked, and the document says how many were checked, for example "30 of 30 days checked".</p>
+
+  <p><strong>"The Shortcut didn't start".</strong> Either its automation is switched off, or the
+  Shortcut has been deleted. Open the Shortcuts app and tap Automation at the bottom: the TextProof
+  automation should be there and switched on. If you removed the Shortcut and added it again, check
+  this anyway, because adding it again can switch its automation off.</p>
+
+  <p><strong>"No messages with [name] in those dates".</strong> Messages had nothing from that chat
+  in the dates you chose. Try a longer range, or check you picked the right conversation.</p>
+
+  <p><strong>A chat is missing from the list.</strong> The list of chats is fetched fresh from
+  Messages every time you tap Find my chats, so it is always up to date. If the chat you want is an
+  older one, tap Show older chats.</p>
+
+  <h2>Import from WhatsApp</h2>
+  <ol>
+    <li><strong>Export the chat.</strong> In WhatsApp, open the chat, tap the name at the top, then Export chat. Choose Attach media to include the names of photos and videos.</li>
+    <li><strong>Send it to TextProof.</strong> Tap TextProof in the share menu. It opens with the chat loaded and asks which person is you.</li>
+  </ol>
+  <p>Every message comes across with its date and time exactly as WhatsApp recorded them.</p>
+
+  <h2>Import a screen recording</h2>
+  <p>For any other app, or an iPhone older than iOS 26.4, film yourself scrolling through the
+  conversation and TextProof reads the text out of the recording, entirely on your iPhone. You can
+  pick screenshots instead of a video.</p>
 
   <ol>
     <li><strong>Add the record button, once.</strong> Settings → Control Centre → More Controls → tap the green + beside Screen Recording.</li>
@@ -71,7 +107,9 @@
   that section more slowly and import it again.</p>
 
   <p><strong>A message is on the wrong side.</strong> Tap the message on the review screen and choose
-  "Switch sender". You can also correct the text or delete anything that is not a message.</p>
+  "Switch sender". You can also correct the text or delete anything that is not a message, and Undo
+  takes back the last change. Anything you corrected is marked "corrected by device owner" in the
+  document.</p>
 
   <p><strong>There are no times on my messages.</strong> Messages hides them until you ask. While
   recording, drag the conversation to the left and hold — the times appear down the right-hand side.
@@ -84,8 +122,12 @@
   <p><strong>I paid but the app still shows a preview.</strong> Open Settings inside the app and tap
   "Restore previous purchase". Make sure you are signed in with the same Apple ID you bought it with.</p>
 
-  <p><strong>Photos and GIFs.</strong> The pictures themselves are not reproduced, but TextProof marks
-  the place where one was sent so nothing is silently missing from your document.</p>
+  <p><strong>Photos and GIFs.</strong> From Messages, photos sent in the chat are printed in the PDF.
+  From a screen recording, the pictures themselves are not reproduced, but TextProof marks the place
+  where one was sent so nothing is silently missing from your document.</p>
+
+  <p><strong>Reactions.</strong> From Messages, a reaction is shown as a reaction, for example
+  👍 Like or 😂 Haha, never as words somebody typed. A reply shows the message it answered.</p>
 
   <h2>Your privacy</h2>
   <p class="box">Everything happens on your iPhone. Your recordings, messages and transcripts are never
@@ -93,13 +135,15 @@
   Full details in the <a href="/privacy.html">privacy policy</a>.</p>
 
   <h2>A note on using your export</h2>
-  <p>Keep the original screen recording alongside any document you produce — it is the primary record,
-  and the export is a working copy of it. Times and dates appear only where they were visible on
-  screen; TextProof never invents them. Whether a document can be used in any formal process is always
+  <p>Keep the original alongside any document you produce, whether that is the chat in Messages, the
+  WhatsApp export or the screen recording. It is the primary record, and the export is a working copy
+  of it. From a recording, times and dates appear only where they were visible on screen; TextProof
+  never invents them. Whether a document can be used in any formal process is always
   a decision for the people running that process.</p>
 </main>
 <footer>
   AJ Software Development · <a href="/">Home</a> · <a href="/privacy.html">Privacy</a>
+  <p style="margin-top:.6rem;font-size:12px">Messages and Shortcuts are Apple apps; TextProof is not made by Apple. WhatsApp is a trademark of WhatsApp LLC. TextProof is not affiliated with or endorsed by it.</p>
 </footer>
 </body>
 </html>
