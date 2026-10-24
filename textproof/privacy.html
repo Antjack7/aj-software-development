@@ -77,7 +77,10 @@
   <h2>Permissions</h2>
   <p>TextProof asks for read access to your photo library solely so you can pick the recording or screenshots
   to transcribe. It never scans your library. If you use Import from Messages, it also asks to send you
-  notifications, so it can show an import's progress and tell you when it has finished. The free TextProof
+  notifications. TextProof sends itself a local notification, titled "TextProof", purely so that the
+  Shortcut's automation ("When I get a notification from TextProof") can start the Shortcut while you
+  stay in the app, and it shows a banner when an import finishes. These notifications are created on
+  your device; none ever comes from a server, and they carry nothing to us. The free TextProof
   Shortcut runs in Apple's Shortcuts app on your phone, and only for the chat and dates you choose. TextProof
   requests no other permissions.</p>
 

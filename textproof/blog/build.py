@@ -736,7 +736,7 @@ page(
   <ul>
     <li>From the export file there is no scrolling, so nothing can go past unread.</li>
     <li>Photos, videos and deleted messages are marked where they were sent, never printed as words.</li>
-    <li>In group chats, check the names on the review screen before you export.</li>
+    <li>One-to-one chats are the best tested. In a group chat, check the names on the review screen before you export.</li>
     <li>The full version costs £9.99, once. WhatsApp's own export is free, if a plain text file is all you need.</li>
   </ul>
 
@@ -832,7 +832,8 @@ page(
   <h2>4. Importing from Messages with a Shortcut</h2>
 
   <p>New in TextProof 1.0.3, on iOS 26.4 or later. You add the free TextProof Shortcut once from
-  Apple's Shortcuts app and turn on its automation. Then you pick a chat and the dates inside
+  Apple's Shortcuts app, allow notifications, and switch on its automation (&ldquo;When I get a
+  notification from TextProof&rdquo;), which lets TextProof start it while you stay in the app. Then you pick a chat and the dates inside
   TextProof, and the messages come straight in from Apple's Messages app, each with the exact date
   and time Messages recorded, to the second. Every day in the range is checked and counted, photos
   sent in the chat are printed in the PDF, and reactions are shown as reactions rather than as typed

@@ -61,18 +61,19 @@
   <p>New in version 1.0.3, and it needs iOS 26.4 or later. On an older iPhone, use a screen
   recording instead. Set it up once:</p>
   <ol>
-    <li><strong>Add the Shortcut.</strong> TextProof takes you to Apple's Shortcuts app with the free TextProof Shortcut. Tap to add it.</li>
-    <li><strong>Turn on its automation.</strong> This lets TextProof start the Shortcut for you, so you never have to leave the app.</li>
-    <li><strong>Allow notifications.</strong> So TextProof can show the import's progress and tell you when it has finished.</li>
+    <li><strong>Add the Shortcut.</strong> Tap Add the Shortcut. Apple's Shortcuts app opens: tap Add Shortcut, then come back to TextProof.</li>
+    <li><strong>Allow notifications.</strong> TextProof sends itself a notification, titled "TextProof", purely so the Shortcut's automation can start it quietly while you stay in the app. It also shows a banner when an import finishes. These notifications are made on your phone and never come from a server.</li>
+    <li><strong>Turn on the automation.</strong> Open the Shortcuts app, tap Automation, and switch on "When I get a notification from TextProof". It arrives switched off.</li>
   </ol>
   <p>After that, tap Find my chats, pick the conversation, choose the dates (one week, one month,
   one year, or your own) and tap Start import. A panel on your Lock Screen shows the days as they
   are checked, and the document says how many were checked, for example "30 of 30 days checked".</p>
 
   <p><strong>"The Shortcut didn't start".</strong> Either its automation is switched off, or the
-  Shortcut has been deleted. Open the Shortcuts app and tap Automation at the bottom: the TextProof
-  automation should be there and switched on. If you removed the Shortcut and added it again, check
-  this anyway, because adding it again can switch its automation off.</p>
+  Shortcut has been deleted. Open the Shortcuts app and tap Automation: "When I get a notification
+  from TextProof" should be there and switched on. If you removed the Shortcut and added it again,
+  check this anyway, because adding it again can switch the automation off. Notifications for
+  TextProof also need to be allowed, in Settings › Notifications › TextProof.</p>
 
   <p><strong>"No messages with [name] in those dates".</strong> Messages had nothing from that chat
   in the dates you chose. Try a longer range, or check you picked the right conversation.</p>
@@ -122,7 +123,8 @@
   <p><strong>I paid but the app still shows a preview.</strong> Open Settings inside the app and tap
   "Restore previous purchase". Make sure you are signed in with the same Apple ID you bought it with.</p>
 
-  <p><strong>Photos and GIFs.</strong> From Messages, photos sent in the chat are printed in the PDF.
+  <p><strong>Photos and GIFs.</strong> From Messages, photos sent in the chat are printed in the PDF
+  (in a chat with a great many photos, the later ones are named instead).
   From a screen recording, the pictures themselves are not reproduced, but TextProof marks the place
   where one was sent so nothing is silently missing from your document.</p>
 

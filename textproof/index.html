@@ -493,24 +493,26 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
       let it run. Every day in the range is checked and counted, so the document can say
       &ldquo;30 of 30 days checked&rdquo; rather than leave you wondering.</p>
     </div>
-    <!-- SCREENSHOT: the one-time set-up screen in TextProof, showing the three steps (Add the Shortcut, Turn on its automation, Allow notifications) with ticks. -->
+    <!-- SCREENSHOT: the one-time set-up screen in TextProof, showing the three steps (Add the Shortcut, Allow notifications, Turn on the automation) with ticks. -->
     <div class="steps reveal">
       <div class="step">
         <div class="step-n">1</div>
         <h3>Add the Shortcut</h3>
-        <p>Add the free TextProof Shortcut from Apple's Shortcuts app. TextProof takes you there,
-        and it's one tap.</p>
+        <p>Tap Add the Shortcut. Apple's Shortcuts app opens with the free TextProof Shortcut: tap
+        Add Shortcut, then come back to TextProof.</p>
       </div>
       <div class="step">
         <div class="step-n">2</div>
-        <h3>Turn on its automation</h3>
-        <p>This is what lets TextProof start the Shortcut for you, so you never have to leave the
-        app to run an import.</p>
+        <h3>Allow notifications</h3>
+        <p>TextProof sends itself a quiet notification to start the Shortcut, and a banner when an
+        import finishes. They come from your phone, never from a server.</p>
       </div>
       <div class="step">
         <div class="step-n">3</div>
-        <h3>Allow notifications</h3>
-        <p>So TextProof can show the import's progress and tell you when it has finished.</p>
+        <h3>Turn on the automation</h3>
+        <p>In Shortcuts, tap Automation and switch on &ldquo;When I get a notification from
+        TextProof&rdquo;. It arrives switched off. After that you never leave TextProof to run an
+        import.</p>
       </div>
     </div>
     <!-- SCREENSHOT: the date picker (1 week, 1 month, 1 year, your own) beside the Lock Screen progress panel mid-import. -->
@@ -537,7 +539,9 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
     <div class="steps reveal">
       <div class="step">
         <h3>Photos, printed</h3>
-        <p>Photos sent in the chat are printed in the PDF, in their place in the conversation.</p>
+        <p>Photos sent in the chat are printed in the PDF, in their place in the conversation. In a
+        chat with a great many photos, the later ones are named instead, so the PDF stays a size the
+        phone can make.</p>
       </div>
       <div class="step">
         <h3>Reactions, as reactions</h3>
@@ -625,7 +629,7 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
       <div class="step">
         <div class="step-n">3</div>
         <h3>Light or dark</h3>
-        <p>TextProof has a dark mode too, easier on the eyes late at night.</p>
+        <p>TextProof follows your iPhone's own Light or Dark setting, automatically.</p>
       </div>
     </div>
     <!-- SCREENSHOT: Home in dark mode, showing the folder row (All, a folder, +) and a few documents. -->
@@ -651,7 +655,7 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
           </div>
           <div class="export-foot"><span>F202-7C9A-31DE-82B4</span><span>Page 2 of 4</span></div>
         </div>
-        <p class="pane-note">The real PDF uses labelled message bubbles, marks pictures and their readable text in place, records only visible dates and times, and includes a cover sheet, fingerprint and audit appendix.</p>
+        <p class="pane-note">The real PDF uses labelled message bubbles, marks pictures and their readable text in place, records only visible dates and times, and includes a cover sheet with a fingerprint and a closing page on how the document was produced.</p>
       </div>
 
       <div class="pane" id="p-csv" role="tabpanel">
@@ -742,8 +746,8 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
       </div>
       <div class="claim">
         <h3>Every export is fingerprinted</h3>
-        <p>A checksum on the cover sheet, so a document can be shown to be the one that was
-        produced, unchanged since.</p>
+        <p>A SHA-256 checksum of the transcript is printed on the cover sheet. Change any of the
+        transcript and the checksum changes.</p>
       </div>
       <div class="claim">
         <h3>Nothing leaves your phone</h3>
@@ -867,7 +871,7 @@ footer{background:linear-gradient(180deg,#f3f6fc,#eaeff8);border-top:1px solid v
         </details>
         <details>
           <summary>What is the TextProof Shortcut?</summary>
-          <p>A free Shortcut you add once from Apple's Shortcuts app, with one tap. When you start an import, it finds the messages in the chat and dates you picked and hands them to TextProof, on your phone. You turn on its automation once, so TextProof can start it for you. If an import ever says the Shortcut didn't start, the <a href="support.html#messages">support page</a> explains the fix.</p>
+          <p>A free Shortcut you add once from Apple's Shortcuts app, with one tap. When you start an import, it finds the messages in the chat and dates you picked and hands them to TextProof, on your phone. To start it without you leaving the app, TextProof sends itself a quiet notification, and the Shortcut's automation, &ldquo;When I get a notification from TextProof&rdquo;, picks that up. You switch that automation on once, in Shortcuts › Automation. If an import ever says the Shortcut didn't start, the <a href="support.html#messages">support page</a> explains the fix.</p>
         </details>
         <details>
           <summary>What if somebody shared a picture in the chat?</summary>
