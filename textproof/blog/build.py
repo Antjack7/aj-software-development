@@ -71,9 +71,9 @@ def page(fname: str, title: str, desc: str, body: str, date: str = DATE, date_te
 
 
 END = (
-    '<div class="end"><p>TextProof turns a screen recording of a conversation into a '
-    "timestamped, print-ready document — entirely on your iPhone. "
-    '<a href="/">See how it works →</a></p></div>'
+    '<div class="end"><p>TextProof turns your own conversations into a complete, timestamped, '
+    "print-ready document, entirely on your iPhone: straight from Messages, from a WhatsApp "
+    'export, or from a screen recording. <a href="/">See how it works →</a></p></div>'
 )
 
 # ---------------------------------------------------------------- post one
@@ -118,10 +118,10 @@ page(
   <h2>So there is no server</h2>
 
   <p>Not a small one. Not an encrypted one. Not one that "only holds it briefly".
-  <strong>There is no network code in the app at all.</strong></p>
+  <strong>Nothing in the app sends your messages anywhere.</strong></p>
 
   <p>Your recording is read on your own phone, by the text recognition Apple already builds into
-  iOS. The transcript is written to your phone. The PDF is made on your phone. Nothing is
+  iOS. A chat imported from Messages, or a WhatsApp export, is read on your phone too. The transcript is written to your phone. The PDF is made on your phone. Nothing is
   transmitted, because there is nothing to transmit it to.</p>
 
   <p>That is a stronger promise than a privacy policy, and a different kind of promise. A policy
@@ -216,14 +216,15 @@ page(
 
   <p><strong>Nothing is ever thrown away.</strong> The app makes judgements constantly — is this a
   message, or the time, or a button, or writing on a photograph somebody shared? It gets some of
-  them wrong. So everything it decided was <em>not</em> a message is listed at the back of the
-  document. If it judged wrongly, that thing is in the wrong section. It is never gone. A
+  them wrong. So everything it decided was <em>not</em> a message can be listed at the back of the
+  document, with one switch in Settings. If it judged wrongly, that thing is in the wrong section. It is never gone. A
   misjudgement costs you a footnote instead of a message.</p>
 
   <p><strong>It never invents a time.</strong> iOS hides the time on each message until you swipe
   for it. If you did not swipe, we do not know when a message was sent, and the document says so
-  rather than estimating from the date heading. An invented timestamp on an evidence document is
-  not a convenience, it is a fabrication.</p>
+  rather than estimating from the date heading. An invented timestamp on a document somebody relies
+  on is not a convenience, it is a fabrication. (Imported from Messages or a WhatsApp export, every
+  message comes with the exact time the app recorded, so there is nothing to guess.)</p>
 
   <p><strong>The numbers add up.</strong> The cover sheet states how many readings were taken off
   your screen, how many were printed as messages, and how many were set aside. You can add them up
@@ -297,7 +298,7 @@ page(
   cannot always tell it from a message. You should find that out before paying, not after.</p>
 
   <p>So the free export is not a taster. It is the actual product, on your actual conversation, so
-  you can judge it on your own evidence.</p>
+  you can judge it for yourself.</p>
 
   <h2>What one payment means for us</h2>
 
@@ -393,17 +394,18 @@ page(
 
   <p>This is the gap TextProof is built for, and it is <a href="https://apps.apple.com/app/textproof-text-message-export/id6804264075">free to try on the App Store</a>.</p>
 
-  <p>You record your screen while you scroll through your own conversation, or import screenshots you already took. The app reads every screen, puts the conversation back together in order, and works out who said what. You check it, fix anything it got wrong, and export.</p>
+  <p>There are three ways in. On iOS 26.4 or later, the newest is Import from Messages: pick the chat and the dates, and TextProof brings every message in from Apple's Messages app through a free Shortcut, with the exact time Messages recorded, to the second. Photos sent in the chat are printed in the PDF, and reactions are shown as reactions, not as words. For WhatsApp, send TextProof the file from WhatsApp's own Export chat. For anything else, record your screen while you scroll through your own conversation, or import screenshots you already took. The app reads every screen, puts the conversation back together in order, and works out who said what. Whichever way, you check it, fix anything it got wrong, and export.</p>
 
-  <p>You get a PDF laid out like the conversation, with dates and times wherever they were on screen. You can also export a spreadsheet (CSV), plain text, or a photo record of the original screens. It works with iMessage, SMS and WhatsApp conversations. Everything happens on the phone. Nothing is uploaded. It is £9.99 or $9.99, paid once, with no subscription.</p>
+  <p>You get a PDF laid out like the conversation, with dates and times on the messages (from a recording, wherever they were on screen). You can also export a spreadsheet (CSV), plain text, or a photo record of the original screens. It works with iMessage, SMS and WhatsApp conversations. Everything happens on the phone. Nothing is uploaded. It is £9.99 or $9.99, paid once, with no subscription.</p>
 
   <p><strong>The honest trade-offs:</strong></p>
 
   <ul>
-    <li>You still have to scroll through the whole conversation once while recording. A very long thread takes a few minutes.</li>
-    <li>Pictures shared in the chat are marked in place, not reproduced in the transcript. The photo record keeps the screens as they looked.</li>
+    <li>Import from Messages needs iOS 26.4 or later, and a minute of set-up the first time.</li>
+    <li>With a screen recording, you still have to scroll through the whole conversation once. A very long thread takes a few minutes.</li>
+    <li>From a recording, pictures shared in the chat are marked in place, not reproduced in the transcript. The photo record keeps the screens as they looked.</li>
     <li>If the app cannot be sure it caught every screen, it marks a possible gap rather than hiding it. You then re-record that part more slowly. We explain why in <a href="admitting-what-it-missed.html">The document that admits what it missed</a>.</li>
-    <li>It only shows a time where the time was visible on screen. It never guesses one.</li>
+    <li>From a recording, it only shows a time where the time was visible on screen. It never guesses one.</li>
   </ul>
 
   <h2>Which method should you use?</h2>
@@ -425,7 +427,7 @@ page(
 
   <h3>Can I do it without a Mac?</h3>
 
-  <p>Yes. Screenshots turned into a PDF work on the iPhone alone. So does an app that reads a screen recording. Computer software that reads a backup also works on Windows, but you need the computer.</p>
+  <p>Yes. Screenshots turned into a PDF work on the iPhone alone. So does an app that imports the chat from Messages (on iOS 26.4 or later) or reads a screen recording. Computer software that reads a backup also works on Windows, but you need the computer.</p>
 
   <h3>Does it work for WhatsApp too?</h3>
 
@@ -511,13 +513,13 @@ page(
 
   <p>The free methods print pictures of your screen, or need a Mac. The alternative is to turn the conversation into a proper document on your phone first, then print that.</p>
 
-  <p>TextProof does this in one go, and it is <a href="https://apps.apple.com/app/textproof-text-message-export/id6804264075">free to try on the App Store</a>. You record your screen while you scroll through your own conversation, or import screenshots. It reads the text on the phone, puts the messages in order and works out who said what. You check it and fix anything wrong. Then you export a print-ready PDF with dates, times where they were on screen, and page numbers. Nothing is uploaded. It costs £9.99 or $9.99 once, with no subscription.</p>
+  <p>TextProof does this in one go, and it is <a href="https://apps.apple.com/app/textproof-text-message-export/id6804264075">free to try on the App Store</a>. On iOS 26.4 or later it can bring the chat straight in from Messages: pick the chat and the dates, and every message arrives with its exact time. Otherwise, record your screen while you scroll through your own conversation, or import screenshots, and it reads the text on the phone. Either way it puts the messages in order and works out who said what. You check it and fix anything wrong. Then you export a print-ready PDF with dates, times and page numbers. Nothing is uploaded. It costs £9.99 or $9.99 once, with no subscription.</p>
 
   <p><strong>The trade-offs, honestly:</strong></p>
 
   <ul>
-    <li>You still scroll through the conversation once while recording.</li>
-    <li>It is a transcript. Pictures sent in the chat are marked where they were sent, not printed. If you want the screens themselves, it can also export a photo record of them.</li>
+    <li>From a screen recording, you still scroll through the conversation once.</li>
+    <li>It is a transcript. From Messages, photos sent in the chat are printed in the PDF. From a recording, pictures are marked where they were sent, not printed. If you want the screens themselves, it can also export a photo record of them.</li>
   </ul>
 
   <h2>Which method is right for you?</h2>
@@ -589,7 +591,7 @@ page(
   <ul>
     <li><strong>Screenshots.</strong> Free, and work on any iPhone. Overlap each one with the last, so nothing falls between them. Long threads mean a lot of screenshots.</li>
     <li><strong>Print to PDF from a Mac.</strong> Free, if the conversation syncs to Messages on your Mac. It gives you real text.</li>
-    <li><strong>An app that builds the document on your phone.</strong> TextProof is one, and you can <a href="https://apps.apple.com/app/textproof-text-message-export/id6804264075">try it free on the App Store</a>. You record your screen while you scroll through your conversation, and it produces a timestamped, print-ready PDF. It marks any place it might have missed something, rather than hiding it. It never invents a time that was not on screen.</li>
+    <li><strong>An app that builds the document on your phone.</strong> TextProof is one, and you can <a href="https://apps.apple.com/app/textproof-text-message-export/id6804264075">try it free on the App Store</a>. On iOS 26.4 or later it can import the chat straight from Messages, with the exact date and time Messages recorded on every message, and it checks and counts every day in the range you pick. Otherwise you record your screen while you scroll through your conversation. Either way it produces a complete, timestamped, print-ready PDF. From a recording, it marks any place it might have missed something, rather than hiding it, and it never invents a time that was not on screen.</li>
   </ul>
 
   <p>Our pillar guide, <a href="export-text-messages-iphone-pdf.html">How to Export Text Messages From iPhone to PDF</a>, walks through each method step by step.</p>
@@ -608,7 +610,7 @@ page(
     <li><strong>Pages in order</strong>, numbered if printed.</li>
   </ul>
 
-  <h2>Are screenshots of text messages admissible in court?</h2>
+  <h2>Can screenshots of text messages be used in court?</h2>
 
   <p>Often they can be used, but nobody can promise it. Whether a court accepts them, and how much they count, depends on the court, the type of case and the judge.</p>
 
@@ -624,7 +626,7 @@ page(
 
   <p><strong>In the US,</strong> rules vary by state and by court. In general, the person relying on a message may need to show it is genuine and who sent it. Lawyers call this authentication. Your lawyer or attorney will know what your court expects.</p>
 
-  <p>No app, including ours, can make a document "court admissible". Anyone who claims that is promising something only a court can decide.</p>
+  <p>No app, including ours, can promise that a court will accept a document. Anyone who claims that is promising something only a court can decide.</p>
 
   <h2>Step 3: Ask what format they want</h2>
 
@@ -647,7 +649,7 @@ page(
 
   <p>Keep the original phone and conversation. Then make a complete copy: screenshots, a PDF printed from a Mac, or a PDF from an app. Show who sent each message, with dates and times. Ask your solicitor or lawyer which format they want.</p>
 
-  <h3>Can I use text messages as evidence?</h3>
+  <h3>Can I use text messages in a court case?</h3>
 
   <p>Text messages are often used in disputes and court cases in both the UK and the US. Whether they are accepted, and how much they count, is up to the court. A complete, unedited copy, with the original phone kept safe, gives you the best footing.</p>
 
@@ -673,7 +675,7 @@ page(
   <h1>How to Export a WhatsApp Chat to PDF on iPhone</h1>
   <div class="byline">7 October 2026 · Anthony Jackson</div>
 
-  <p class="standfirst">WhatsApp can't save a chat as a PDF directly. Its built-in Export Chat option gives you a plain text file, with or without the photos and videos as separate files. To get a PDF, you either turn that text file into one yourself, take screenshots and combine them, or use an app that builds the PDF from your screen.</p>
+  <p class="standfirst">WhatsApp can't save a chat as a PDF directly. Its built-in Export Chat option gives you a plain text file, with or without the photos and videos as separate files. To get a PDF, you either turn that text file into one yourself, take screenshots and combine them, or send the export to an app that builds the PDF for you.</p>
 
   <p>Here is each way, step by step, with the catch for each one.</p>
 
@@ -723,15 +725,17 @@ page(
 
   <p>TextProof does this in one go. <a href="https://apps.apple.com/app/textproof-text-message-export/id6804264075">Try it free on the App Store</a>.</p>
 
-  <p>You record your screen while you scroll through your own WhatsApp chat, or import screenshots. The app reads every screen on the phone, puts the messages back in order and works out who said what. You check the result and fix anything it got wrong. Then you export a PDF laid out like the conversation, with dates and times wherever they were on screen. You can also export a spreadsheet (CSV), plain text, or a photo record of the original screens.</p>
+  <p>It reads WhatsApp's own export directly. Do Method 1, then tap TextProof in the share menu. It opens with the chat loaded and asks which person is you, so your messages sit on the right. Every message keeps the exact date and time WhatsApp recorded, and nothing is read off the screen. You check the result and fix anything you need to. Then you export a PDF laid out like the conversation. You can also export a spreadsheet (CSV) or plain text.</p>
+
+  <p>If you would rather, you can still record your screen while you scroll through your own chat, or import screenshots, and TextProof reads them on the phone.</p>
 
   <p>Nothing is uploaded. It costs £9.99 or $9.99 once, with no subscription. We explain why in <a href="one-payment.html">One payment, not a subscription</a>.</p>
 
   <p><strong>The trade-offs:</strong></p>
 
   <ul>
-    <li>You scroll through the chat once while recording, so a very long chat takes a few minutes.</li>
-    <li>Pictures are marked where they were sent, not reproduced in the transcript. If a picture has words in it, those words are labelled as coming from a picture.</li>
+    <li>From the export file there is no scrolling, so nothing can go past unread.</li>
+    <li>Photos, videos and deleted messages are marked where they were sent, never printed as words.</li>
     <li>In group chats, check the names on the review screen before you export.</li>
     <li>The full version costs £9.99, once. WhatsApp's own export is free, if a plain text file is all you need.</li>
   </ul>
@@ -741,7 +745,7 @@ page(
   <ul>
     <li><strong>You just want a copy of the words:</strong> WhatsApp's Export Chat.</li>
     <li><strong>You want a PDF and do not mind some work:</strong> export the text file and turn it into a PDF, or take screenshots.</li>
-    <li><strong>You want a PDF that looks like the chat, in one step:</strong> an app that builds it from your screen.</li>
+    <li><strong>You want a PDF that looks like the chat, in one step:</strong> send WhatsApp's export to an app that builds it for you.</li>
   </ul>
 
   <p>If the chat matters for a dispute, read <a href="save-text-messages-for-court.html">How to Save Text Messages for Court or a Dispute</a>. The same rules apply to WhatsApp: keep the original phone and the whole chat. For iMessage and SMS, see <a href="export-text-messages-iphone-pdf.html">How to Export Text Messages From iPhone to PDF</a>.</p>
@@ -759,6 +763,8 @@ page(
   <h3>Is a WhatsApp backup the same as an export?</h3>
 
   <p>No. A WhatsApp backup to iCloud is for restoring your chats onto a phone. You cannot open it and read it as a document. An export gives you a file you can read. For help with TextProof, see our <a href="../support.html">support page</a>.</p>
+
+  <p class="byline">WhatsApp is a trademark of WhatsApp LLC. TextProof is not affiliated with or endorsed by it.</p>
 """
     + END
     + "</article>",
@@ -767,6 +773,228 @@ page(
 )
 
 # ---------------------------------------------------------------- index page
+# ----------------------------------------------------- guide five
+EXTRACT_DATE = "2026-10-13"
+EXTRACT_DATE_TEXT = "13 October 2026"
+
+page(
+    "extract-text-messages-from-iphone.html",
+    "How to Extract Text Messages from an iPhone: Every Method Compared | TextProof",
+    "Five ways to extract text messages from an iPhone in 2026: backup tools, screenshots, "
+    "Apple's own options, importing from Messages, and reading a screen recording. What each costs you.",
+    """
+<article>
+  <div class="tag">Guide</div>
+  <h1>How to Extract Text Messages from an iPhone</h1>
+  <div class="byline">13 October 2026 &middot; Anthony Jackson</div>
+
+  <p class="standfirst">There are five realistic ways to get messages off an iPhone as something
+  you can read, print or send on. They are not equivalent. One gives you the exact database and
+  needs a computer. One needs nothing but your thumb and produces something nobody wants to read.
+  Here is the honest trade-off for each.</p>
+
+  <h2>1. Desktop tools that read an iTunes backup</h2>
+
+  <p>iMazing, Decipher TextMessage, AnyTrans and iExplorer all work the same way underneath. You
+  back the phone up to a Mac or PC, the tool opens the backup's message database, and you export
+  a conversation as PDF, CSV or text.</p>
+
+  <p>This is a very complete method, and it is worth saying so plainly. You get every message in
+  the thread, with true timestamps, exactly as the phone stored them &mdash; not as they happened to
+  appear on screen. For anything where completeness genuinely matters, this is the method to use.</p>
+
+  <p>The costs are real though. You need a computer and a cable, you need enough disk space for a
+  full backup, and if the backup is encrypted you need that password &mdash; which is the point where
+  most people stop, because it was set years ago and never written down. Most of these tools are
+  paid, and some renew every year, so check before you buy.</p>
+
+  <h2>2. Screenshots</h2>
+
+  <p>Free, instant, and everybody's first instinct.</p>
+
+  <p>The trouble is what you end up with: forty images in a camera roll, out of order once they are
+  attached to an email, with no page numbers and no way for a reader to tell whether anything is
+  missing between one shot and the next. If somebody has to read it in sequence &mdash; a solicitor,
+  a letting agent, an HR manager &mdash; screenshots make that work their problem rather than yours.</p>
+
+  <p>Fine for showing a friend one exchange. Poor for anything longer than a screen or two.</p>
+
+  <h2>3. Apple's own export</h2>
+
+  <p>Apple does not provide a way to export a Messages conversation as a document. You can forward
+  individual messages, and on a Mac you can print a conversation from the Messages app, but there is
+  no built-in "export this thread" on the iPhone itself.</p>
+
+  <p>Data and Privacy at <span class="mono">privacy.apple.com</span> lets you request a copy of the
+  data Apple holds about you. It arrives later as files, not as a readable transcript of a
+  conversation, so it answers a different question to the one most people are asking.</p>
+
+  <h2>4. Importing from Messages with a Shortcut</h2>
+
+  <p>New in TextProof 1.0.3, on iOS 26.4 or later. You add the free TextProof Shortcut once from
+  Apple's Shortcuts app and turn on its automation. Then you pick a chat and the dates inside
+  TextProof, and the messages come straight in from Apple's Messages app, each with the exact date
+  and time Messages recorded, to the second. Every day in the range is checked and counted, photos
+  sent in the chat are printed in the PDF, and reactions are shown as reactions rather than as typed
+  words.</p>
+
+  <p>No computer, no cable, no backup password, nothing uploaded. The limits: it needs iOS 26.4 or
+  later, it covers Apple's Messages app only, and there is a minute of set-up the first time.</p>
+
+  <h2>5. On-device transcription from a screen recording</h2>
+
+  <p>The approach that works for any app, and TextProof's other way in. You screen-record yourself scrolling through
+  the conversation, the app reads the recording with the iPhone's own text recognition, and you get
+  a timestamped document as PDF, CSV or plain text.</p>
+
+  <p>No computer, no cable, no backup password, nothing uploaded anywhere. Because it reads what was
+  displayed rather than a specific database, it can be used with any app that shows messages on
+  screen. We have tested it most with Messages and WhatsApp, so check the result closely for
+  anything else.</p>
+
+  <p>The honest limitation is the mirror of method one. It can only capture what the recording
+  actually passed over. Scroll too fast and content goes by unread; a timestamp that was never on
+  screen cannot be invented. TextProof marks those gaps in the document rather than quietly closing
+  them up, and lets you check and correct every message before exporting &mdash; but a gap marked
+  honestly is still a gap.</p>
+
+  <h2>Which to choose</h2>
+
+  <ul>
+    <li><strong>You have the computer, the cable and the backup password</strong>, and completeness
+    matters more than convenience &mdash; use a desktop backup tool.</li>
+    <li><strong>You need one exchange to show somebody informally</strong> &mdash; screenshots are fine.</li>
+    <li><strong>The chat is in Messages and your iPhone is on iOS 26.4 or later</strong> &mdash; import
+    it from Messages. Exact times, and no computer.</li>
+    <li><strong>The messages are in WhatsApp</strong> &mdash; WhatsApp's own Export Chat, which
+    TextProof can turn straight into a PDF.</li>
+    <li><strong>You need a readable, printable document from any other app, and you only have your
+    phone</strong> &mdash; on-device transcription.</li>
+  </ul>
+
+  <h2>A note on using any of this formally</h2>
+
+  <p>Whether a document is accepted in a dispute, a tribunal or a court is decided by the people
+  running that process, not by the app that produced it. What helps in every case is the same:
+  a complete thread rather than a convenient extract, visible dates, and no silent gaps. That is
+  true whichever method above you pick, and it is worth getting right the first time, because
+  re-doing it later looks worse than doing it slowly now.</p>
+
+  <p>If the messages are destined for a solicitor or a formal complaint, the longer piece on
+  <a href="save-text-messages-for-court.html">saving text messages for court</a> goes through what
+  tends to be asked for. If you want the straightforward PDF route,
+  <a href="export-text-messages-iphone-pdf.html">exporting iPhone messages to PDF</a> covers it
+  step by step.</p>
+"""
+    + END
+    + "</article>",
+    EXTRACT_DATE,
+    EXTRACT_DATE_TEXT,
+)
+
+
+# ----------------------------------------------------- guide six
+APPS_DATE = "2026-10-13"
+APPS_DATE_TEXT = "13 October 2026"
+
+page(
+    "best-text-message-export-app.html",
+    "Best Text Message Export Apps in 2026: An Honest Comparison | TextProof",
+    "Which app should you actually use to export iPhone text messages? iMazing, Decipher, "
+    "AnyTrans, Dr.Fone and TextProof compared on how they work and what you need.",
+    """
+<article>
+  <div class="tag">Comparison</div>
+  <h1>Best Text Message Export Apps in 2026</h1>
+  <div class="byline">13 October 2026 &middot; Anthony Jackson</div>
+
+  <p class="standfirst">Five apps people actually use to get messages off an iPhone, how each
+  works, what you need to use it, and which one fits the situation you are in. We make one
+  of them, and we have tried to be straight about where it is the wrong choice.</p>
+
+  <h2>iMazing</h2>
+  <p><strong>Mac and Windows. Paid; check the current price on the maker's site.</strong></p>
+  <p>A well-known desktop tool. It reads an iPhone backup on your computer and exports
+  conversations as documents, with the timestamps the phone stored. It also does a great deal
+  besides messages.</p>
+  <p>If you have a computer and the backup is not encrypted with a password you have forgotten,
+  this is the strongest option on this page for completeness.</p>
+
+  <h2>Decipher TextMessage</h2>
+  <p><strong>Mac and Windows. Paid; check the current price on the maker's site.</strong></p>
+  <p>More focused on messages than a general phone manager, which makes it quicker to understand
+  if exporting a thread is the only thing you came for. It also reads a backup on your
+  computer.</p>
+  <p>Same prerequisites: a computer, a cable, disk space for a backup, and the encryption password
+  if one was set.</p>
+
+  <h2>AnyTrans and Dr.Fone</h2>
+  <p><strong>Mac and Windows. Paid; check the current price on the maker's site.</strong></p>
+  <p>Both are broad phone-management suites with message export as one feature among many. Useful
+  if you also want to move photos, music and contacts around. Check whether you are buying a year
+  or a lasting licence before you pay.</p>
+
+  <h2>TextProof</h2>
+  <p><strong>iPhone only. One payment, no subscription. First 20 messages of every conversation
+  free.</strong></p>
+  <p>Ours. It works on the phone itself, with no computer, no cable, no backup password and nothing
+  uploaded, and it has three ways in. On iOS 26.4 or later, Import from Messages brings a chat in
+  from Apple's Messages app through a free Shortcut, with the exact time on every message. For
+  WhatsApp, it reads WhatsApp's own Export chat file. For anything else, you screen-record yourself
+  scrolling the conversation and it reads the recording. Each way ends in a timestamped PDF, CSV or
+  text file.</p>
+  <p>From a recording, it marks the places where it may have scrolled past content, rather than
+  closing the gaps silently, and you check and correct every message before exporting.</p>
+
+  <h2>Where each one wins</h2>
+  <ul>
+    <li><strong>The whole phone's history, and you have a computer</strong> &mdash; a desktop
+    backup tool such as iMazing or Decipher. Reading the backup beats reading the screen, and we are
+    not going to pretend otherwise.</li>
+    <li><strong>You only have your phone</strong> &mdash; TextProof. The desktop tools are not an
+    option without a Mac or PC. On iOS 26.4 or later, Import from Messages gives you exact times
+    without one.</li>
+    <li><strong>You have forgotten the backup encryption password</strong> &mdash; TextProof. This
+    stops more people than anything else on this page.</li>
+    <li><strong>The messages are in WhatsApp</strong> &mdash; WhatsApp's own Export Chat, which
+    TextProof turns into a PDF. Some desktop tools read WhatsApp too, so check before you buy.</li>
+    <li><strong>You want to move photos and contacts too</strong> &mdash; AnyTrans or Dr.Fone.</li>
+    <li><strong>You need one short exchange to show a friend</strong> &mdash; none of these.
+    Screenshots are fine.</li>
+  </ul>
+
+  <h2>Things worth checking before you pay</h2>
+  <ul>
+    <li><strong>Subscription or one payment.</strong> Several of these renew annually. If you need
+    this once, for one dispute, that matters.</li>
+    <li><strong>Does the output show dates?</strong> A transcript with no timestamps is much less
+    use to anyone reading it afterwards.</li>
+    <li><strong>Does it tell you what it missed?</strong> An export that silently drops content is
+    worse than one that admits a gap.</li>
+    <li><strong>Where do the messages go?</strong> Some tools upload for processing. If the
+    conversation is sensitive, read the privacy policy rather than the landing page.</li>
+  </ul>
+
+  <h2>If this is for something formal</h2>
+  <p>Whether a document is accepted in a dispute, a tribunal or a court is for the people running
+  that process to decide, not the app that produced it. What consistently helps is the same
+  whichever tool you pick: the whole thread rather than a convenient extract, visible dates, and no
+  silent gaps.</p>
+
+  <p>For the underlying methods rather than the products, see
+  <a href="extract-text-messages-from-iphone.html">how to extract text messages from an iPhone</a>.
+  For the straightforward PDF route, <a href="export-text-messages-iphone-pdf.html">exporting iPhone
+  messages to PDF</a>. And if this is heading to a solicitor,
+  <a href="save-text-messages-for-court.html">saving text messages for court</a> goes through what
+  tends to get asked for.</p>
+"""
+    + END
+    + "</article>",
+    APPS_DATE,
+    APPS_DATE_TEXT,
+)
+
+
 INDEX_TITLE = "TextProof Blog — Exporting and Keeping iPhone Messages"
 INDEX_DESC = (
     "Plain guides to exporting, printing and saving iPhone text messages, and short pieces on "
