@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Family Shield: how it works · AJ Software</title>
+<meta name="description" content="A scam checker for older parents. Mum checks a text, email or letter in one tap; her family is told if it is a scam. How the setup works, step by step.">
+<link rel="canonical" href="https://ajsoftwaredev.org/familyshield/">
+<meta property="og:title" content="Family Shield: how it works">
+<meta property="og:description" content="A scam checker for older parents. Mum checks a text, email or letter in one tap; her family is told if it is a scam. How the setup works, step by step.">
+<meta name="theme-color" content="#06080c">
+<link rel="icon" href="/assets/favicon.svg">
+<style>
+.sitebar { display:flex; justify-content:space-between; align-items:center; font-size:13px; color:#a9b6cb; }
+.sitebar a { color:#a9b6cb; text-decoration:none; font-weight:700; } .sitebar a:hover { color:#fff; }
+.ctas { display:flex; gap:10px; flex-wrap:wrap; }
+.cta { display:inline-block; padding:12px 18px; border-radius:14px; border:1px solid rgba(255,255,255,.14); color:#eef1f8; text-decoration:none; font-family:'Sora',sans-serif; font-weight:700; background:rgba(255,255,255,.06); }
+.cta.p { background:rgba(var(--accent-rgb),.16); border-color:rgba(var(--accent-rgb),.5); }
+</style>
+</head>
+<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@500;700&display=swap">
+<link rel="stylesheet" href="/explainers/style.css?v=20261103">
+<canvas id="motes"></canvas>
+<div class="wrap">
+  <nav class="sitebar"><a href="/">‹ AJ Software</a><span>In testing · Family Shield</span></nav>
+  <header>
+    <div class="brand"><i></i>Family Shield</div>
+    <div class="eyebrow">How the setup works</div>
+  </header>
+  <div>
+    <h1>Two phones. One job: is this a scam?</h1>
+    <p class="lede">You set it up from your own phone. Mum's phone gets one big button. If she finds a scam, you are told. Press play, or step through.</p>
+  </div>
+
+  <div class="scene">
+    <div id="stage">
+      <div class="phone" id="phoneL"><div class="screen"></div><div class="plabel"></div></div>
+      <div id="link"><div id="signal"></div></div>
+      <div class="phone" id="phoneR"><div class="screen"></div><div class="plabel"></div></div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="row"><span id="stepNo"></span><div class="ctl"><button id="prevBtn">‹ Back</button><button id="playBtn">Pause</button><button id="nextBtn">Next ›</button></div></div>
+    <h3 id="stepTitle"></h3>
+    <p id="caption"></p>
+    <div class="progress"><div id="prog"></div></div>
+    <div id="dots"></div>
+  </div>
+
+  <div class="ctas"><a class="cta p" href="https://testflight.apple.com/join/ad9tfkMh">Try it on TestFlight (iPhone)</a><a class="cta" href="/familyshield/privacy.html">Privacy</a></div>
+  <h2>The steps, written down</h2>
+  <ol id="steps"></ol>
+
+  <h2>What it cannot do, so nobody is surprised</h2>
+  <div class="limits">
+    <div class="card"><b>It never reads anything on its own.</b> Only what Mum chooses to show it. Texts from people in her contacts are never touched.</div>
+    <div class="card"><b>It cannot listen to phone calls.</b> No app on an iPhone can. It can warn about known scam numbers and give her a safe word.</div>
+    <div class="card"><b>It needs her to take the first step.</b> Paste, photograph or share. The double-tap and share menu make that one tap.</div>
+    <div class="card"><b>Safe means "nothing we can see".</b> When unsure it says Be careful, and the next step is always "ring your family".</div>
+  </div>
+  <footer>Family Shield by AJ Software. Nothing is sent anywhere unless she taps Check.</footer>
+</div>
+<script>
+window.STORY = {
+  app: 'Family Shield', accent: '#35d3c2', accentRgb: '53,211,194',
+  phones: ['Your phone', "Mum's phone"],
+  steps: [
+    { title: 'Whose phone is this?', caption: 'Both phones install the same app. The first screen asks which one you are holding, so nobody ends up on the wrong side.', focus: 'left',
+      left: `<div class="s-tag">YOUR PHONE</div><div class="s-h">Whose phone is this?</div><div class="btn p">I'm setting it up for someone<small>This is my phone</small></div><div class="btn">Someone set it up for me<small>I have a six digit code</small></div>`,
+      right: `<div class="s-tag">MUM'S PHONE</div><div class="s-h">Whose phone is this?</div><div class="btn">I'm setting it up for someone</div><div class="btn p">Someone set it up for me<small>I have a six digit code</small></div>` },
+    { title: 'Names and a family word', caption: 'You type both first names and, if you like, a family word. Scammers can copy a voice. Only the two of you know the word.', focus: 'left', litLeft: true,
+      left: `<div class="s-tag">YOUR PHONE</div><div class="s-h">Set up Mum's phone from yours</div><div class="card">Who are you protecting?<br><b>Jean</b></div><div class="card">Your first name<br><b>Sarah</b></div><div class="card">A family word<br><b>bluebell</b></div><div class="btn p">Make a code</div>`,
+      right: `<div class="idle">waiting</div>` },
+    { title: 'Send Mum her code', caption: 'A six digit code and a ready-made text. Tap Send and it opens your Messages with the words already written.', focus: 'left', litLeft: true, signal: true,
+      left: `<div class="s-tag">YOUR PHONE</div><div class="s-h">Send this to Jean</div><div class="s-big">484 894</div><div class="card">Hi Jean, it's Sarah. Open Family Shield, tap "Someone set it up for me" and type 484 894.</div><div class="btn p">Send the text</div><div class="wait">Waiting for Jean to type the code</div>`,
+      right: `<div class="s-tag">MUM'S PHONE</div><div class="s-h">Type your code</div><div class="s-big">484 89_</div><div class="s-p">It is the six numbers in the text from your family.</div><div class="kb">${'<span></span>'.repeat(30)}</div>` },
+    { title: 'Linked', caption: 'The moment Mum types the code, your phone ticks "Jean\'s phone has joined". No guessing whether it worked.', focus: 'right', litLeft: true, litRight: true, linked: true, buzz: [60, 40, 60],
+      left: `<div class="s-tag">YOUR PHONE</div><div class="s-h">Is it all working?</div><div class="tick">Jean's phone is linked</div><div class="todo">Scam alerts can reach this phone</div><div class="todo">Test alert received</div>`,
+      right: `<div class="s-tag">MUM'S PHONE</div><div class="s-h">Connected to Sarah</div><div class="s-p">If you check something and it is a scam, Sarah gets a message. Nothing else is shared.</div><div class="btn p">Try your first check<small>A practice one, nothing real</small></div>` },
+    { title: 'A practice check', caption: 'Mum sees a made-up scam text and taps Check. The answer lands with a stamp: SCAM, one plain sentence, and what to do.', focus: 'right', litRight: true, buzz: [120],
+      left: `<div class="s-tag">YOUR PHONE</div><div class="s-h">Is it all working?</div><div class="tick">Jean's phone is linked</div><div class="tick">Scam alerts can reach this phone</div><div class="tick">Test alert received</div><div class="tick">Jean did a first check</div>`,
+      right: `<div class="s-tag">PRACTICE TEXT</div><div class="card">HMRC: You are owed a tax refund of £254.60. Claim within 24 hours at hmrc-refund-claim.co</div><span class="stamp scam">SCAM</span><div class="s-p">HMRC never sends refunds by text or email link.</div><div class="card">1. Do not tap the link<br>2. Delete the message</div>` },
+    { title: 'Day to day: Check this', caption: 'Something odd arrives. Mum pastes it, chooses a screenshot, takes a photo of a letter, or double-taps the back of her phone. Three possible answers.', focus: 'right', litRight: true,
+      left: `<div class="s-tag">YOUR PHONE</div><div class="s-h">Jean</div><div class="card">Linked. You will be told about scams.</div><div class="card">Checks this week <b>3</b> · Scams found <b>0</b></div>`,
+      right: `<div class="s-tag">MUM'S PHONE</div><div class="s-h">Check this</div><div class="btn p">Paste a text or email</div><div class="btn p">Check a picture<small>A screenshot, letter or leaflet</small></div><div class="btn">Take a photo now</div>` },
+    { title: 'If it is a scam, you are told', caption: 'A scam verdict sends one message to your phone with the reason. Safe and Be careful stay quiet, so an alert always means something.', focus: 'left', litLeft: true, litRight: true, signal: 'back', buzz: [80, 60, 80],
+      left: `<div class="s-tag">YOUR PHONE</div><div class="alert"><b>Jean checked a scam</b>Royal Mail never asks for money by text. Nothing for you to do unless you want to call.</div><div class="card">Checks this week <b>4</b> · Scams found <b>1</b></div>`,
+      right: `<div class="s-tag">WHAT YOU SHOWED ME</div><div class="card">Royal Mail: your parcel is held. Pay £2.99 to release it: rm-redelivery.co</div><span class="stamp scam">SCAM</span><div class="s-p">✓ Sarah has been told. You do not need to call.</div>` },
+    { title: 'Someone wants money', caption: 'Five yes-or-no questions before anyone pays anything. Secrecy, hurry, gift cards, "your bank on a new number". A straight answer, and you are told.', focus: 'right', litRight: true,
+      left: `<div class="s-tag">YOUR PHONE</div><div class="alert"><b>Jean was asked for money</b>This has the signs of a scam. They asked her to keep it secret.</div>`,
+      right: `<div class="s-tag">QUESTION 3 OF 5</div><div class="s-h">Have they asked you to keep it quiet?</div><div class="btn p">Yes</div><div class="btn">No</div>` },
+    { title: 'Is it really Sarah?', caption: 'A voice can be faked. Mum sees the family word, and can ask your real phone. You tap Yes or No and she sees the answer.', focus: 'left', litLeft: true, litRight: true, signal: true, buzz: [60, 40, 60, 40, 60],
+      left: `<div class="s-tag">YOUR PHONE</div><div class="alert"><b>Jean is asking: is this really you?</b>Someone claiming to be you has been in touch.</div><div class="btn p">Yes, it's me</div><div class="btn">No, not me</div>`,
+      right: `<div class="s-tag">MUM'S PHONE</div><div class="s-h">Is it really Sarah?</div><div class="card">Ask them for the family word. It is<br><span class="s-big" style="letter-spacing:0">bluebell</span></div><div class="btn p">Ask Sarah's phone</div>` },
+    { title: 'Extras, when you are together', caption: 'Call warnings and the junk text filter are two switches in Settings. The share menu button and double-tap come from Shortcuts. All optional, all ticked only when really on.', focus: 'right', litRight: true, linked: true,
+      left: `<div class="s-tag">YOUR PHONE</div><div class="s-h">Extras on Jean's phone</div><div class="card">Scam call warnings ▾</div><div class="card">Junk text filter ▾</div><div class="card">Check from any share menu ▾</div><div class="card">Double-tap the back of the phone ▾</div>`,
+      right: `<div class="s-tag">MUM'S PHONE</div><div class="s-h">Extra protection</div><div class="tick">Scam call warnings</div><div class="tick">Junk text filter</div><div class="todo">Double-tap the back of the phone</div><div class="todo">Check from the share menu</div>` },
+  ],
+};
+</script>
+<script src="/explainers/engine.js?v=20261103"></script>
+
+</body>
+</html>

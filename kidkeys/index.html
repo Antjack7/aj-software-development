@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kid Keys: how it works · AJ Software</title>
+<meta name="description" content="A safe keyboard for 8 to 14 year olds that flags risky typing and nudges the child before they press send. Parents see categories and counts, never messages.">
+<link rel="canonical" href="https://ajsoftwaredev.org/kidkeys/">
+<meta property="og:title" content="Kid Keys: how it works">
+<meta property="og:description" content="A safe keyboard for 8 to 14 year olds that flags risky typing and nudges the child before they press send. Parents see categories and counts, never messages.">
+<meta name="theme-color" content="#06080c">
+<link rel="icon" href="/assets/favicon.svg">
+<style>
+.sitebar { display:flex; justify-content:space-between; align-items:center; font-size:13px; color:#a9b6cb; }
+.sitebar a { color:#a9b6cb; text-decoration:none; font-weight:700; } .sitebar a:hover { color:#fff; }
+.ctas { display:flex; gap:10px; flex-wrap:wrap; }
+.cta { display:inline-block; padding:12px 18px; border-radius:14px; border:1px solid rgba(255,255,255,.14); color:#eef1f8; text-decoration:none; font-family:'Sora',sans-serif; font-weight:700; background:rgba(255,255,255,.06); }
+.cta.p { background:rgba(var(--accent-rgb),.16); border-color:rgba(var(--accent-rgb),.5); }
+</style>
+</head>
+<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@500;700&display=swap">
+<link rel="stylesheet" href="/explainers/style.css?v=20261103">
+<canvas id="motes"></canvas>
+<div class="wrap">
+  <nav class="sitebar"><a href="/">‹ AJ Software</a><span>In testing · Kid Keys</span></nav>
+  <header>
+    <div class="brand"><i></i>Kid Keys</div>
+    <div class="eyebrow">How the setup works</div>
+  </header>
+  <div>
+    <h1>A keyboard that flags, not reads.</h1>
+    <p class="lede">You set it up from your phone. Your child adds the keyboard on theirs. It notices risky things as they are typed and nudges them before they press send. You see categories and counts. Never messages. They see the same.</p>
+  </div>
+
+  <div class="scene">
+    <div id="stage">
+      <div class="phone" id="phoneL"><div class="screen"></div><div class="plabel"></div></div>
+      <div id="link"><div id="signal"></div></div>
+      <div class="phone" id="phoneR"><div class="screen"></div><div class="plabel"></div></div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="row"><span id="stepNo"></span><div class="ctl"><button id="prevBtn">‹ Back</button><button id="playBtn">Pause</button><button id="nextBtn">Next ›</button></div></div>
+    <h3 id="stepTitle"></h3>
+    <p id="caption"></p>
+    <div class="progress"><div id="prog"></div></div>
+    <div id="dots"></div>
+  </div>
+
+  <div class="ctas"><a class="cta p" href="https://testflight.apple.com/join/Vnxb9u1b">Try it on TestFlight (iPhone)</a></div>
+  <h2>The steps, written down</h2>
+  <ol id="steps"></ol>
+
+  <h2>What it cannot do, so nobody is surprised</h2>
+  <div class="limits">
+    <div class="card"><b>It never reads what your child receives.</b> Only what they type, and only to spot six kinds of risk.</div>
+    <div class="card"><b>Your child can switch keyboards.</b> If they do, you see "keyboard not used since Tuesday", not silence.</div>
+    <div class="card"><b>It cannot tell which app they typed in.</b> Apple does not give keyboards that. The optional "app opened" Shortcut fills some of that gap.</div>
+    <div class="card"><b>Nothing is hidden from the child.</b> They see the same weekly summary you do. That is the point.</div>
+  </div>
+  <footer>Kid Keys by AJ Software. Built to the ICO Children's Code: the child is always told it is on.</footer>
+</div>
+<script>
+window.STORY = {
+  app: 'Kid Keys', accent: '#8b7cff', accentRgb: '139,124,255',
+  phones: ['Parent’s phone', 'Child’s phone'],
+  steps: [
+    { title: 'Add a child', caption: 'On your phone: your name, your child\'s name and age. That makes a six digit code and a ready-made text to send them.', focus: 'left', litLeft: true,
+      left: `<div class="s-tag">PARENT'S PHONE</div><div class="s-h">Add a child</div><div class="card">Child's name<br><b>Ella</b> · age 11</div><div class="card">Your name<br><b>Dad</b></div><div class="btn p">Make a code</div>`,
+      right: `<div class="idle">waiting</div>` },
+    { title: 'Send the code', caption: 'The text explains what the app does in their words. They open Kid Keys and type the six digits.', focus: 'right', litLeft: true, signal: true,
+      left: `<div class="s-tag">PARENT'S PHONE</div><div class="s-big">612 390</div><div class="btn p">Send the text</div><div class="wait">Waiting for Ella to type the code</div>`,
+      right: `<div class="s-tag">ELLA'S PHONE</div><div class="s-h">Type the code</div><div class="s-big">612 39_</div><div class="kb">${'<span></span>'.repeat(30)}</div>` },
+    { title: 'Linked', caption: 'Your phone ticks the moment their phone joins, with a double thump. Ticks only ever mean the thing really happened.', focus: 'left', litLeft: true, litRight: true, linked: true, buzz: [60, 40, 60],
+      left: `<div class="s-tag">PARENT'S PHONE</div><div class="s-h">Ella</div><div class="tick">Ella's phone is linked</div><div class="todo">Keyboard added</div><div class="todo">Full Access on</div><div class="todo">First keystroke counted</div>`,
+      right: `<div class="s-tag">ELLA'S PHONE</div><div class="s-h">Connected to Dad</div><div class="s-p">Dad sees categories and counts. Never your messages. You see the same.</div><div class="btn p">Add the keyboard</div>` },
+    { title: 'Add the keyboard', caption: 'Three steps in Settings, shown as pictures on their phone. Apple shows a Full Access warning for every keyboard; the app explains before it appears: checks happen on the phone, only a flagged phrase and its category ever leave.', focus: 'right', litRight: true,
+      left: `<div class="s-tag">PARENT'S PHONE</div><div class="tick">Ella's phone is linked</div><div class="wait">Keyboard added</div><div class="todo">Full Access on</div>`,
+      right: `<div class="s-tag">ELLA'S PHONE</div><div class="s-h">Add the keyboard</div><div class="tick">Settings › General › Keyboard</div><div class="wait">Add New Keyboard › Kid Keys</div><div class="todo">Allow Full Access</div><div class="s-p">Full Access lets the keyboard tell the Kid Keys app what it flagged. It never sends what you type.</div>` },
+    { title: 'Typing, and a nudge', caption: 'They type "my school is Oakfield" in any app. The keyboard bar says: "That\'s your school. People online don\'t need it." Remove it is always offered first.', focus: 'right', litRight: true, buzz: [40],
+      left: `<div class="s-tag">PARENT'S PHONE</div><div class="tick">Ella's phone is linked</div><div class="tick">Keyboard added</div><div class="tick">Full Access on</div><div class="tick">First keystroke counted</div>`,
+      right: `<div class="s-tag">ANY APP</div><div class="card">my school is Oakfield|</div><div class="nudge"><b>That's your school.</b> People online don't need it.<br><br><b>Remove it</b> &nbsp; Send anyway</div><div class="kb">${'<span></span>'.repeat(30)}</div>` },
+    { title: 'Your week, their week', caption: 'Six categories: where you live, school, phone number, pressure, unkind words, hurting yourself. You see how many and when. Never the message, never who. Your child sees exactly the same screen.', focus: 'left', litLeft: true, litRight: true, signal: 'back',
+      left: `<div class="s-tag">PARENT'S PHONE</div><div class="s-h">Ella's week</div><div class="bars"><i style="height:30%"></i><i style="height:55%"></i><i style="height:20%"></i><i style="height:80%"></i><i style="height:40%"></i><i style="height:10%"></i><i style="height:60%"></i></div><div class="card">School · 2 · removed both</div><div class="card">Pressure · 1 · <b style="color:var(--red)">serious</b></div>`,
+      right: `<div class="s-tag">ELLA'S PHONE</div><div class="s-h">Your week</div><div class="bars"><i style="height:30%"></i><i style="height:55%"></i><i style="height:20%"></i><i style="height:80%"></i><i style="height:40%"></i><i style="height:10%"></i><i style="height:60%"></i></div><div class="card">School · 2 · you removed both</div><div class="card">Pressure · 1 · Dad was told</div>` },
+    { title: 'Serious means you are told', caption: 'Self-harm words, or secrecy plus an address or school within fifteen minutes, push one message to your phone with the category only.', focus: 'left', litLeft: true, signal: 'back', buzz: [80, 60, 80],
+      left: `<div class="s-tag">PARENT'S PHONE</div><div class="alert"><b>Ella: pressure</b>Someone asked her to keep a secret and meet up. Worth a chat tonight.</div>`,
+      right: `<div class="s-tag">ELLA'S PHONE</div><div class="nudge"><b>Someone asking you to keep secrets?</b> That is a sign. Dad has been told, and that is not you being in trouble.</div>` },
+    { title: 'See when apps open', caption: 'Optional. A small Shortcut on their phone reports "Snapchat opened at 11:02pm". On iOS 26 it is built by hand in seven steps; on iOS 27 you add it with a link. They can delete it, and then you see "no app opens reported since".', focus: 'left', litLeft: true, linked: true,
+      left: `<div class="s-tag">PARENT'S PHONE</div><div class="s-h">When apps open</div><div class="card">Tue · Snapchat <b style="color:var(--amber)">23:02</b></div><div class="card">Tue · Roblox 19:40</div><div class="card">Mon · WhatsApp 17:12</div>`,
+      right: `<div class="s-tag">ELLA'S PHONE</div><div class="s-h">See when apps open</div><div class="tick">Shortcut added</div><div class="tick">Switched on</div><div class="s-p">Dad sees app names and times. Not what you did in them.</div>` },
+    { title: 'Honest when it is off', caption: 'If the keyboard has not typed since Tuesday, your phone says so. Silence is never shown as safety.', focus: 'left', litLeft: true,
+      left: `<div class="s-tag">PARENT'S PHONE</div><div class="s-h">Ella</div><div class="card" style="border-color:var(--amber)">Keyboard not used since Tuesday</div><div class="s-p">She may have switched keyboards. Worth asking, not accusing.</div>`,
+      right: `<div class="s-tag">ELLA'S PHONE</div><div class="s-h">Your week</div><div class="card">Kid Keys has not been used since Tuesday.</div>` },
+  ],
+};
+</script>
+<script src="/explainers/engine.js?v=20261103"></script>
+
+</body>
+</html>

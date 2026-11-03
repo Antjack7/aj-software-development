@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CloneWatch: how it works · AJ Software</title>
+<meta name="description" content="Finds the apps that copied yours on the App Store and Google Play, scores them with evidence, and writes the dispute pack.">
+<link rel="canonical" href="https://ajsoftwaredev.org/clonewatch/">
+<meta property="og:title" content="CloneWatch: how it works">
+<meta property="og:description" content="Finds the apps that copied yours on the App Store and Google Play, scores them with evidence, and writes the dispute pack.">
+<meta name="theme-color" content="#06080c">
+<link rel="icon" href="/assets/favicon.svg">
+<style>
+.sitebar { display:flex; justify-content:space-between; align-items:center; font-size:13px; color:#a9b6cb; }
+.sitebar a { color:#a9b6cb; text-decoration:none; font-weight:700; } .sitebar a:hover { color:#fff; }
+.ctas { display:flex; gap:10px; flex-wrap:wrap; }
+.cta { display:inline-block; padding:12px 18px; border-radius:14px; border:1px solid rgba(255,255,255,.14); color:#eef1f8; text-decoration:none; font-family:'Sora',sans-serif; font-weight:700; background:rgba(255,255,255,.06); }
+.cta.p { background:rgba(var(--accent-rgb),.16); border-color:rgba(var(--accent-rgb),.5); }
+</style>
+</head>
+<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@500;700&display=swap">
+<link rel="stylesheet" href="/explainers/style.css?v=20261103">
+<canvas id="motes"></canvas>
+<div class="wrap">
+  <nav class="sitebar"><a href="/">‹ AJ Software</a><span>In testing · CloneWatch</span></nav>
+  <header>
+    <div class="brand"><i></i>CloneWatch</div>
+    <div class="eyebrow">How it works</div>
+  </header>
+  <div>
+    <h1>Find the apps that copied yours. With proof.</h1>
+    <p class="lede">Add your app once. CloneWatch searches both stores every day, compares icons, names, screenshots and descriptions, and shows you the evidence. When a copy appears you get an email and a push. The dispute pack writes Apple's and Google's forms for you.</p>
+  </div>
+
+  <div class="scene">
+    <div id="stage">
+      <div class="phone" id="phoneL"><div class="screen"></div><div class="plabel"></div></div>
+      <div id="link"><div id="signal"></div></div>
+      <div class="phone" id="phoneR"><div class="screen"></div><div class="plabel"></div></div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="row"><span id="stepNo"></span><div class="ctl"><button id="prevBtn">‹ Back</button><button id="playBtn">Pause</button><button id="nextBtn">Next ›</button></div></div>
+    <h3 id="stepTitle"></h3>
+    <p id="caption"></p>
+    <div class="progress"><div id="prog"></div></div>
+    <div id="dots"></div>
+  </div>
+
+  <div class="ctas"><a class="cta p" href="https://clonewatch-five.vercel.app">Open CloneWatch</a></div>
+  <h2>The steps, written down</h2>
+  <ol id="steps"></ol>
+
+  <h2>What it will not do</h2>
+  <div class="limits">
+    <div class="card"><b>It never files anything for you.</b> You read the evidence, you decide, you submit. A wrong accusation is yours, so the pack says "similarity evidence", never "clone" as fact.</div>
+    <div class="card"><b>Features are not protected.</b> Same idea, own words and own art is allowed. Only copied names, icons, screenshots and text count.</div>
+    <div class="card"><b>Google Play has no search API.</b> We search gently and slowly. A scan takes a few minutes, not seconds.</div>
+    <div class="card"><b>An older app cannot have copied you.</b> If theirs was released first, the pack says so and advises not filing.</div>
+  </div>
+  <footer>CloneWatch by AJ Software. Free for one app with a weekly scan.</footer>
+</div>
+<script>
+window.STORY = {
+  app: 'CloneWatch', accent: '#e8b84a', accentRgb: '232,184,74',
+  phones: ['Your phone', 'The stores'],
+  steps: [
+    { title: 'Add your app', caption: 'Paste your App Store or Google Play link. That is the whole setup.', focus: 'left', litLeft: true,
+      left: `<div class="s-tag">CLONEWATCH</div><div class="s-h">Watch an app</div><div class="card">apps.apple.com/…/id6790137217</div><div class="btn p">Add and scan</div>`,
+      right: `<div class="s-tag">APP STORE · GOOGLE PLAY</div><div class="pair"><div class="icon"></div></div><div class="s-p" style="text-align:center">5e Character Sheet<br>your listing</div>` },
+    { title: 'The scan', caption: 'Up to ten searches per store: your name, misspellings, your title words. Every icon gets a fingerprint. The closest ten get screenshots and descriptions compared too.', focus: 'right', litRight: true, signal: true,
+      left: `<div class="s-tag">CLONEWATCH</div><div class="s-h">Scanning…</div><div class="wait">Searching App Store (10 terms)</div><div class="wait">Searching Google Play</div><div class="todo">Comparing icons and screenshots</div>`,
+      right: `<div class="s-tag">293 LISTINGS CHECKED</div><div class="pair"><div class="icon"></div><div class="icon copy"></div><div class="icon" style="filter:hue-rotate(90deg)"></div></div><div class="pair"><div class="icon" style="filter:hue-rotate(180deg)"></div><div class="icon copy" style="filter:saturate(2)"></div><div class="icon" style="filter:hue-rotate(270deg)"></div></div>` },
+    { title: 'A score with parts', caption: 'Icon 35%, name 35%, screenshots 20%, wording 10%. Name and icon both high means at least 85. The gauge is backed by the pieces, never a feeling.', focus: 'left', litLeft: true, signal: 'back',
+      left: `<div class="s-tag">MATCH</div><div class="gauge" style="--v:93%"><span>93</span></div><div class="card">Icon 100 · Name 96 · Screenshots 82 · Wording 64</div>`,
+      right: `<div class="s-tag">SIDE BY SIDE</div><div class="pair"><div class="icon"></div><div class="icon copy"></div></div><div class="s-p" style="text-align:center">yours · theirs<br>0 of 64 fingerprint bits apart</div>` },
+    { title: 'Claude reads the words', caption: 'Their description is compared with yours: identical sentences, close paraphrases, or just common phrases. Every quoted passage is checked against the real text before it is shown.', focus: 'left', litLeft: true,
+      left: `<div class="s-tag">CLAUDE'S READ</div><div class="card">"Track HP, spells and inventory in one tap." <b style="color:var(--red)">identical</b></div><div class="card">"Built for Dungeons &amp; Dragons players." <b style="color:var(--amber)">close paraphrase</b></div><div class="s-p">4 identical sentences. Wording 64.</div>`,
+      right: `<div class="s-tag">THEIR LISTING</div><div class="card">Track HP, spells and inventory in one tap. Made for D&amp;D players who…</div>` },
+    { title: 'Disguises do not work', caption: 'Cropped, mirrored, recoloured, shrunk onto a new background, a PRO badge, a tilt: the fingerprint tries each undo and keeps the closest match. The evidence says which one matched.', focus: 'right', litRight: true,
+      left: `<div class="s-tag">EVIDENCE</div><div class="card">Fingerprint matched <b>after undoing a mirrored change</b></div><div class="card">Screenshots 82: same art, different frame</div>`,
+      right: `<div class="s-tag">THEIR ICON, UNDONE</div><div class="pair"><div class="icon copy" style="transform:scaleX(-1)"></div><div class="icon copy"></div><div class="icon"></div></div><div class="s-p" style="text-align:center">mirrored → unmirrored → yours</div>` },
+    { title: 'Watched every day', caption: 'The daily scan runs on its own. A new copy scoring 60 or more sends one email and one push. Your own listing on the other store is skipped automatically.', focus: 'left', litLeft: true, signal: 'back', buzz: [80, 60, 80],
+      left: `<div class="s-tag">CLONEWATCH</div><div class="alert"><b>New copy of 5e Character Sheet</b>"5E Char Sheet Pro" on Google Play scores 88. Icon and name match.</div>`,
+      right: `<div class="s-tag">06:00 EVERY DAY</div><div class="tick">5e Character Sheet · 293 checked</div><div class="tick">North Star · 254 checked</div><div class="s-p">Proof images saved with a fingerprint and the time taken.</div>` },
+    { title: 'The dispute pack', caption: 'Field by field text for Apple\'s content dispute or Google\'s copyright or trademark form, with copy buttons, only the strong claims, never features. It tells you when not to file.', focus: 'left', litLeft: true,
+      left: `<div class="s-tag">DISPUTE PACK</div><div class="card">Apple · App Store Content Dispute<br><b>Copied icon</b> · <b>Copied name</b> · <b>4 identical sentences</b></div><div class="btn p">Copy field 1 of 6</div><div class="s-p">You sign and submit. We never do.</div>`,
+      right: `<div class="s-tag">EVIDENCE PDF</div><div class="pair"><div class="icon"></div><div class="icon copy"></div></div><div class="card">Scores, claims, matching passages, SHA-256 of every image.</div>` },
+    { title: 'Then it is marked', caption: 'Tap "I\'ve filed it" and the match is kept as disputing. The daily scan keeps checking the store and tells you once when the copy has gone.', focus: 'left', litLeft: true, linked: true, buzz: [60, 40, 60],
+      left: `<div class="s-tag">CLONEWATCH</div><div class="alert"><b>Removed</b>"5E Char Sheet Pro" is no longer on Google Play.</div><div class="card">Disputed 3 Nov · gone 9 Nov</div>`,
+      right: `<div class="s-tag">GOOGLE PLAY</div><div class="s-p" style="text-align:center;margin-top:30%">Listing not found</div>` },
+  ],
+};
+</script>
+<script src="/explainers/engine.js?v=20261103"></script>
+
+</body>
+</html>
