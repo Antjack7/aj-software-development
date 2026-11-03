@@ -29,8 +29,8 @@
     <div class="eyebrow">How the setup works</div>
   </header>
   <div>
-    <h1>Two phones. One job: is this a scam?</h1>
-    <p class="lede">You set it up from your own phone. Mum's phone gets one big button. If she finds a scam, you are told. Press play, or step through.</p>
+    <h1>One job: is this a scam?</h1>
+    <p class="lede">Install it and check anything that looks odd. Linking a family member is optional: if you do, you are told when she finds a scam. Press play, or step through.</p>
   </div>
 
   <div class="scene">
@@ -67,9 +67,9 @@ window.STORY = {
   app: 'Family Shield', accent: '#35d3c2', accentRgb: '53,211,194',
   phones: ['Your phone', "Mum's phone"],
   steps: [
-    { title: 'Whose phone is this?', caption: 'Both phones install the same app. The first screen asks which one you are holding, so nobody ends up on the wrong side.', focus: 'left',
-      left: `<div class="s-tag">YOUR PHONE</div><div class="s-h">Whose phone is this?</div><div class="btn p">I'm setting it up for someone<small>This is my phone</small></div><div class="btn">Someone set it up for me<small>I have a six digit code</small></div>`,
-      right: `<div class="s-tag">MUM'S PHONE</div><div class="s-h">Whose phone is this?</div><div class="btn">I'm setting it up for someone</div><div class="btn p">Someone set it up for me<small>I have a six digit code</small></div>` },
+    { title: 'Works on its own', caption: 'Install it and start checking. Nobody has to be linked. If you want a family member told when a scam turns up, that is optional and takes one code.', focus: 'right', litRight: true,
+      left: `<div class="s-tag">YOUR PHONE</div><div class="s-h">Ready to go</div><div class="btn">Start checking<small>Just me, on this phone</small></div><div class="btn">I have a code from my family</div><div class="btn p">I'm setting this up for someone else<small>Make a code and send it</small></div>`,
+      right: `<div class="s-tag">MUM'S PHONE</div><div class="s-h">Ready to go</div><div class="btn p">Start checking<small>Just me, on this phone</small></div><div class="btn">I have a code from my family</div>` },
     { title: 'Names and a family word', caption: 'You type both first names and, if you like, a family word. Scammers can copy a voice. Only the two of you know the word.', focus: 'left', litLeft: true,
       left: `<div class="s-tag">YOUR PHONE</div><div class="s-h">Set up Mum's phone from yours</div><div class="card">Who are you protecting?<br><b>Jean</b></div><div class="card">Your first name<br><b>Sarah</b></div><div class="card">A family word<br><b>bluebell</b></div><div class="btn p">Make a code</div>`,
       right: `<div class="idle">waiting</div>` },
