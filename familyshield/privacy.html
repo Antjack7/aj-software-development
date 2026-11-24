@@ -40,12 +40,12 @@
 <div class="box"><strong>The short version:</strong> Family Shield only looks at what you show it, or what you switch on. Each message is sent to our server and to an AI service to get the answer. Ordinary messages are not kept. If a message looks like a scam, we keep its first 80 characters so your family can see what the warning was about. Your family never sees your ordinary messages.</div>
 <h2>What we collect and why</h2>
 <ul><li><strong>What you check.</strong> When you tap Check this, the text or photo you chose is sent to our server (Supabase, hosted in London) and to Anthropic's Claude service to work out the answer. Anthropic does not train on it, and deletes it within 30 days (longer only if its safety systems flag misuse).</li>
-<li><strong>Automatic checks (optional, part of Family Shield Plus).</strong> If you switch on Real-Time Scan, new message alerts on that phone are checked the same way. On Android the app reads the notification; on iPhone a Shortcut you add passes the message over. Names, email addresses and phone numbers are blanked out on the phone before anything is sent. You can switch it off at any time.</li>
+<li><strong>Automatic checks (optional, part of Family Shield Plus).</strong> If you switch on Real-Time Scan, new message alerts on that phone are checked the same way. On Android the app reads the notification; on iPhone a Shortcut you add passes the message over. The sender's name, email addresses and phone numbers are blanked out on the phone before anything is sent. The rest of the message is sent as it is. You can switch it off at any time.</li>
 <li><strong>What we keep from a check.</strong>
 <ul><li>An ordinary message: only the result ("safe") and the time. No wording.</li>
 <li>A scam or "be careful" message: the result, one sentence saying why, and the first 80 characters.</li>
 <li>A scrambled fingerprint of the message, which cannot be turned back into words. It stops us checking the same message twice.</li></ul></li>
-<li><strong>Emails you forward.</strong> If you forward an email to our checking address, we check it and email you the answer. We keep the result and a scrambled fingerprint of your address (to limit free checks), never the email or your address. Resend handles the email for us.</li>
+<li><strong>Emails you forward.</strong> If you forward an email to our checking address, we check it and email you the answer. We keep the result and a scrambled fingerprint of your address (to limit free checks), never the email or your address. Resend, our email service, receives your email and sends our reply, and keeps its own record of both.</li>
 <li><strong>Pairing.</strong> The first names you type, a six-digit code and your family word, so the phones can find each other.</li>
 <li><strong>Questions to family.</strong> If you tap "Is it really...?", the question goes to your family member's phone.</li>
 <li><strong>Alerts.</strong> A push notification token for each phone, so we can send scam alerts and the Sunday summary. Alerts are sent through Expo, Apple and Google.</li>
@@ -55,14 +55,16 @@
 <li><strong>Security.</strong> Your internet address is kept for up to two days to stop people guessing pairing codes.</li></ul>
 <h2>What we do not collect</h2>
 <p>No contacts, no location, no browsing, no advertising identifiers, no message history. The call-warning and junk-text filters run on the phone and send nothing to us. We do not sell data. We share it only with the services named above that make the app work.</p>
+<h2>Where your data goes</h2>
+<p>Our server is in London. Anthropic, Resend, RevenueCat and Expo are American companies, so the data they handle for us leaves the UK.</p>
 <h2>Who can see what</h2>
 <p>Linked family members see:</p>
 <ul><li>scam and "be careful" results from the protected phone, with the first 80 characters, for 30 days;</li>
 <li>a count of ordinary messages checked that week, with no wording.</li></ul>
-<p>They get an alert when a scam is found. They cannot see ordinary messages, and neither can we.</p>
+<p>They get an alert when a scam is found. They cannot see the wording of ordinary messages, because we do not keep it.</p>
 <p>The protected person can stop this at any time: Settings, then Start again. That unlinks the phone and the alerts stop.</p>
 <h2>Keeping and deleting</h2>
-<p>Checks are deleted after 90 days. Start again removes the phone from the family. To delete everything sooner, email the address below with your pairing code.</p>
+<p>Checks are deleted after 90 days. Start again removes the phone from the family, but past checks stay until the 90 days are up. To delete everything sooner, email the address below with your pairing code.</p>
 <h2>Your rights</h2>
 <p>Under UK data protection law you can ask for a copy of your data, ask us to correct or delete it, or object to how we use it. Email the address below. You can also complain to the Information Commissioner's Office (<a href="https://ico.org.uk/">ico.org.uk</a>).</p>
 <h2>Children</h2>
