@@ -9,6 +9,7 @@
 {{META}}
 <meta name="apple-itunes-app" content="app-id=6804264075">
 <script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/dl.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body class="reading-page">
